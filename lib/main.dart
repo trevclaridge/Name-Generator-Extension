@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Random Names',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -66,7 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             const SizedBox(height: 80.0),
-            Text('Number of Syllables',
+            Text('Number of Syllables: $numSyllables',
                 style: Theme.of(context).textTheme.labelLarge),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30.0),
@@ -86,12 +87,14 @@ class _MyHomePageState extends State<MyHomePage> {
                       newName();
                     });
                   }),
-            )
+            ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-          onPressed: newName, child: const Icon(Icons.refresh)),
+        onPressed: newName,
+        child: const Icon(Icons.refresh),
+      ),
     );
   }
 
