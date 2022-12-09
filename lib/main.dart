@@ -34,7 +34,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   FirstName firstName = FirstName();
   LastName lastName = LastName();
-  int numSyllables = 3;
+  int numSyllables = 2;
 
   @override
   Widget build(BuildContext context) {
