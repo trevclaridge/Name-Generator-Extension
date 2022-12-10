@@ -15,7 +15,6 @@ class NamePanel extends StatefulWidget {
 class _NamePanelState extends State<NamePanel> {
   Color namePanelColor = Colors.transparent;
   Color saveColor = const Color(0xFFC7CACC);
-  Color copyColor = const Color(0xFFC7CACC);
   bool iconsVisible = false;
 
   @override
@@ -64,72 +63,43 @@ class _NamePanelState extends State<NamePanel> {
                   children: [
                     Visibility(
                       visible: iconsVisible,
-                      child: MouseRegion(
-                        onEnter: (event) {
-                          setState(() {
-                            copyColor = Colors.black;
-                          });
-                        },
-                        onExit: (event) {
-                          setState(() {
-                            copyColor = const Color(0xFFC7CACC);
-                          });
-                        },
-                        cursor: SystemMouseCursors.click,
-                        child: GestureDetector(
-                          onTap: () async {
-                            await Clipboard.setData(
-                              ClipboardData(
-                                text: widget.fullName.getCombinedName(),
-                              ),
-                            );
-                            // ignore: use_build_context_synchronously
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(
-                                    '${widget.fullName.getCombinedName()} copied to clipboard'),
-                              ),
-                            );
-                          },
-                          child: Icon(
-                            Icons.copy,
-                            color: copyColor,
-                          ),
-                        ),
-                      ),
+                      child: NameAction(
+                          fullName: widget.fullName.getCombinedName(),
+                          buttonBehavior: () =>
+                              _onCopyClick(widget.fullName.getCombinedName()),
+                          icon: Icons.copy),
                     ),
                     const SizedBox(width: 10.0),
                     Visibility(
-                      visible: iconsVisible,
-                      child: MouseRegion(
-                        onEnter: (event) {
-                          setState(() {
-                            saveColor = Colors.black;
-                          });
-                        },
-                        onExit: (event) {
-                          setState(() {
-                            saveColor = const Color(0xFFC7CACC);
-                          });
-                        },
-                        cursor: SystemMouseCursors.click,
-                        child: GestureDetector(
-                          onTap: () {
-                            App().addNameToSaved(widget.fullName);
-                          },
-                          child: Icon(
-                            Icons.save,
-                            color: saveColor,
-                          ),
-                        ),
-                      ),
-                    ),
+                        visible: iconsVisible,
+                        child: NameAction(
+                            fullName: widget.fullName.getCombinedName(),
+                            buttonBehavior: onSaveClick,
+                            icon: Icons.save)),
                   ],
                 )
               ],
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  void onSaveClick() {
+    App().addNameToSaved(widget.fullName);
+  }
+
+  void _onCopyClick(String name) async {
+    await Clipboard.setData(
+      ClipboardData(
+        text: widget.fullName.getCombinedName(),
+      ),
+    );
+    // ignore: use_build_context_synchronously
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('$name copied to clipboard'),
       ),
     );
   }

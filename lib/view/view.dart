@@ -7,4 +7,5 @@ import 'package:flutter/services.dart';
 part 'pages/home_page.dart';
 part 'pages/names_page.dart';
 part 'pages/saved_page.dart';
+part 'widgets/name_action.dart';
 part 'widgets/name_panel.dart';

@@ -14,7 +14,6 @@ class App {
   void addNameToSaved(FullName fullname) {
     _savedNames.add(fullname);
     SharedPrefs().saveNameListToPrefs();
-    print(_savedNames);
   }
 
   void populateSavedNames() {
