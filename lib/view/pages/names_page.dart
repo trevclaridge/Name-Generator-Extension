@@ -16,15 +16,16 @@ class _NamesPageState extends State<NamesPage> {
 
   @override
   Widget build(BuildContext context) {
-    List<String> fullNames = List<String>.generate(
+    List<FullName> fullNames = List<FullName>.generate(
       5,
-      ((index) =>
-          '${firstNames.elementAt(index).name.capitalize()} ${lastNames.elementAt(index).name.capitalize()}'),
+      ((index) => FullName(
+            firstNames.elementAt(index),
+            lastNames.elementAt(index),
+          )),
     );
+
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Random Names'),
-      ),
+      appBar: null,
       body: ListView(
         children: [
           const SizedBox(height: 20.0),
@@ -37,7 +38,9 @@ class _NamesPageState extends State<NamesPage> {
                   itemCount: 5,
                   shrinkWrap: true,
                   itemBuilder: ((context, index) {
-                    return NamePanel(fullNames: fullNames, index: index);
+                    return NamePanel(
+                      fullName: fullNames.elementAt(index),
+                    );
                   }),
                 ),
                 const SizedBox(height: 60.0),

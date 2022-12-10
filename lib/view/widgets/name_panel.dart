@@ -3,12 +3,10 @@ part of view;
 class NamePanel extends StatefulWidget {
   const NamePanel({
     Key? key,
-    required this.fullNames,
-    required this.index,
+    required this.fullName,
   }) : super(key: key);
 
-  final List<String> fullNames;
-  final int index;
+  final FullName fullName;
 
   @override
   State<NamePanel> createState() => _NamePanelState();
@@ -47,17 +45,20 @@ class _NamePanelState extends State<NamePanel> {
           child: Container(
             color: namePanelColor,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              // mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
+                const SizedBox(height: 8.0),
                 FittedBox(
                   fit: BoxFit.fitWidth,
                   child: SelectableText(
-                      widget.fullNames.elementAt(widget.index),
-                      style: Theme.of(context)
-                          .textTheme
-                          .displaySmall!
-                          .copyWith(fontSize: 36.0)),
+                    widget.fullName.getCombinedName(),
+                    style: Theme.of(context)
+                        .textTheme
+                        .displaySmall!
+                        .copyWith(fontSize: 36.0),
+                  ),
                 ),
+                const SizedBox(height: 6.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -79,14 +80,14 @@ class _NamePanelState extends State<NamePanel> {
                           onTap: () async {
                             await Clipboard.setData(
                               ClipboardData(
-                                text: widget.fullNames.elementAt(widget.index),
+                                text: widget.fullName.getCombinedName(),
                               ),
                             );
                             // ignore: use_build_context_synchronously
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
-                                    '${widget.fullNames.elementAt(widget.index)} copied to clipboard'),
+                                    '${widget.fullName.getCombinedName()} copied to clipboard'),
                               ),
                             );
                           },
@@ -113,7 +114,9 @@ class _NamePanelState extends State<NamePanel> {
                         },
                         cursor: SystemMouseCursors.click,
                         child: GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            App().addNameToSaved(widget.fullName);
+                          },
                           child: Icon(
                             Icons.save,
                             color: saveColor,

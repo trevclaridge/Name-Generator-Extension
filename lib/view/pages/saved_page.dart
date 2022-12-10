@@ -10,6 +10,20 @@ class SavedPage extends StatefulWidget {
 class _SavedPageState extends State<SavedPage> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 20.0),
+        child: ListView.builder(
+          physics: const NeverScrollableScrollPhysics(),
+          itemCount: App().savedNames.length,
+          shrinkWrap: true,
+          itemBuilder: ((context, index) {
+            return NamePanel(
+              fullName: App().savedNames.elementAt(index),
+            );
+          }),
+        ),
+      ),
+    );
   }
 }

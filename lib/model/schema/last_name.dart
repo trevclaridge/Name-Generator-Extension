@@ -10,4 +10,9 @@ class LastName extends Name {
     name = generate(numSyllables);
     length = name.length;
   }
+
+  LastName.fromPrefs(String namePrefs) {
+    name = namePrefs;
+    length = namePrefs.length;
+  }
 }
