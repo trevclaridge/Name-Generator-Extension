@@ -2,7 +2,7 @@ part of model;
 
 class FirstName extends Name {
   FirstName() {
-    name = generate(3);
+    name = generate(Constants.NUM_STARTING_SYLLABLES);
     length = name.length;
   }
   FirstName.numSylls(int numSyllables) {
