@@ -1,13 +1,13 @@
 part of view;
 
-class NamesPage extends StatefulWidget {
-  const NamesPage({Key? key}) : super(key: key);
+class GeneratorPage extends StatefulWidget {
+  const GeneratorPage({Key? key}) : super(key: key);
 
   @override
-  State<NamesPage> createState() => _NamesPageState();
+  State<GeneratorPage> createState() => _GeneratorPageState();
 }
 
-class _NamesPageState extends State<NamesPage> {
+class _GeneratorPageState extends State<GeneratorPage> {
   List<FirstName> firstNames =
       List<FirstName>.generate(5, (counter) => FirstName());
   List<LastName> lastNames =
@@ -40,35 +40,9 @@ class _NamesPageState extends State<NamesPage> {
                   itemBuilder: ((context, index) {
                     return NamePanel(
                       fullName: fullNames.elementAt(index),
+                      isSavedPage: false,
                     );
                   }),
-                ),
-                const SizedBox(height: 60.0),
-                Text('Number of Syllables: $numSyllables',
-                    style: Theme.of(context).textTheme.labelLarge),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30.0),
-                  child: Slider(
-                    value: numSyllables.toDouble(),
-                    min: 1,
-                    max: 7,
-                    divisions: 6,
-                    label: numSyllables.round().toString(),
-                    onChanged: (double value) {
-                      setState(
-                        () {
-                          numSyllables = value.toInt();
-                        },
-                      );
-                    },
-                    onChangeEnd: (double value) {
-                      setState(
-                        () {
-                          newNames();
-                        },
-                      );
-                    },
-                  ),
                 ),
               ],
             ),

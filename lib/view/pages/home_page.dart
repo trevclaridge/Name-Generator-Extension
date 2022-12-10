@@ -9,7 +9,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<BottomNavigationBarItem> actions = const [
-    BottomNavigationBarItem(icon: Icon(Icons.reorder), label: 'Names'),
+    BottomNavigationBarItem(icon: Icon(Icons.reorder), label: 'Generator'),
     BottomNavigationBarItem(icon: Icon(Icons.archive), label: 'Saved'),
   ];
 
@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
           pageChanged(index);
         },
         children: const <Widget>[
-          NamesPage(),
+          GeneratorPage(),
           SavedPage(),
         ],
       ),

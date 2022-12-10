@@ -12,6 +12,7 @@ void main() {
   // SharedPreferences.setMockInitialValues(values);
 
   App().populateSavedNames();
+  // App().populatePanelPrefs();
   runApp(const MyApp());
 }
 
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: 'home',
       routes: <String, WidgetBuilder>{
-        'names': (context) => const NamesPage(),
+        'names': (context) => const GeneratorPage(),
         'saved': (context) => const SavedPage(),
         'home': (context) => const HomePage()
       },
