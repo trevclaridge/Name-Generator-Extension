@@ -13,6 +13,7 @@ void main() {
 
   App().populateSavedNames();
   // App().populatePanelPrefs();
+  App().savePrefstoPrefs();
   runApp(const MyApp());
 }
 

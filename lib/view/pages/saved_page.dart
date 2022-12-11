@@ -13,16 +13,21 @@ class _SavedPageState extends State<SavedPage> {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20.0),
-        child: ListView.builder(
-          itemCount: App().savedNames.length,
-          shrinkWrap: true,
-          itemBuilder: ((context, index) {
-            return NamePanel(
-              fullName: App().savedNames.elementAt(index),
-              isSavedPage: true,
-            );
-          }),
-        ),
+        child: (App().savedNames.isEmpty)
+            ? const Center(
+                // child: Text('Your saved names will appear here'),
+                child: Counter(
+                numSyllables: 2,
+              ))
+            : ListView.builder(
+                itemCount: App().savedNames.length,
+                shrinkWrap: true,
+                itemBuilder: ((context, index) {
+                  return SavedNamePanel(
+                    fullName: App().savedNames.elementAt(index),
+                  );
+                }),
+              ),
       ),
     );
   }

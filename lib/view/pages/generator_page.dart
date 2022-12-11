@@ -8,11 +8,10 @@ class GeneratorPage extends StatefulWidget {
 }
 
 class _GeneratorPageState extends State<GeneratorPage> {
-  List<FirstName> firstNames =
-      List<FirstName>.generate(5, (counter) => FirstName());
-  List<LastName> lastNames =
-      List<LastName>.generate(5, (counter) => LastName());
-  int numSyllables = Constants.NUM_STARTING_SYLLABLES;
+  List<FirstName> firstNames = List<FirstName>.generate(5,
+      (counter) => FirstName.numSylls(App().panelPrefs[counter].numSyllables));
+  List<LastName> lastNames = List<LastName>.generate(5,
+      (counter) => LastName.numSylls(App().panelPrefs[counter].numSyllables));
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +39,7 @@ class _GeneratorPageState extends State<GeneratorPage> {
                   itemBuilder: ((context, index) {
                     return NamePanel(
                       fullName: fullNames.elementAt(index),
-                      isSavedPage: false,
+                      panelPrefs: App().panelPrefs[index],
                     );
                   }),
                 ),
@@ -60,9 +59,13 @@ class _GeneratorPageState extends State<GeneratorPage> {
     setState(
       () {
         firstNames = List<FirstName>.generate(
-            5, (counter) => FirstName.numSylls(numSyllables));
+            5,
+            (counter) =>
+                FirstName.numSylls(App().panelPrefs[counter].numSyllables));
         lastNames = List<LastName>.generate(
-            5, (counter) => LastName.numSylls(numSyllables));
+            5,
+            (counter) =>
+                LastName.numSylls((App().panelPrefs[counter].numSyllables)));
       },
     );
   }

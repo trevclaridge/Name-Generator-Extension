@@ -8,4 +8,5 @@ part 'pages/home_page.dart';
 part 'pages/generator_page.dart';
 part 'pages/saved_page.dart';
 part 'widgets/name_action.dart';
-part 'widgets/name_panel.dart';
+part 'widgets/generator_name_panel.dart';
+part 'widgets/saved_name_panel.dart';
