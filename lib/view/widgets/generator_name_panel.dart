@@ -32,7 +32,7 @@ class _NamePanelState extends State<NamePanel> {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30.0),
         child: SizedBox(
-          height: 95,
+          height: 100,
           child: MouseRegion(
             onEnter: _onEnter,
             onHover: _onHover,
@@ -55,15 +55,15 @@ class _NamePanelState extends State<NamePanel> {
                   Visibility(
                     visible: hovered,
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            Text('Syllables: $numSyllables',
+                            Text('Syllables: ',
                                 style: Theme.of(context).textTheme.labelLarge),
-                            // Counter(numSyllables: numSyllables),
+                            Counter(numSyllables: numSyllables),
                             // Slider(
                             //   value: numSyllables.toDouble(),
                             //   min: 1,
@@ -161,29 +161,6 @@ class _NamePanelState extends State<NamePanel> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text('$name copied to clipboard'),
-      ),
-    );
-  }
-}
-
-class Counter extends StatelessWidget {
-  const Counter({
-    Key? key,
-    required this.numSyllables,
-  }) : super(key: key);
-
-  final int numSyllables;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 5.0,
-      child: Column(
-        children: [
-          InkWell(child: const Icon(Icons.keyboard_arrow_up), onTap: () {}),
-          Text(numSyllables.toString(), style: TextStyle(height: 0.4)),
-          InkWell(child: const Icon(Icons.keyboard_arrow_down), onTap: () {}),
-        ],
       ),
     );
   }
