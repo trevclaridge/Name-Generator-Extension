@@ -3,6 +3,7 @@ library view;
 import 'package:random_names_extension/model/model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
 part 'pages/home_page.dart';
 part 'pages/generator_page.dart';

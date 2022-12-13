@@ -8,21 +8,11 @@ class GeneratorPage extends StatefulWidget {
 }
 
 class _GeneratorPageState extends State<GeneratorPage> {
-  List<FirstName> firstNames = List<FirstName>.generate(5,
-      (counter) => FirstName.numSylls(App().panelPrefs[counter].numSyllables));
-  List<LastName> lastNames = List<LastName>.generate(5,
-      (counter) => LastName.numSylls(App().panelPrefs[counter].numSyllables));
-
   @override
   Widget build(BuildContext context) {
-    List<FullName> fullNames = List<FullName>.generate(
-      5,
-      ((index) => FullName(
-            firstNames.elementAt(index),
-            lastNames.elementAt(index),
-          )),
-    );
-
+    // for (var setting in App().panelSettings) {
+    //   print(setting.numSyllables);
+    // }
     return Scaffold(
       appBar: null,
       body: ListView(
@@ -37,10 +27,12 @@ class _GeneratorPageState extends State<GeneratorPage> {
                   itemCount: 5,
                   shrinkWrap: true,
                   itemBuilder: ((context, index) {
-                    return NamePanel(
-                      fullName: fullNames.elementAt(index),
-                      panelPrefs: App().panelPrefs[index],
-                    );
+                    return Consumer<App>(builder: (context, value, child) {
+                      return NamePanel(
+                        fullName: App().panelNames[index],
+                        panelSettings: App().panelSettings[index],
+                      );
+                    });
                   }),
                 ),
               ],
@@ -49,24 +41,9 @@ class _GeneratorPageState extends State<GeneratorPage> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: newNames,
+        onPressed: () => App().rerollNames(),
         child: const Icon(Icons.refresh),
       ),
-    );
-  }
-
-  void newNames() {
-    setState(
-      () {
-        firstNames = List<FirstName>.generate(
-            5,
-            (counter) =>
-                FirstName.numSylls(App().panelPrefs[counter].numSyllables));
-        lastNames = List<LastName>.generate(
-            5,
-            (counter) =>
-                LastName.numSylls((App().panelPrefs[counter].numSyllables)));
-      },
     );
   }
 }

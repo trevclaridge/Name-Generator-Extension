@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:random_names_extension/bin/bin.dart';
+import 'package:provider/provider.dart';
 import 'package:random_names_extension/view/view.dart';
 import 'package:random_names_extension/model/model.dart';
 // import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
-  // separateSylls();
-  // Map<String, Object> values = <String, Object>{
-  //   'saved_names': ["Biryne Cargen", "Trevor Claridge"]
-  // };
-  // SharedPreferences.setMockInitialValues(values);
-
+  if (App().checkFirstOpen()) {
+    App().initializeApp();
+  }
   App().populateSavedNames();
-  // App().populatePanelPrefs();
-  App().savePrefstoPrefs();
-  runApp(const MyApp());
+  App().populatePanelSettings();
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => App(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -36,9 +37,4 @@ class MyApp extends StatelessWidget {
       },
     );
   }
-}
-
-void separateSylls() {
-  var split = Syllables().captonCroutonSylls.split(' ');
-  split = split.map((syl) => syl.toLowerCase()).toList();
 }

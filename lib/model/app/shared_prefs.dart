@@ -8,6 +8,16 @@ class SharedPrefs {
   }
   SharedPrefs._internal();
 
+  Future<void> getFirstOpen() async {
+    final prefs = await SharedPreferences.getInstance();
+
+    bool? isFO = prefs.getBool('is_first_open');
+
+    if (isFO != null) {
+      App().isFirstOpen = isFO;
+    }
+  }
+
   Future<void> getNameListFromPrefs() async {
     final prefs = await SharedPreferences.getInstance();
 
@@ -20,13 +30,21 @@ class SharedPrefs {
     }
   }
 
-  Future<void> getPanelPrefsFromPrefs() async {
+  Future<void> getPanelSettingsFromPrefs() async {
     final prefs = await SharedPreferences.getInstance();
 
-    for (int i = 0; i < 4; ++i) {
-      List<String>? panelPrefs = prefs.getStringList('panel_pref_$i');
-      App().panelPrefs.add(PanelPrefs.fromPrefs(panelPrefs!));
+    for (int i = 0; i < 5; ++i) {
+      List<String>? panelSetting = prefs.getStringList('panel_pref_$i');
+      if (panelSetting == null) {
+        print('panelSetting $i was null');
+      }
+      App().panelSettings[i] = PanelSettings.fromPrefs(panelSetting!);
     }
+  }
+
+  Future<void> setFirstOpen() async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setBool('is_first_open', false);
   }
 
   Future<void> saveNameListToPrefs() async {
@@ -41,13 +59,13 @@ class SharedPrefs {
     await prefs.setStringList('saved_names', fullNamesAsStrings);
   }
 
-  Future<void> saveNamePanelPrefs() async {
+  Future<void> savePanelSettingsToPrefs() async {
     final prefs = await SharedPreferences.getInstance();
-    List<PanelPrefs> panelPrefs = App().panelPrefs;
+    List<PanelSettings> panelPrefs = App().panelSettings;
 
     for (int i = 0; i < 5; ++i) {
       await prefs.setStringList(
-          'panel_pref_$i', panelPrefs.elementAt(i).prefsAsStringList());
+          'panel_pref_$i', panelPrefs[i].prefsAsStringList());
     }
   }
 }

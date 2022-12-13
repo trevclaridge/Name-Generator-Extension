@@ -3,11 +3,11 @@
 part of view;
 
 class NamePanel extends StatefulWidget {
-  NamePanel({Key? key, required this.fullName, required this.panelPrefs})
+  NamePanel({Key? key, required this.fullName, required this.panelSettings})
       : super(key: key);
 
   final FullName fullName;
-  PanelPrefs panelPrefs;
+  PanelSettings panelSettings;
 
   @override
   State<NamePanel> createState() => _NamePanelState();
@@ -17,13 +17,6 @@ class _NamePanelState extends State<NamePanel> {
   Color namePanelColor = Colors.transparent;
   bool hovered = false;
   bool deleted = false;
-  late int numSyllables;
-
-  @override
-  void initState() {
-    numSyllables = widget.panelPrefs.numSyllables;
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,13 +37,13 @@ class _NamePanelState extends State<NamePanel> {
                   const SizedBox(height: 8.0),
                   FittedBox(
                     fit: BoxFit.fitWidth,
-                    child: SelectableText(
-                      widget.fullName.getCombinedName(),
-                      style: Theme.of(context)
-                          .textTheme
-                          .displaySmall!
-                          .copyWith(fontSize: 32.0),
-                    ),
+                    child: Consumer(builder: (context, value, child) {
+                      return SelectableText(widget.fullName.getCombinedName(),
+                          style: Theme.of(context)
+                              .textTheme
+                              .displaySmall!
+                              .copyWith(fontSize: 32.0));
+                    }),
                   ),
                   Visibility(
                     visible: hovered,
@@ -63,33 +56,10 @@ class _NamePanelState extends State<NamePanel> {
                           children: [
                             Text('Syllables: ',
                                 style: Theme.of(context).textTheme.labelLarge),
-                            Counter(numSyllables: numSyllables),
-                            // Slider(
-                            //   value: numSyllables.toDouble(),
-                            //   min: 1,
-                            //   max: 7,
-                            //   divisions: 6,
-                            //   label: numSyllables.round().toString(),
-                            //   onChanged: (double value) {
-                            // setState(
-                            //   () {
-                            //     numSyllables = value.toInt();
-                            //     widget.panelPrefs.numSyllables =
-                            //         numSyllables;
-                            //     App().panelPrefs[widget.panelPrefs
-                            //         .panelNum] = widget.panelPrefs;
-                            //     App().savePrefstoPrefs();
-                            //   },
-                            // );
-                            //   },
-                            //   onChangeEnd: (double value) {
-                            //     setState(
-                            //       () {
-                            //         newNames();
-                            //       },
-                            //     );
-                            //   },
-                            // ),
+                            Consumer<App>(builder: (context, value, child) {
+                              return Counter(
+                                  panelSettings: widget.panelSettings);
+                            }),
                           ],
                         ),
                         Row(
@@ -115,15 +85,6 @@ class _NamePanelState extends State<NamePanel> {
           ),
         ),
       ),
-    );
-  }
-
-  void newNames() {
-    setState(
-      () {
-        widget.fullName.firstName.generate(numSyllables);
-        widget.fullName.lastName.generate(numSyllables);
-      },
     );
   }
 

@@ -17,6 +17,12 @@ class _HomePageState extends State<HomePage> {
   int bottomSelectedIndex = 0;
 
   @override
+  void initState() {
+    super.initState();
+    App().rerollNames();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(

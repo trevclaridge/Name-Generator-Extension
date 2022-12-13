@@ -1,12 +1,12 @@
 part of view;
 
 class Counter extends StatelessWidget {
-  Counter({
+  const Counter({
     Key? key,
-    required this.numSyllables,
+    required this.panelSettings,
   }) : super(key: key);
 
-  final int numSyllables;
+  final PanelSettings panelSettings;
 
   @override
   Widget build(BuildContext context) {
@@ -17,14 +17,18 @@ class Counter extends StatelessWidget {
             Icons.keyboard_arrow_up,
             size: 15.0,
           ),
-          onTap: () {},
+          onTap: () {
+            App().incrementSyllables(panelSettings.panelNum);
+          },
         ),
         Text(
-          numSyllables.toString(),
+          panelSettings.numSyllables.toString(),
         ),
         InkWell(
           child: const Icon(Icons.keyboard_arrow_down, size: 15.0),
-          onTap: () {},
+          onTap: () {
+            App().decrementSyllables(panelSettings.panelNum);
+          },
         ),
       ],
     );
