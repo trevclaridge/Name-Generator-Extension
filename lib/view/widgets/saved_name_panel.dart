@@ -17,60 +17,56 @@ class SavedNamePanel extends StatefulWidget {
 class _SavedNamePanelState extends State<SavedNamePanel> {
   Color savedNamePanelColor = Colors.transparent;
   bool hovered = false;
-  bool deleted = false;
 
   @override
   Widget build(BuildContext context) {
-    return Visibility(
-      visible: !deleted,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 30.0),
-        child: SizedBox(
-          height: 95,
-          child: MouseRegion(
-            onEnter: _onEnter,
-            onHover: _onHover,
-            onExit: _onExit,
-            child: Container(
-              color: savedNamePanelColor,
-              child: Column(
-                children: [
-                  const SizedBox(height: 12.0),
-                  FittedBox(
-                    fit: BoxFit.fitWidth,
-                    child: SelectableText(
-                      widget.fullName.getCombinedName(),
-                      style: Theme.of(context)
-                          .textTheme
-                          .displaySmall!
-                          .copyWith(fontSize: 32.0),
-                    ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 30.0),
+      child: SizedBox(
+        height: 95,
+        child: MouseRegion(
+          onEnter: _onEnter,
+          onHover: _onHover,
+          onExit: _onExit,
+          child: Container(
+            color: savedNamePanelColor,
+            child: Column(
+              children: [
+                const SizedBox(height: 12.0),
+                FittedBox(
+                  fit: BoxFit.fitWidth,
+                  child: SelectableText(
+                    widget.fullName.getCombinedName(),
+                    style: Theme.of(context)
+                        .textTheme
+                        .displaySmall!
+                        .copyWith(fontSize: 32.0),
                   ),
-                  const SizedBox(height: 8.0),
-                  Visibility(
-                    visible: hovered,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Row(
-                          children: [
-                            NameAction(
-                                fullName: widget.fullName.getCombinedName(),
-                                buttonBehavior: () => _onCopyClick(
-                                    widget.fullName.getCombinedName()),
-                                icon: Icons.copy),
-                            const SizedBox(width: 10.0),
-                            NameAction(
-                                fullName: widget.fullName.getCombinedName(),
-                                buttonBehavior: () => onDeleteClick(),
-                                icon: Icons.delete)
-                          ],
-                        )
-                      ],
-                    ),
-                  )
-                ],
-              ),
+                ),
+                const SizedBox(height: 8.0),
+                Visibility(
+                  visible: hovered,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Row(
+                        children: [
+                          NameAction(
+                              fullName: widget.fullName.getCombinedName(),
+                              buttonBehavior: () => _onCopyClick(
+                                  widget.fullName.getCombinedName()),
+                              icon: FontAwesomeIcons.copy),
+                          const SizedBox(width: 10.0),
+                          NameAction(
+                              fullName: widget.fullName.getCombinedName(),
+                              buttonBehavior: () => onDeleteClick(),
+                              icon: FontAwesomeIcons.trash)
+                        ],
+                      )
+                    ],
+                  ),
+                )
+              ],
             ),
           ),
         ),
@@ -114,7 +110,6 @@ class _SavedNamePanelState extends State<SavedNamePanel> {
 
   void onDeleteClick() {
     setState(() {
-      deleted = true;
       App().deleteNameFromSaved(widget.fullName);
     });
   }

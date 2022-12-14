@@ -10,9 +10,6 @@ class GeneratorPage extends StatefulWidget {
 class _GeneratorPageState extends State<GeneratorPage> {
   @override
   Widget build(BuildContext context) {
-    // for (var setting in App().panelSettings) {
-    //   print(setting.numSyllables);
-    // }
     return Scaffold(
       appBar: null,
       body: ListView(
@@ -39,10 +36,6 @@ class _GeneratorPageState extends State<GeneratorPage> {
             ),
           ),
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => App().rerollNames(),
-        child: const Icon(Icons.refresh),
       ),
     );
   }

@@ -15,4 +15,9 @@ class FullName {
   String getCombinedName() {
     return '${firstName.name.capitalize()} ${lastName.name.capitalize()}';
   }
+
+  void rerollName(int numSyllables) {
+    firstName.generate(numSyllables);
+    lastName.generate(numSyllables);
+  }
 }

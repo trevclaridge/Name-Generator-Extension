@@ -18,7 +18,7 @@ class App extends ChangeNotifier {
     PanelSettings(panelNum: 1, numSyllables: 2),
     PanelSettings(panelNum: 2, numSyllables: 3),
     PanelSettings(panelNum: 3, numSyllables: 4),
-    PanelSettings(panelNum: 4, numSyllables: 5)
+    PanelSettings(panelNum: 4, numSyllables: 2)
   ];
 
   final List<FullName> panelNames = [
@@ -26,7 +26,7 @@ class App extends ChangeNotifier {
     FullName(FirstName.numSylls(2), LastName.numSylls(2)),
     FullName(FirstName.numSylls(3), LastName.numSylls(3)),
     FullName(FirstName.numSylls(4), LastName.numSylls(4)),
-    FullName(FirstName.numSylls(5), LastName.numSylls(5))
+    FullName(FirstName.numSylls(5), LastName.numSylls(2))
   ];
 
   void addNameToSaved(FullName fullname) {
@@ -36,8 +36,9 @@ class App extends ChangeNotifier {
     }
   }
 
-  bool checkFirstOpen() {
-    SharedPrefs().getFirstOpen();
+  Future<bool> checkFirstOpen() async {
+    bool isFO = await SharedPrefs().getFirstOpen();
+    isFirstOpen = isFO;
     return isFirstOpen;
   }
 
@@ -61,12 +62,13 @@ class App extends ChangeNotifier {
   void deleteNameFromSaved(FullName fullname) {
     _savedNames.remove(fullname);
     SharedPrefs().saveNameListToPrefs();
+    notifyListeners();
   }
 
   void incrementSyllables(int panelNum) {
     ++panelSettings[panelNum].numSyllables;
 
-    if (panelSettings[panelNum].numSyllables > 6) {
+    if (panelSettings[panelNum].numSyllables > 4) {
       decrementSyllables(panelNum);
     }
     saveSettingstoPrefs();
@@ -81,6 +83,7 @@ class App extends ChangeNotifier {
 
   void initializeApp() {
     SharedPrefs().setFirstOpen();
+    // print(isFirstOpen);
     saveSettingstoPrefs();
   }
 
@@ -103,6 +106,11 @@ class App extends ChangeNotifier {
       panelNames[i].firstName.generate(panelSettings[i].numSyllables);
       panelNames[i].lastName.generate(panelSettings[i].numSyllables);
     }
+    notifyListeners();
+  }
+
+  void rerollName(int panelNum) {
+    panelNames[panelNum].rerollName(panelSettings[panelNum].numSyllables);
     notifyListeners();
   }
 

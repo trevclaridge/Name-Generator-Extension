@@ -8,14 +8,11 @@ class SharedPrefs {
   }
   SharedPrefs._internal();
 
-  Future<void> getFirstOpen() async {
+  Future<bool> getFirstOpen() async {
     final prefs = await SharedPreferences.getInstance();
 
     bool? isFO = prefs.getBool('is_first_open');
-
-    if (isFO != null) {
-      App().isFirstOpen = isFO;
-    }
+    return isFO ?? true;
   }
 
   Future<void> getNameListFromPrefs() async {
@@ -34,10 +31,10 @@ class SharedPrefs {
     final prefs = await SharedPreferences.getInstance();
 
     for (int i = 0; i < 5; ++i) {
-      List<String>? panelSetting = prefs.getStringList('panel_pref_$i');
-      if (panelSetting == null) {
-        print('panelSetting $i was null');
-      }
+      String key = 'panel_setting_$i';
+      List<String>? panelSetting = prefs.getStringList(key);
+      if (panelSetting == null) {}
+
       App().panelSettings[i] = PanelSettings.fromPrefs(panelSetting!);
     }
   }
@@ -61,11 +58,11 @@ class SharedPrefs {
 
   Future<void> savePanelSettingsToPrefs() async {
     final prefs = await SharedPreferences.getInstance();
-    List<PanelSettings> panelPrefs = App().panelSettings;
+    List<PanelSettings> panelSettings = App().panelSettings;
 
     for (int i = 0; i < 5; ++i) {
       await prefs.setStringList(
-          'panel_pref_$i', panelPrefs[i].prefsAsStringList());
+          'panel_setting_$i', panelSettings[i].prefsAsStringList());
     }
   }
 }

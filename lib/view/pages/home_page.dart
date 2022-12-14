@@ -27,6 +27,16 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Random Names'),
+        actions: [
+          (bottomSelectedIndex == 0)
+              ? IconButton(
+                  icon: const FaIcon(FontAwesomeIcons.arrowsRotate),
+                  onPressed: () {
+                    App().rerollNames();
+                  },
+                )
+              : Container()
+        ],
       ),
       body: PageView(
         controller: pageController,

@@ -4,12 +4,16 @@ import 'package:random_names_extension/view/view.dart';
 import 'package:random_names_extension/model/model.dart';
 // import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
-  if (App().checkFirstOpen()) {
+void main() async {
+  // this variables exists only to ensure the async function completes before the evaluation below
+  // ignore: unused_local_variable
+  bool isFO = await App().checkFirstOpen();
+  if (App().isFirstOpen) {
     App().initializeApp();
+  } else {
+    App().populateSavedNames();
+    App().populatePanelSettings();
   }
-  App().populateSavedNames();
-  App().populatePanelSettings();
   runApp(
     ChangeNotifierProvider(
       create: (context) => App(),
