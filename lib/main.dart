@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: 'home',
       routes: <String, WidgetBuilder>{
-        'about': (context) => const Center(child: Text('Not Yet Implemented')),
+        'about': (context) => const AboutPage(),
         'home': (context) => const HomePage()
       },
     );

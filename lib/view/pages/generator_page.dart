@@ -25,9 +25,13 @@ class _GeneratorPageState extends State<GeneratorPage> {
                   shrinkWrap: true,
                   itemBuilder: ((context, index) {
                     return Consumer<App>(builder: (context, value, child) {
-                      return NamePanel(
-                        fullName: App().panelNames[index],
-                        panelSettings: App().panelSettings[index],
+                      // return NamePanel(
+                      //   fullName: App().panelNames[index],
+                      //   panelSettings: App().panelSettings[index],
+                      // );
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 8.0),
+                        child: NewGeneratedPanel(),
                       );
                     });
                   }),

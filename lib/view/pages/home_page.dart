@@ -28,6 +28,9 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: const Text('Random Names'),
         actions: [
+          ElevatedButton(
+              onPressed: () => Navigator.pushNamed(context, 'about'),
+              child: const Text('About')),
           (bottomSelectedIndex == 0)
               ? IconButton(
                   icon: const FaIcon(FontAwesomeIcons.arrowsRotate),

@@ -18,19 +18,25 @@ class PanelButtonToggleable extends StatelessWidget {
   Widget build(BuildContext context) {
     return Tooltip(
       message: tooltip,
-      child: InkWell(
-        onTap: buttonBehavior,
-        child: Container(
-          decoration: BoxDecoration(
-              border: Border.all(color: Colors.black),
-              borderRadius: BorderRadius.circular(5)),
-          width: 30.0,
-          height: 30.0,
-          child: Center(
-            child: FaIcon(
-              icon,
-              size: 17.0,
-              color: (toggled) ? Colors.blueAccent : Colors.grey,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 1.0),
+        child: InkWell(
+          onTap: buttonBehavior,
+          child: Container(
+            decoration: BoxDecoration(
+                color:
+                    (toggled) ? Palette().genOrange : Palette().genOrangeAccent,
+                borderRadius: BorderRadius.circular(5)),
+            width: 30.0,
+            height: 30.0,
+            child: Center(
+              child: FaIcon(
+                icon,
+                size: 17.0,
+                color: (toggled)
+                    ? Colors.white
+                    : Palette().textBlack.withOpacity(0.8),
+              ),
             ),
           ),
         ),

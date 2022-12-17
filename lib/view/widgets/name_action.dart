@@ -17,7 +17,7 @@ class NameAction extends StatefulWidget {
 }
 
 class _NameActionState extends State<NameAction> {
-  Color iconColor = const Color(0xFFC7CACC);
+  Color iconColor = Palette().unhoveredGrey;
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
@@ -26,17 +26,14 @@ class _NameActionState extends State<NameAction> {
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
         onTap: widget.buttonBehavior,
-        child: Icon(
-          widget.icon,
-          color: iconColor,
-        ),
+        child: Icon(widget.icon, color: iconColor, size: 20.0),
       ),
     );
   }
 
   void _onExit(event) {
     setState(() {
-      iconColor = const Color(0xFFC7CACC);
+      iconColor = Palette().unhoveredGrey;
     });
   }
 
