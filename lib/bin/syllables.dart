@@ -1,9 +1,6 @@
 part of bin;
 
 class Syllables {
-  String captonCroutonSylls =
-      'As Has Khe Zash Gl Ig Iv Kos Miv Pav Ser Dar Even Gor Rand Sto Tam Barer Keth Mum Mar Burg Al Hel Wrayt S Eag Eath Joan Answ L Ot Ced At Tal Ham Jasm Mail Yash Row Eir Eid Eed El Ar An Or Ef Al Vin Orn Dur Stag Elm Ur Us Er Ey A E Il Elia Ya Ed Eue Ild Oane Yne Orna Ie Ala Erri Adr Alber Ba Bar Gar Kildr Kath Dies Eld Gurd Har Morg Or Rur Mar Vis Jen Torg Tak Thor End Ris Em Gunn Ik Ich Ern End Tor Nor In Rak Gen Sik Gran Linn Vok Brek Dal Gar Ber Tin Hild Dryn A Eth Runn Ellen Loda Dis Ja Lin Ra Tyrd De Rasa Ad All Aram Berri Car Enial Gann Im Per Sorvi Var Adr An Beth Bir Jelen Key Lesh Mer Mia Naiv Quel Sar Shan An Ar Il Rian Ric Is Dan Arai Meral Cian En Rion Ialis Ior Nan Kas Rie Aea Striana Inua Rynna Ilia Na Neth Leth Iel Lee Qui Astra Ia Ania Ynn Al An C Cor Eld Er Finn Gar Lin Mer Os Per Ros An Cal Cor Kith Lav Ned Pae Seraph T V Chen Ton Der Ade Rin Don Rich Nan Ret Al Born Coe By Fire Yas Dal Yle Dry Ree Lie Ora Emia Ian Ri Inia Ina Aena Ani Erna Lyse La Da Aela Are Bala Bhar Don Gh Hesk Med Meh Nad Pand Patr Sham Shed Ak Bir Farid Fla Ka Ko Mish Thav Uad Eder Hener Han Asar Ash Aar Esch An Rash En Arr Jed Rin Gar Ash Dinn Hun Rek Ra Ir Eh Ann Ilar Rinn Ann La Ra A Ina Va Hit Ederei Ere Eila Alu Stos Fa Ravay Leo Stok Vic El Yeng Car Ric Ar Guir Es My Pey Orel Aadi Ina Ceryn Vyn Ahn Aver Eiros Kain Retor Ella Lannan Aella Vyre Pet Ikos';
-
   List<String> syllables = [
     'as',
     'has',

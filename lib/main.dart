@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:random_names_extension/view/view.dart';
 import 'package:random_names_extension/model/model.dart';
-// import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   // this variables exists only to ensure the async function completes before the evaluation below
@@ -14,6 +13,7 @@ void main() async {
     App().populateSavedNames();
     App().populatePanelSettings();
   }
+
   runApp(
     ChangeNotifierProvider(
       create: (context) => App(),
@@ -35,8 +35,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: 'home',
       routes: <String, WidgetBuilder>{
-        'names': (context) => const GeneratorPage(),
-        'saved': (context) => const SavedPage(),
+        'about': (context) => const Center(child: Text('Not Yet Implemented')),
         'home': (context) => const HomePage()
       },
     );
