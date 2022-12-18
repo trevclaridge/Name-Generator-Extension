@@ -1,7 +1,7 @@
 part of view;
 
-class NewGeneratedPanel extends StatefulWidget {
-  const NewGeneratedPanel(
+class GeneratorPanel extends StatefulWidget {
+  const GeneratorPanel(
       {Key? key, required this.fullName, required this.panelSettings})
       : super(key: key);
 
@@ -9,10 +9,10 @@ class NewGeneratedPanel extends StatefulWidget {
   final PanelSettings panelSettings;
 
   @override
-  State<NewGeneratedPanel> createState() => _NewGeneratedPanelState();
+  State<GeneratorPanel> createState() => _GeneratorPanelState();
 }
 
-class _NewGeneratedPanelState extends State<NewGeneratedPanel> {
+class _GeneratorPanelState extends State<GeneratorPanel> {
   bool viewSettings = false;
   bool hovered = false;
   @override
@@ -218,7 +218,7 @@ class _NewGeneratedPanelState extends State<NewGeneratedPanel> {
                                       Padding(
                                         padding:
                                             const EdgeInsets.only(right: 16.0),
-                                        child: NewCounter(
+                                        child: Counter(
                                             panelSettings:
                                                 widget.panelSettings),
                                       )
