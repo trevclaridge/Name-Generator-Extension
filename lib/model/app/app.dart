@@ -13,12 +13,51 @@ class App extends ChangeNotifier {
   final List<FullName> _savedNames = [];
   List<FullName> get savedNames => _savedNames;
 
+  final List<String> _categories = [
+    'town',
+    'dragon',
+    'pirate',
+    'medieval',
+    'tavern'
+  ];
+  final List<String> _gendered = [
+    'genderneutral',
+    'masculine',
+    'feminine',
+  ];
+
+  final List<String> genderNeutralCategories = [
+    'tavern',
+    'dragon',
+    'town',
+  ];
+
   final List<PanelSettings> panelSettings = [
-    PanelSettings(panelNum: 0, numSyllables: 1),
-    PanelSettings(panelNum: 1, numSyllables: 2),
-    PanelSettings(panelNum: 2, numSyllables: 3),
-    PanelSettings(panelNum: 3, numSyllables: 4),
-    PanelSettings(panelNum: 4, numSyllables: 2)
+    PanelSettings(
+      panelNum: 0,
+      numSyllables: 1,
+      toggles: 'genderneutralpirate',
+    ),
+    PanelSettings(
+      panelNum: 1,
+      numSyllables: 2,
+      toggles: 'femininepirate',
+    ),
+    PanelSettings(
+      panelNum: 2,
+      numSyllables: 3,
+      toggles: 'genderneutraltown',
+    ),
+    PanelSettings(
+      panelNum: 3,
+      numSyllables: 4,
+      toggles: 'masculinedragonpirate',
+    ),
+    PanelSettings(
+      panelNum: 4,
+      numSyllables: 2,
+      toggles: 'genderneutraltavern',
+    )
   ];
 
   final List<FullName> panelNames = [
@@ -68,16 +107,11 @@ class App extends ChangeNotifier {
   void incrementSyllables(int panelNum) {
     ++panelSettings[panelNum].numSyllables;
 
-    if (panelSettings[panelNum].numSyllables > 4) {
+    if (panelSettings[panelNum].numSyllables > 8) {
       decrementSyllables(panelNum);
     }
     saveSettingstoPrefs();
-    panelNames[panelNum]
-        .firstName
-        .generate(panelSettings[panelNum].numSyllables);
-    panelNames[panelNum]
-        .lastName
-        .generate(panelSettings[panelNum].numSyllables);
+    rerollName(panelNum);
     notifyListeners();
   }
 
@@ -116,5 +150,57 @@ class App extends ChangeNotifier {
 
   void saveSettingstoPrefs() {
     SharedPrefs().savePanelSettingsToPrefs();
+  }
+
+  void togglePanelButton(int panelNum, String toggle) {
+    bool hasCategory = false;
+    bool hasGender = false;
+
+    // if the toggle is in the string, remove it, and vice versa
+    if (panelSettings[panelNum].toggles.contains(toggle)) {
+      var newToggle = panelSettings[panelNum].toggles.replaceAll(toggle, '');
+      panelSettings[panelNum].toggles = newToggle;
+
+      // ensure the string has a least one category
+      for (var category in _categories) {
+        if (newToggle.contains(category)) {
+          hasCategory = true;
+          break;
+        }
+      }
+
+      // ensure the string has at least one gender preference
+      for (var gender in _gendered) {
+        if (newToggle.contains(gender)) {
+          hasGender = true;
+          break;
+        }
+      }
+
+      // if neither category or gender preference, add toggle back
+      if (!(hasCategory && hasGender)) {
+        panelSettings[panelNum].toggles += toggle;
+      }
+    } else {
+      panelSettings[panelNum].toggles += toggle;
+    }
+
+    // special combinations
+    // towns, taverns, and dragons can't be gendered
+    for (String item in genderNeutralCategories) {
+      if (panelSettings[panelNum].toggles.contains(item)) {
+        panelSettings[panelNum].toggles =
+            panelSettings[panelNum].toggles.replaceAll('feminine', '');
+        panelSettings[panelNum].toggles =
+            panelSettings[panelNum].toggles.replaceAll('masculine', '');
+        if (!(panelSettings[panelNum].toggles.contains('genderneutral'))) {
+          panelSettings[panelNum].toggles += 'genderneutral';
+        }
+      }
+    }
+    print('After: ${panelSettings[panelNum].toggles}');
+
+    saveSettingstoPrefs();
+    notifyListeners();
   }
 }

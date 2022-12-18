@@ -61,7 +61,7 @@ class _NamePanelState extends State<NamePanel> {
                     child: Row(
                       children: [
                         PanelButtonToggleable(
-                            tooltip: 'Modern',
+                            tooltip: 'Town',
                             icon: FontAwesomeIcons.building,
                             buttonBehavior: () {},
                             toggled: true),

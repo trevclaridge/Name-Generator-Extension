@@ -13,10 +13,9 @@ class Palette {
   // Color sliderGrey = const Color(0XFF1E1E1E).withOpacity(60.0);
 
   TextStyle titleStyle = TextStyle(
-    fontFamily: GoogleFonts.nunito().fontFamily,
-    fontSize: 14.0,
-    fontWeight: FontWeight.w700,
-    color: const Color(0xFFFF8C44),
+    fontFamily: GoogleFonts.inter().fontFamily,
+    fontSize: 24.0,
+    color: Colors.white,
   );
   TextStyle nameStyle = TextStyle(
     fontFamily: GoogleFonts.inter().fontFamily,

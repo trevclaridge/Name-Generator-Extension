@@ -26,17 +26,27 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Random Names'),
+        title: Padding(
+          padding: const EdgeInsets.only(left: 12.0),
+          child: Text('Random Names', style: Palette().titleStyle),
+        ),
+        backgroundColor: Palette().genOrange,
+        foregroundColor: Colors.white,
+        elevation: 0.0,
         actions: [
-          ElevatedButton(
-              onPressed: () => Navigator.pushNamed(context, 'about'),
-              child: const Text('About')),
           (bottomSelectedIndex == 0)
-              ? IconButton(
-                  icon: const FaIcon(FontAwesomeIcons.arrowsRotate),
-                  onPressed: () {
-                    App().rerollNames();
-                  },
+              ? Padding(
+                  padding: const EdgeInsets.only(right: 40.0),
+                  child: Row(
+                    children: [
+                      IconButton(
+                        icon: const FaIcon(FontAwesomeIcons.arrowsRotate),
+                        onPressed: () {
+                          App().rerollNames();
+                        },
+                      ),
+                    ],
+                  ),
                 )
               : Container()
         ],
@@ -52,7 +62,9 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Palette().genOrange,
         currentIndex: bottomSelectedIndex,
+        elevation: 0.0,
         onTap: (index) {
           bottomTapped(index);
         },

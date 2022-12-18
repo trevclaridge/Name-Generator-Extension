@@ -22,7 +22,9 @@ class PanelButtonToggleable extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 1.0),
         child: InkWell(
           onTap: buttonBehavior,
-          child: Container(
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 200),
+            curve: Curves.easeInOutCubic,
             decoration: BoxDecoration(
                 color:
                     (toggled) ? Palette().genOrange : Palette().genOrangeAccent,
