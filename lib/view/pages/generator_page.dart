@@ -43,8 +43,9 @@ class _GeneratorPageState extends State<GeneratorPage> {
                       return Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8.0),
                         child: GeneratorPanel(
+                          panelNum: index,
                           fullName: App().panelNames[index],
-                          panelSettings: App().panelSettings[index],
+                          panelSettings: App().panelNames[index].panelSettings,
                         ),
                       );
                     });

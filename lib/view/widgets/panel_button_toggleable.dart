@@ -28,6 +28,7 @@ class _PanelButtonToggleableState extends State<PanelButtonToggleable> {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 1.0),
         child: MouseRegion(
+          cursor: SystemMouseCursors.click,
           onHover: (event) => setState(() {
             hovered = true;
           }),

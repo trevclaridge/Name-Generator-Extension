@@ -35,7 +35,8 @@ class SharedPrefs {
       List<String>? panelSetting = prefs.getStringList(key);
       if (panelSetting == null) {}
 
-      App().panelSettings[i] = PanelSettings.fromPrefs(panelSetting!);
+      App().panelNames[i].panelSettings =
+          PanelSettings.fromPrefs(panelSetting!);
     }
   }
 
@@ -58,11 +59,10 @@ class SharedPrefs {
 
   Future<void> savePanelSettingsToPrefs() async {
     final prefs = await SharedPreferences.getInstance();
-    List<PanelSettings> panelSettings = App().panelSettings;
 
     for (int i = 0; i < 5; ++i) {
-      await prefs.setStringList(
-          'panel_setting_$i', panelSettings[i].prefsAsStringList());
+      await prefs.setStringList('panel_setting_$i',
+          App().panelNames[i].panelSettings.prefsAsStringList());
     }
   }
 }

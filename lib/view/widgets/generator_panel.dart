@@ -2,11 +2,15 @@ part of view;
 
 class GeneratorPanel extends StatefulWidget {
   const GeneratorPanel(
-      {Key? key, required this.fullName, required this.panelSettings})
+      {Key? key,
+      required this.fullName,
+      required this.panelSettings,
+      required this.panelNum})
       : super(key: key);
 
   final FullName fullName;
   final PanelSettings panelSettings;
+  final int panelNum;
 
   @override
   State<GeneratorPanel> createState() => _GeneratorPanelState();
@@ -219,8 +223,9 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                                         padding:
                                             const EdgeInsets.only(right: 16.0),
                                         child: Counter(
-                                            panelSettings:
-                                                widget.panelSettings),
+                                          panelSettings: widget.panelSettings,
+                                          panelNum: widget.panelNum,
+                                        ),
                                       )
                                     ],
                                   )
@@ -281,10 +286,10 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
   }
 
   void _onRerollClick() {
-    App().rerollName(widget.panelSettings.panelNum);
+    App().rerollName(widget.panelNum);
   }
 
   void _onToggleClick(String toggle) {
-    App().togglePanelButton(widget.panelSettings.panelNum, toggle);
+    App().togglePanelButton(widget.panelNum, toggle);
   }
 }

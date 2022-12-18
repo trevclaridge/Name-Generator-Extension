@@ -4,9 +4,11 @@ class Counter extends StatefulWidget {
   const Counter({
     Key? key,
     required this.panelSettings,
+    required this.panelNum,
   }) : super(key: key);
 
   final PanelSettings panelSettings;
+  final int panelNum;
 
   @override
   State<Counter> createState() => _CounterState();
@@ -20,11 +22,11 @@ class _CounterState extends State<Counter> {
     return Row(
       children: [
         MouseRegion(
+          cursor: SystemMouseCursors.click,
           onHover: _onHoverDecrement,
           onExit: _onExitDecrement,
           child: GestureDetector(
-            onTap: () =>
-                App().decrementSyllables(widget.panelSettings.panelNum),
+            onTap: () => App().decrementSyllables(widget.panelNum),
             child: Container(
               height: 20.0,
               width: 20.0,
@@ -61,11 +63,11 @@ class _CounterState extends State<Counter> {
         ),
         const SizedBox(width: 8.0),
         MouseRegion(
+          cursor: SystemMouseCursors.click,
           onHover: _onHoverIncrement,
           onExit: _onExitIncrement,
           child: GestureDetector(
-            onTap: () =>
-                App().incrementSyllables(widget.panelSettings.panelNum),
+            onTap: () => App().incrementSyllables(widget.panelNum),
             child: Container(
               height: 20.0,
               width: 20.0,

@@ -19,40 +19,42 @@ class App extends ChangeNotifier {
     Category.town
   ];
 
-  final List<PanelSettings> panelSettings = [
-    PanelSettings(
-        panelNum: 0,
-        numSyllables: 1,
-        toggleCategory: Category.medieval,
-        toggleGender: Gender.genderNeutral),
-    PanelSettings(
-        panelNum: 1,
-        numSyllables: 2,
-        toggleCategory: Category.pirate,
-        toggleGender: Gender.feminine),
-    PanelSettings(
-        panelNum: 2,
-        numSyllables: 3,
-        toggleCategory: Category.tavern,
-        toggleGender: Gender.genderNeutral),
-    PanelSettings(
-        panelNum: 3,
-        numSyllables: 4,
-        toggleCategory: Category.dragon,
-        toggleGender: Gender.genderNeutral),
-    PanelSettings(
-        panelNum: 4,
-        numSyllables: 2,
-        toggleCategory: Category.town,
-        toggleGender: Gender.genderNeutral)
-  ];
-
   final List<FullName> panelNames = [
-    FullName(FirstName.numSylls(1), LastName.numSylls(1)),
-    FullName(FirstName.numSylls(2), LastName.numSylls(2)),
-    FullName(FirstName.numSylls(3), LastName.numSylls(3)),
-    FullName(FirstName.numSylls(4), LastName.numSylls(4)),
-    FullName(FirstName.numSylls(5), LastName.numSylls(2))
+    FullName(
+        FirstName(),
+        LastName(),
+        PanelSettings(
+            numSyllables: 2,
+            toggleCategory: Category.medieval,
+            toggleGender: Gender.genderNeutral)),
+    FullName(
+        FirstName(),
+        LastName(),
+        PanelSettings(
+            numSyllables: 3,
+            toggleCategory: Category.pirate,
+            toggleGender: Gender.feminine)),
+    FullName(
+        FirstName(),
+        LastName(),
+        PanelSettings(
+            numSyllables: 4,
+            toggleCategory: Category.tavern,
+            toggleGender: Gender.masculine)),
+    FullName(
+        FirstName(),
+        LastName(),
+        PanelSettings(
+            numSyllables: 5,
+            toggleCategory: Category.town,
+            toggleGender: Gender.feminine)),
+    FullName(
+        FirstName(),
+        LastName(),
+        PanelSettings(
+            numSyllables: 6,
+            toggleCategory: Category.dragon,
+            toggleGender: Gender.genderNeutral))
   ];
 
   void addNameToSaved(FullName fullname) {
@@ -69,18 +71,14 @@ class App extends ChangeNotifier {
   }
 
   void decrementSyllables(int panelNum) {
-    --panelSettings[panelNum].numSyllables;
-    if (panelSettings[panelNum].numSyllables < 1) {
+    --panelNames[panelNum].panelSettings.numSyllables;
+    if (panelNames[panelNum].panelSettings.numSyllables < 1) {
       incrementSyllables(panelNum);
     }
     saveSettingstoPrefs();
 
-    panelNames[panelNum]
-        .firstName
-        .generate(panelSettings[panelNum].numSyllables);
-    panelNames[panelNum]
-        .lastName
-        .generate(panelSettings[panelNum].numSyllables);
+    panelNames[panelNum].firstName.generate(panelNames[panelNum].panelSettings);
+    panelNames[panelNum].lastName.generate(panelNames[panelNum].panelSettings);
 
     notifyListeners();
   }
@@ -92,9 +90,9 @@ class App extends ChangeNotifier {
   }
 
   void incrementSyllables(int panelNum) {
-    ++panelSettings[panelNum].numSyllables;
+    ++panelNames[panelNum].panelSettings.numSyllables;
 
-    if (panelSettings[panelNum].numSyllables > 8) {
+    if (panelNames[panelNum].panelSettings.numSyllables > 8) {
       decrementSyllables(panelNum);
     }
     saveSettingstoPrefs();
@@ -104,18 +102,11 @@ class App extends ChangeNotifier {
 
   void initializeApp() {
     SharedPrefs().setFirstOpen();
-    // print(isFirstOpen);
     saveSettingstoPrefs();
   }
 
   void populatePanelSettings() {
     SharedPrefs().getPanelSettingsFromPrefs();
-
-    // if (panelSettings.contains([])) {
-    //   for (int i = 0; i < 5; ++i) {
-    //     panelSettings[i] = PanelSettings(numSyllables: 2, panelNum: i);
-    //   }
-    // }
   }
 
   void populateSavedNames() {
@@ -124,14 +115,15 @@ class App extends ChangeNotifier {
 
   void rerollNames() {
     for (int i = 0; i < 5; ++i) {
-      panelNames[i].firstName.generate(panelSettings[i].numSyllables);
-      panelNames[i].lastName.generate(panelSettings[i].numSyllables);
+      panelNames[i].firstName.generate(panelNames[i].panelSettings);
+      panelNames[i].lastName.generate(panelNames[i].panelSettings);
     }
     notifyListeners();
   }
 
   void rerollName(int panelNum) {
-    panelNames[panelNum].rerollName(panelSettings[panelNum].numSyllables);
+    panelNames[panelNum].rerollName();
+    // print(panelNames[panelNum].panelSettings.numSyllables);
     notifyListeners();
   }
 
@@ -143,18 +135,20 @@ class App extends ChangeNotifier {
     List<String> categories = EnumToString.toList(Category.values);
 
     if (categories.contains(toggle)) {
-      App().panelSettings[panelNum].toggleCategory =
+      App().panelNames[panelNum].panelSettings.toggleCategory =
           EnumToString.fromString(Category.values, toggle)!;
       if (nonGenderedCategores
           .contains(EnumToString.fromString(Category.values, toggle)!)) {
-        App().panelSettings[panelNum].toggleGender = Gender.genderNeutral;
+        App().panelNames[panelNum].panelSettings.toggleGender =
+            Gender.genderNeutral;
       } else {
-        App().panelSettings[panelNum].toggleGender = Gender.feminine;
+        App().panelNames[panelNum].panelSettings.toggleGender = Gender.feminine;
       }
     } else {
-      App().panelSettings[panelNum].toggleGender =
+      App().panelNames[panelNum].panelSettings.toggleGender =
           EnumToString.fromString(Gender.values, toggle)!;
     }
+    rerollName(panelNum);
     saveSettingstoPrefs();
     notifyListeners();
   }
