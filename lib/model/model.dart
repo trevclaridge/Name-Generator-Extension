@@ -3,6 +3,7 @@
 library model;
 
 import "dart:math";
+import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:random_names_extension/bin/bin.dart';
@@ -17,3 +18,4 @@ part 'schema/first_name.dart';
 part 'schema/full_name.dart';
 part 'schema/last_name.dart';
 part 'string_extension.dart';
+part 'schema/toggle_enums.dart';

@@ -119,47 +119,50 @@ class _NewGeneratedPanelState extends State<NewGeneratedPanel> {
                                               icon: FontAwesomeIcons.building,
                                               buttonBehavior: () =>
                                                   _onToggleClick('town'),
-                                              toggled: widget
-                                                  .panelSettings.toggles
-                                                  .contains('town')),
+                                              toggled: widget.panelSettings
+                                                      .toggleCategory ==
+                                                  Category.town),
                                           PanelButtonToggleable(
                                               tooltip: 'Dragon',
                                               icon: FontAwesomeIcons.dragon,
                                               buttonBehavior: () =>
                                                   _onToggleClick('dragon'),
-                                              toggled: widget
-                                                  .panelSettings.toggles
-                                                  .contains('dragon')),
+                                              toggled: widget.panelSettings
+                                                      .toggleCategory ==
+                                                  Category.dragon),
                                           PanelButtonToggleable(
                                               tooltip: 'Pirate',
                                               icon: FontAwesomeIcons
                                                   .skullCrossbones,
                                               buttonBehavior: () =>
                                                   _onToggleClick('pirate'),
-                                              toggled: widget
-                                                  .panelSettings.toggles
-                                                  .contains('pirate')),
+                                              toggled: widget.panelSettings
+                                                      .toggleCategory ==
+                                                  Category.pirate),
                                           PanelButtonToggleable(
                                               tooltip: 'Medieval',
                                               icon: FontAwesomeIcons.crown,
                                               buttonBehavior: () =>
                                                   _onToggleClick('medieval'),
-                                              toggled: widget
-                                                  .panelSettings.toggles
-                                                  .contains('medieval')),
+                                              toggled: widget.panelSettings
+                                                      .toggleCategory ==
+                                                  Category.medieval),
                                           PanelButtonToggleable(
                                               tooltip: 'Tavern',
                                               icon:
                                                   FontAwesomeIcons.beerMugEmpty,
                                               buttonBehavior: () =>
                                                   _onToggleClick('tavern'),
-                                              toggled: widget
-                                                  .panelSettings.toggles
-                                                  .contains('tavern'))
+                                              toggled: widget.panelSettings
+                                                      .toggleCategory ==
+                                                  Category.tavern),
                                         ],
                                       ),
                                       Visibility(
-                                        visible: _isGendered(),
+                                        visible: !App()
+                                            .nonGenderedCategores
+                                            .contains(widget
+                                                .panelSettings.toggleCategory),
                                         child: Row(
                                           children: [
                                             PanelButtonToggleable(
@@ -169,25 +172,25 @@ class _NewGeneratedPanelState extends State<NewGeneratedPanel> {
                                                 buttonBehavior: () =>
                                                     _onToggleClick(
                                                         'genderneutral'),
-                                                toggled: widget
-                                                    .panelSettings.toggles
-                                                    .contains('genderneutral')),
+                                                toggled: widget.panelSettings
+                                                        .toggleGender ==
+                                                    Gender.genderNeutral),
                                             PanelButtonToggleable(
                                                 tooltip: 'Feminine',
                                                 icon: FontAwesomeIcons.mars,
                                                 buttonBehavior: () =>
                                                     _onToggleClick('feminine'),
-                                                toggled: widget
-                                                    .panelSettings.toggles
-                                                    .contains('feminine')),
+                                                toggled: widget.panelSettings
+                                                        .toggleGender ==
+                                                    Gender.feminine),
                                             PanelButtonToggleable(
                                                 tooltip: 'Masculine',
                                                 icon: FontAwesomeIcons.venus,
                                                 buttonBehavior: () =>
                                                     _onToggleClick('masculine'),
-                                                toggled: widget
-                                                    .panelSettings.toggles
-                                                    .contains('masculine')),
+                                                toggled: widget.panelSettings
+                                                        .toggleGender ==
+                                                    Gender.masculine),
                                           ],
                                         ),
                                       ),
@@ -215,80 +218,9 @@ class _NewGeneratedPanelState extends State<NewGeneratedPanel> {
                                       Padding(
                                         padding:
                                             const EdgeInsets.only(right: 16.0),
-                                        child: Row(
-                                          children: [
-                                            InkWell(
-                                              onTap: () => App()
-                                                  .decrementSyllables(widget
-                                                      .panelSettings.panelNum),
-                                              child: Container(
-                                                height: 20.0,
-                                                width: 20.0,
-                                                decoration: BoxDecoration(
-                                                  border: Border.all(
-                                                    width: 1.4,
-                                                    color: Palette().genOrange,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(5),
-                                                ),
-                                                child: Center(
-                                                  child: FaIcon(
-                                                    FontAwesomeIcons.minus,
-                                                    color: Palette().genOrange,
-                                                    size: 10.0,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            const SizedBox(width: 8.0),
-                                            Consumer<App>(
-                                              builder: (context, value, child) {
-                                                return SizedBox(
-                                                  width: 10.0,
-                                                  child: Text(
-                                                    widget.panelSettings
-                                                        .numSyllables
-                                                        .toString(),
-                                                    style: Palette()
-                                                        .nameStyle
-                                                        .copyWith(
-                                                          color: const Color(
-                                                                  0xFF1E1E1E)
-                                                              .withOpacity(
-                                                                  0.85),
-                                                        ),
-                                                  ),
-                                                );
-                                              },
-                                            ),
-                                            const SizedBox(width: 8.0),
-                                            InkWell(
-                                              onTap: () => App()
-                                                  .incrementSyllables(widget
-                                                      .panelSettings.panelNum),
-                                              child: Container(
-                                                height: 20.0,
-                                                width: 20.0,
-                                                decoration: BoxDecoration(
-                                                  border: Border.all(
-                                                    width: 1.4,
-                                                    color: Palette().genOrange,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(5),
-                                                ),
-                                                child: Center(
-                                                  child: FaIcon(
-                                                    FontAwesomeIcons.plus,
-                                                    color: Palette().genOrange,
-                                                    size: 10.0,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
+                                        child: NewCounter(
+                                            panelSettings:
+                                                widget.panelSettings),
                                       )
                                     ],
                                   )
@@ -354,14 +286,5 @@ class _NewGeneratedPanelState extends State<NewGeneratedPanel> {
 
   void _onToggleClick(String toggle) {
     App().togglePanelButton(widget.panelSettings.panelNum, toggle);
-  }
-
-  bool _isGendered() {
-    for (var nonGenderedCategory in App().genderNeutralCategories) {
-      if (widget.panelSettings.toggles.contains(nonGenderedCategory)) {
-        return false;
-      }
-    }
-    return true;
   }
 }

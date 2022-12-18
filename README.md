@@ -1,16 +1,16 @@
 # random_names_extension
 
-A new Flutter project.
+This is a chrome extension that generates a list of five names customizable by the user; useful for GMs and DMs of TTRPGS.
 
-## Getting Started
+## Categories of names currently supported:
+* Generic fantasy person name
+* Real town names
+* Real human names
 
-This project is a starting point for a Flutter application.
+Real human and fantasy person names can be customized in number of syllables.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Categories planned
+* Pirates names (with nicknames)
+* Pirate ship names
+* Dragon names
+* Tavern names

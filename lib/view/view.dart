@@ -16,6 +16,7 @@ part 'theme/palette.dart';
 part 'widgets/counter.dart';
 part 'widgets/generator_name_panel.dart';
 part 'widgets/name_action.dart';
+part 'widgets/new_counter.dart';
 part 'widgets/new_generator_panel.dart';
 part 'widgets//panel_button_toggleable.dart';
 part 'widgets/saved_name_panel.dart';

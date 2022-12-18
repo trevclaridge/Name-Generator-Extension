@@ -1,6 +1,6 @@
 part of view;
 
-class PanelButtonToggleable extends StatelessWidget {
+class PanelButtonToggleable extends StatefulWidget {
   final IconData icon;
   final String tooltip;
   final VoidCallback buttonBehavior;
@@ -15,34 +15,58 @@ class PanelButtonToggleable extends StatelessWidget {
       : super(key: key);
 
   @override
+  State<PanelButtonToggleable> createState() => _PanelButtonToggleableState();
+}
+
+class _PanelButtonToggleableState extends State<PanelButtonToggleable> {
+  bool hovered = false;
+
+  @override
   Widget build(BuildContext context) {
     return Tooltip(
-      message: tooltip,
+      message: widget.tooltip,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 1.0),
-        child: InkWell(
-          onTap: buttonBehavior,
-          child: AnimatedContainer(
-            duration: const Duration(milliseconds: 200),
-            curve: Curves.easeInOutCubic,
-            decoration: BoxDecoration(
-                color:
-                    (toggled) ? Palette().genOrange : Palette().genOrangeAccent,
-                borderRadius: BorderRadius.circular(5)),
-            width: 30.0,
-            height: 30.0,
-            child: Center(
-              child: FaIcon(
-                icon,
-                size: 17.0,
-                color: (toggled)
-                    ? Colors.white
-                    : Palette().textBlack.withOpacity(0.8),
+        child: MouseRegion(
+          onHover: (event) => setState(() {
+            hovered = true;
+          }),
+          onExit: (event) => setState(() {
+            hovered = false;
+          }),
+          child: GestureDetector(
+            onTap: widget.buttonBehavior,
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 200),
+              curve: Curves.easeInOutCubic,
+              decoration: BoxDecoration(
+                  color: (widget.toggled)
+                      ? Palette().genOrange
+                      : Palette().genOrangeAccent,
+                  borderRadius: BorderRadius.circular(5)),
+              width: 30.0,
+              height: 30.0,
+              child: Center(
+                child: FaIcon(
+                  widget.icon,
+                  size: 17.0,
+                  color: getColor(),
+                ),
               ),
             ),
           ),
         ),
       ),
     );
+  }
+
+  Color getColor() {
+    if (widget.toggled) {
+      return Colors.white;
+    }
+    if (!widget.toggled && hovered) {
+      return Colors.black;
+    }
+    return Palette().unhoveredGrey;
   }
 }
