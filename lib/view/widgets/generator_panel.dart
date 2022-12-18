@@ -170,16 +170,6 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                                         child: Row(
                                           children: [
                                             PanelButtonToggleable(
-                                                tooltip: 'Gender Neutral',
-                                                icon:
-                                                    FontAwesomeIcons.venusMars,
-                                                buttonBehavior: () =>
-                                                    _onToggleClick(
-                                                        'genderneutral'),
-                                                toggled: widget.panelSettings
-                                                        .toggleGender ==
-                                                    Gender.genderNeutral),
-                                            PanelButtonToggleable(
                                                 tooltip: 'Feminine',
                                                 icon: FontAwesomeIcons.mars,
                                                 buttonBehavior: () =>
@@ -187,6 +177,15 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                                                 toggled: widget.panelSettings
                                                         .toggleGender ==
                                                     Gender.feminine),
+                                            PanelButtonToggleable(
+                                                tooltip: 'Gender Neutral',
+                                                icon: FontAwesomeIcons.minus,
+                                                buttonBehavior: () =>
+                                                    _onToggleClick(
+                                                        'genderneutral'),
+                                                toggled: widget.panelSettings
+                                                        .toggleGender ==
+                                                    Gender.genderNeutral),
                                             PanelButtonToggleable(
                                                 tooltip: 'Masculine',
                                                 icon: FontAwesomeIcons.venus,
