@@ -5,10 +5,10 @@ part of view;
 class SavedNamePanel extends StatefulWidget {
   const SavedNamePanel({
     Key? key,
-    required this.fullName,
+    required this.savedName,
   }) : super(key: key);
 
-  final FullName fullName;
+  final SavedName savedName;
 
   @override
   State<SavedNamePanel> createState() => _SavedNamePanelState();
@@ -36,7 +36,7 @@ class _SavedNamePanelState extends State<SavedNamePanel> {
                 FittedBox(
                   fit: BoxFit.fitWidth,
                   child: SelectableText(
-                    widget.fullName.getCombinedName(),
+                    widget.savedName.name,
                     style: Theme.of(context)
                         .textTheme
                         .displaySmall!
@@ -52,13 +52,13 @@ class _SavedNamePanelState extends State<SavedNamePanel> {
                       Row(
                         children: [
                           NameAction(
-                              fullName: widget.fullName.getCombinedName(),
-                              buttonBehavior: () => _onCopyClick(
-                                  widget.fullName.getCombinedName()),
+                              fullName: widget.savedName.name,
+                              buttonBehavior: () =>
+                                  _onCopyClick(widget.savedName.name),
                               icon: FontAwesomeIcons.copy),
                           const SizedBox(width: 10.0),
                           NameAction(
-                              fullName: widget.fullName.getCombinedName(),
+                              fullName: widget.savedName.name,
                               buttonBehavior: () => onDeleteClick(),
                               icon: FontAwesomeIcons.trash)
                         ],
@@ -97,7 +97,7 @@ class _SavedNamePanelState extends State<SavedNamePanel> {
   void _onCopyClick(String name) async {
     await Clipboard.setData(
       ClipboardData(
-        text: widget.fullName.getCombinedName(),
+        text: widget.savedName.name,
       ),
     );
     // ignore: use_build_context_synchronously
@@ -110,7 +110,7 @@ class _SavedNamePanelState extends State<SavedNamePanel> {
 
   void onDeleteClick() {
     setState(() {
-      App().deleteNameFromSaved(widget.fullName);
+      App().deleteNameFromSaved(widget.savedName);
     });
   }
 }

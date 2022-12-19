@@ -3,12 +3,12 @@ part of view;
 class GeneratorPanel extends StatefulWidget {
   const GeneratorPanel(
       {Key? key,
-      required this.fullName,
+      required this.panelName,
       required this.panelSettings,
       required this.panelNum})
       : super(key: key);
 
-  final FullName fullName;
+  final Name panelName;
   final PanelSettings panelSettings;
   final int panelNum;
 
@@ -19,8 +19,12 @@ class GeneratorPanel extends StatefulWidget {
 class _GeneratorPanelState extends State<GeneratorPanel> {
   bool viewSettings = false;
   bool hovered = false;
+
   @override
   Widget build(BuildContext context) {
+    List<Map<IconData, Subcategory>> subcategoryToggles =
+        getSubCategoryToggles();
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
       child: MouseRegion(
@@ -41,7 +45,7 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                 Radius.circular(10.0),
               ),
             ),
-            height: (viewSettings) ? 170.0 : 70,
+            height: (viewSettings) ? 180.0 : 70,
             child: Stack(
               children: [
                 Column(
@@ -58,7 +62,7 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                               child: FittedBox(
                                 fit: BoxFit.fitWidth,
                                 child: SelectableText(
-                                    widget.fullName.getCombinedName(),
+                                    widget.panelName.getName(),
                                     style: Palette().nameStyle,
                                     maxLines: 1),
                               ),
@@ -69,18 +73,16 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 4.0),
                                   child: NameAction(
-                                      fullName:
-                                          widget.fullName.getCombinedName(),
+                                      fullName: widget.panelName.getName(),
                                       buttonBehavior: () => _onCopyClick(
-                                          widget.fullName.getCombinedName()),
+                                          widget.panelName.getName()),
                                       icon: FontAwesomeIcons.copy),
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 4.0),
                                   child: NameAction(
-                                      fullName:
-                                          widget.fullName.getCombinedName(),
+                                      fullName: widget.panelName.getName(),
                                       buttonBehavior: _onRerollClick,
                                       icon: FontAwesomeIcons.arrowsRotate),
                                 ),
@@ -88,8 +90,7 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 4.0),
                                   child: NameAction(
-                                      fullName:
-                                          widget.fullName.getCombinedName(),
+                                      fullName: widget.panelName.getName(),
                                       buttonBehavior: _onSaveClick,
                                       icon: FontAwesomeIcons.floppyDisk),
                                 ),
@@ -127,14 +128,6 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                                                       .toggleCategory ==
                                                   Category.town),
                                           PanelButtonToggleable(
-                                              tooltip: 'Dragon',
-                                              icon: FontAwesomeIcons.dragon,
-                                              buttonBehavior: () =>
-                                                  _onToggleClick('dragon'),
-                                              toggled: widget.panelSettings
-                                                      .toggleCategory ==
-                                                  Category.dragon),
-                                          PanelButtonToggleable(
                                               tooltip: 'Pirate',
                                               icon: FontAwesomeIcons
                                                   .skullCrossbones,
@@ -144,13 +137,13 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                                                       .toggleCategory ==
                                                   Category.pirate),
                                           PanelButtonToggleable(
-                                              tooltip: 'Medieval',
+                                              tooltip: 'Fantasy',
                                               icon: FontAwesomeIcons.crown,
                                               buttonBehavior: () =>
-                                                  _onToggleClick('medieval'),
+                                                  _onToggleClick('fantasy'),
                                               toggled: widget.panelSettings
                                                       .toggleCategory ==
-                                                  Category.medieval),
+                                                  Category.fantasy),
                                           PanelButtonToggleable(
                                               tooltip: 'Tavern',
                                               icon:
@@ -160,6 +153,14 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                                               toggled: widget.panelSettings
                                                       .toggleCategory ==
                                                   Category.tavern),
+                                          PanelButtonToggleable(
+                                              tooltip: 'Chaos',
+                                              icon: FontAwesomeIcons.shuffle,
+                                              buttonBehavior: () =>
+                                                  _onToggleClick('chaos'),
+                                              toggled: widget.panelSettings
+                                                      .toggleCategory ==
+                                                  Category.chaos),
                                         ],
                                       ),
                                       Visibility(
@@ -204,30 +205,107 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Padding(
-                                        padding: const EdgeInsets.only(
-                                          left: 5.0,
-                                        ),
-                                        child: Text(
-                                          '# of Syllables:',
-                                          style: Palette().nameStyle.copyWith(
-                                                fontSize: 16.0,
-                                                fontWeight: FontWeight.w600,
-                                                color: const Color(0xFF1E1E1E)
-                                                    .withOpacity(0.85),
-                                              ),
-                                        ),
+                                      Row(
+                                        children: [
+                                          SizedBox(
+                                            height: 30.0,
+                                            child: ListView.builder(
+                                              shrinkWrap: true,
+                                              scrollDirection: Axis.horizontal,
+                                              physics:
+                                                  const NeverScrollableScrollPhysics(),
+                                              itemCount:
+                                                  subcategoryToggles.length,
+                                              itemBuilder: ((context, index) {
+                                                return PanelButtonToggleable(
+                                                  icon:
+                                                      subcategoryToggles[index]
+                                                          .keys
+                                                          .elementAt(0),
+                                                  tooltip:
+                                                      subcategoryToggles[index]
+                                                          .values
+                                                          .elementAt(0)
+                                                          .toString()
+                                                          .capitalize(),
+                                                  buttonBehavior: () =>
+                                                      _onToggleClick(
+                                                          subcategoryToggles[
+                                                                  index]
+                                                              .values
+                                                              .elementAt(0)
+                                                              .toString()),
+                                                  toggled: widget.panelSettings
+                                                      .toggleSubcategories
+                                                      .contains(
+                                                    subcategoryToggles[index]
+                                                        .values
+                                                        .elementAt(0),
+                                                  ),
+                                                );
+                                              }),
+                                            ),
+                                          ),
+                                          // PanelButtonToggleable(
+                                          //   icon: FontAwesomeIcons.hammer,
+                                          //   tooltip: 'Dwarf',
+                                          //   buttonBehavior: () =>
+                                          //       _onToggleClick('dwarf'),
+                                          //   toggled: widget.panelSettings
+                                          //           .toggleSubcategory ==
+                                          //       Fantasy.dwarf,
+                                          // ),
+                                          // PanelButtonToggleable(
+                                          //   icon: FontAwesomeIcons.earListen,
+                                          //   tooltip: 'Elf',
+                                          //   buttonBehavior: () =>
+                                          //       _onToggleClick('elf'),
+                                          //   toggled: widget.panelSettings
+                                          //           .toggleSubcategory ==
+                                          //       Fantasy.elf,
+                                          // ),
+                                          // PanelButtonToggleable(
+                                          //   icon: FontAwesomeIcons.user,
+                                          //   tooltip: 'Human',
+                                          //   buttonBehavior: () =>
+                                          //       _onToggleClick('human'),
+                                          //   toggled: widget.panelSettings
+                                          //           .toggleSubcategory ==
+                                          //       Fantasy.human,
+                                          // ),
+                                        ],
                                       ),
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(right: 16.0),
-                                        child: Counter(
-                                          panelSettings: widget.panelSettings,
-                                          panelNum: widget.panelNum,
-                                        ),
-                                      )
                                     ],
-                                  )
+                                  ),
+                                  // const SizedBox(height: 12.0),
+                                  // Row(
+                                  //   mainAxisAlignment:
+                                  //       MainAxisAlignment.spaceBetween,
+                                  //   children: [
+                                  //     Padding(
+                                  //       padding: const EdgeInsets.only(
+                                  //         left: 5.0,
+                                  //       ),
+                                  //       child: Text(
+                                  //         '# of Syllables:',
+                                  //         style: Palette().nameStyle.copyWith(
+                                  //               fontSize: 16.0,
+                                  //               fontWeight: FontWeight.w600,
+                                  //               color: const Color(0xFF1E1E1E)
+                                  //                   .withOpacity(0.85),
+                                  //             ),
+                                  //       ),
+                                  //     ),
+                                  //     Padding(
+                                  //       padding:
+                                  //           const EdgeInsets.only(right: 16.0),
+                                  //       child: Counter(
+                                  //         panelSettings: widget.panelSettings,
+                                  //         panelNum: widget.panelNum,
+                                  //       ),
+                                  //     )
+                                  //   ],
+                                  // )
                                 ],
                               );
                             }),
@@ -235,25 +313,22 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                         )),
                   ],
                 ),
-                Visibility(
-                  visible: hovered,
-                  child: Transform.translate(
-                    offset: const Offset(10.0, -8.0),
-                    child: Align(
-                      alignment: Alignment.topRight,
-                      child: Transform.scale(
-                        scale: 0.40,
-                        child: CupertinoSwitch(
-                          value: viewSettings,
-                          onChanged: (bool value) {
-                            setState(() {
-                              viewSettings = value;
-                            });
-                          },
-                          thumbColor: Palette().sliderGrey,
-                          trackColor: Colors.white,
-                          activeColor: Palette().genOrange,
-                        ),
+                Transform.translate(
+                  offset: const Offset(10.0, -8.0),
+                  child: Align(
+                    alignment: Alignment.topRight,
+                    child: Transform.scale(
+                      scale: 0.40,
+                      child: CupertinoSwitch(
+                        value: viewSettings,
+                        onChanged: (bool value) {
+                          setState(() {
+                            viewSettings = value;
+                          });
+                        },
+                        thumbColor: Palette().sliderGrey,
+                        trackColor: Colors.white,
+                        activeColor: Palette().genOrange,
                       ),
                     ),
                   ),
@@ -269,7 +344,7 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
   void _onCopyClick(String name) async {
     await Clipboard.setData(
       ClipboardData(
-        text: widget.fullName.getCombinedName(),
+        text: widget.panelName.getName(),
       ),
     );
     // ignore: use_build_context_synchronously
@@ -281,7 +356,7 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
   }
 
   void _onSaveClick() {
-    App().addNameToSaved(widget.fullName);
+    App().addNameToSaved(SavedName(name: widget.panelName.name));
   }
 
   void _onRerollClick() {
@@ -290,5 +365,50 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
 
   void _onToggleClick(String toggle) {
     App().togglePanelButton(widget.panelNum, toggle);
+  }
+
+  List<Map<IconData, Subcategory>> fantasySubcategories = [
+    {FontAwesomeIcons.hammer: Fantasy.dwarf},
+    {FontAwesomeIcons.earListen: Fantasy.elf},
+    {FontAwesomeIcons.user: Fantasy.human},
+  ];
+
+  List<Map<IconData, Subcategory>> chaosSubcategories = [
+    {FontAwesomeIcons.shuffle: Chaos.blipblorp},
+  ];
+
+  List<Map<IconData, Subcategory>> townSubcategories = [
+    {FontAwesomeIcons.towerObservation: Town.real},
+  ];
+
+  List<Map<IconData, Subcategory>> pirateSubcategories = [
+    {FontAwesomeIcons.eye: Pirate.sailor},
+    {FontAwesomeIcons.anchor: Pirate.ship},
+  ];
+
+  List<Map<IconData, Subcategory>> tavernSubcategories = [
+    {FontAwesomeIcons.clock: Tavern.fantasy},
+  ];
+
+  List<Map<IconData, Subcategory>> getSubCategoryToggles() {
+    List<Map<IconData, Subcategory>> tempSubcategories = [];
+    switch (widget.panelSettings.toggleCategory) {
+      case Category.town:
+        tempSubcategories = townSubcategories;
+        break;
+      case Category.pirate:
+        tempSubcategories = pirateSubcategories;
+        break;
+      case Category.fantasy:
+        tempSubcategories = fantasySubcategories;
+        break;
+      case Category.tavern:
+        tempSubcategories = tavernSubcategories;
+        break;
+      case Category.chaos:
+        tempSubcategories = chaosSubcategories;
+        break;
+    }
+    return tempSubcategories;
   }
 }

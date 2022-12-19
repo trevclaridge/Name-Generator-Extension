@@ -10,56 +10,60 @@ class App extends ChangeNotifier {
 
   bool isFirstOpen = true;
 
-  final List<FullName> _savedNames = [];
-  List<FullName> get savedNames => _savedNames;
+  final List<SavedName> _savedNames = [];
+  List<SavedName> get savedNames => _savedNames;
 
-  List<Category> nonGenderedCategores = [
-    Category.dragon,
-    Category.tavern,
-    Category.town
+  List<Category> nonGenderedCategores = [Category.tavern, Category.town];
+
+  // final List<FullName> panelNames = [
+  //   FullName(
+  //       FirstName(),
+  //       LastName(),
+  //       PanelSettings(
+  //           numSyllables: 2,
+  //           toggleCategory: Category.fantasy,
+  //           toggleGender: Gender.genderNeutral)),
+  //   FullName(
+  //       FirstName(),
+  //       LastName(),
+  //       PanelSettings(
+  //           numSyllables: 3,
+  //           toggleCategory: Category.pirate,
+  //           toggleGender: Gender.feminine)),
+  //   FullName(
+  //       FirstName(),
+  //       LastName(),
+  //       PanelSettings(
+  //           numSyllables: 4,
+  //           toggleCategory: Category.tavern,
+  //           toggleGender: Gender.masculine)),
+  //   FullName(
+  //       FirstName(),
+  //       LastName(),
+  //       PanelSettings(
+  //           numSyllables: 5,
+  //           toggleCategory: Category.town,
+  //           toggleGender: Gender.feminine)),
+  //   FullName(
+  //       FirstName(),
+  //       LastName(),
+  //       PanelSettings(
+  //           numSyllables: 6,
+  //           toggleCategory: Category.dragon,
+  //           toggleGender: Gender.genderNeutral))
+  // ];
+
+  final List<Name> panelNames = [
+    Name(),
+    Name(),
+    Name(),
+    Name(),
+    Name(),
   ];
 
-  final List<FullName> panelNames = [
-    FullName(
-        FirstName(),
-        LastName(),
-        PanelSettings(
-            numSyllables: 2,
-            toggleCategory: Category.medieval,
-            toggleGender: Gender.genderNeutral)),
-    FullName(
-        FirstName(),
-        LastName(),
-        PanelSettings(
-            numSyllables: 3,
-            toggleCategory: Category.pirate,
-            toggleGender: Gender.feminine)),
-    FullName(
-        FirstName(),
-        LastName(),
-        PanelSettings(
-            numSyllables: 4,
-            toggleCategory: Category.tavern,
-            toggleGender: Gender.masculine)),
-    FullName(
-        FirstName(),
-        LastName(),
-        PanelSettings(
-            numSyllables: 5,
-            toggleCategory: Category.town,
-            toggleGender: Gender.feminine)),
-    FullName(
-        FirstName(),
-        LastName(),
-        PanelSettings(
-            numSyllables: 6,
-            toggleCategory: Category.dragon,
-            toggleGender: Gender.genderNeutral))
-  ];
-
-  void addNameToSaved(FullName fullname) {
-    if (!_savedNames.contains(fullname)) {
-      _savedNames.add(fullname);
+  void addNameToSaved(SavedName name) {
+    if (!_savedNames.contains(name)) {
+      _savedNames.add(name);
       SharedPrefs().saveNameListToPrefs();
     }
   }
@@ -77,13 +81,12 @@ class App extends ChangeNotifier {
     }
     saveSettingstoPrefs();
 
-    panelNames[panelNum].firstName.generate(panelNames[panelNum].panelSettings);
-    panelNames[panelNum].lastName.generate(panelNames[panelNum].panelSettings);
+    panelNames[panelNum].generate(panelNames[panelNum].panelSettings);
 
     notifyListeners();
   }
 
-  void deleteNameFromSaved(FullName fullname) {
+  void deleteNameFromSaved(SavedName fullname) {
     _savedNames.remove(fullname);
     SharedPrefs().saveNameListToPrefs();
     notifyListeners();
@@ -115,14 +118,13 @@ class App extends ChangeNotifier {
 
   void rerollNames() {
     for (int i = 0; i < 5; ++i) {
-      panelNames[i].firstName.generate(panelNames[i].panelSettings);
-      panelNames[i].lastName.generate(panelNames[i].panelSettings);
+      panelNames[i].generate(panelNames[i].panelSettings);
     }
     notifyListeners();
   }
 
   void rerollName(int panelNum) {
-    panelNames[panelNum].rerollName();
+    panelNames[panelNum].generate(panelNames[panelNum].panelSettings);
     // print(panelNames[panelNum].panelSettings.numSyllables);
     notifyListeners();
   }
@@ -133,6 +135,7 @@ class App extends ChangeNotifier {
 
   void togglePanelButton(int panelNum, String toggle) {
     List<String> categories = EnumToString.toList(Category.values);
+    List<String> subcategories = EnumToString.toList(Subcategories.values);
 
     if (categories.contains(toggle)) {
       App().panelNames[panelNum].panelSettings.toggleCategory =
@@ -144,6 +147,12 @@ class App extends ChangeNotifier {
       } else {
         App().panelNames[panelNum].panelSettings.toggleGender = Gender.feminine;
       }
+    } else if (subcategories.contains(toggle)) {
+      App().panelNames[panelNum].panelSettings.toggleSubcategories[
+              getCategoryIndex(
+                  App().panelNames[panelNum].panelSettings.toggleCategory)] =
+          getSubcategory(
+              App().panelNames[panelNum].panelSettings.toggleCategory, toggle);
     } else {
       App().panelNames[panelNum].panelSettings.toggleGender =
           EnumToString.fromString(Gender.values, toggle)!;
@@ -151,5 +160,78 @@ class App extends ChangeNotifier {
     rerollName(panelNum);
     saveSettingstoPrefs();
     notifyListeners();
+  }
+
+  int getCategoryIndex(Category category) {
+    int index = -1;
+    switch (category) {
+      case Category.town:
+        index = 0;
+        break;
+      case Category.pirate:
+        index = 1;
+        break;
+      case Category.fantasy:
+        index = 2;
+        break;
+      case Category.tavern:
+        index = 3;
+        break;
+      case Category.chaos:
+        index = 4;
+        break;
+    }
+    return index;
+  }
+
+  Subcategory getSubcategory(Category category, String subcategory) {
+    Subcategory tempCategory = Fantasy.human;
+    switch (category) {
+      case Category.town:
+        switch (subcategory) {
+          case 'real':
+            tempCategory = Town.real;
+            break;
+        }
+        break;
+      case Category.pirate:
+        switch (subcategory) {
+          case 'sailor':
+            tempCategory = Pirate.sailor;
+            break;
+          case 'ship':
+            tempCategory = Pirate.ship;
+            break;
+        }
+        break;
+      case Category.fantasy:
+        switch (subcategory) {
+          case 'elf':
+            tempCategory = Fantasy.elf;
+            break;
+          case 'dwarf':
+            tempCategory = Fantasy.dwarf;
+            break;
+          case 'human':
+            tempCategory = Fantasy.human;
+            break;
+        }
+        break;
+      case Category.tavern:
+        switch (subcategory) {
+          case 'fantasy':
+            tempCategory = Tavern.fantasy;
+            break;
+        }
+        break;
+      case Category.chaos:
+        switch (subcategory) {
+          case 'blipblorp':
+            tempCategory = Chaos.blipblorp;
+            break;
+        }
+        break;
+    }
+    return tempCategory;
   }
 }

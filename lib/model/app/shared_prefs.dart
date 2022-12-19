@@ -22,7 +22,7 @@ class SharedPrefs {
 
     if (names != null) {
       for (var name in names) {
-        App().addNameToSaved(FullName.fromPrefs(name));
+        App().addNameToSaved(SavedName.fromPrefs(name));
       }
     }
   }
@@ -32,7 +32,7 @@ class SharedPrefs {
 
     for (int i = 0; i < 5; ++i) {
       String key = 'panel_setting_$i';
-      List<String>? panelSetting = prefs.getStringList(key);
+      String? panelSetting = prefs.getString(key);
       if (panelSetting == null) {}
 
       App().panelNames[i].panelSettings =
@@ -47,11 +47,11 @@ class SharedPrefs {
 
   Future<void> saveNameListToPrefs() async {
     final prefs = await SharedPreferences.getInstance();
-    List<FullName> savedFullNameObjects = App().savedNames;
+    List<SavedName> savedFullNameObjects = App().savedNames;
     List<String> fullNamesAsStrings = [];
 
-    for (FullName name in savedFullNameObjects) {
-      fullNamesAsStrings.add(name.getCombinedName());
+    for (SavedName name in savedFullNameObjects) {
+      fullNamesAsStrings.add(name.name);
     }
 
     await prefs.setStringList('saved_names', fullNamesAsStrings);
@@ -61,8 +61,8 @@ class SharedPrefs {
     final prefs = await SharedPreferences.getInstance();
 
     for (int i = 0; i < 5; ++i) {
-      await prefs.setStringList('panel_setting_$i',
-          App().panelNames[i].panelSettings.prefsAsStringList());
+      await prefs.setString(
+          'panel_setting_$i', App().panelNames[i].panelSettings.toJsonString());
     }
   }
 }

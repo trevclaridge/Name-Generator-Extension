@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:random_names_extension/model/schema/categories/categories.dart';
 
 part 'pages/about_page.dart';
 part 'pages/home_page.dart';

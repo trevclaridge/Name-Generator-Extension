@@ -26,7 +26,7 @@ class _SavedPageState extends State<SavedPage> {
                   shrinkWrap: true,
                   itemBuilder: ((context, index) {
                     return SavedNamePanel(
-                      fullName: App().savedNames.elementAt(index),
+                      savedName: App().savedNames.elementAt(index),
                     );
                   }),
                 ),
