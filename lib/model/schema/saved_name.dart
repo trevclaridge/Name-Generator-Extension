@@ -1,7 +1,7 @@
 part of model;
 
 class SavedName {
-  late String name;
+  String name = 'Error getting saved name';
   SavedName({this.name = ''});
   SavedName.fromPrefs(String prefName) {
     name = prefName;

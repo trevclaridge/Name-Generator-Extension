@@ -2,14 +2,44 @@
 
 part of tavern;
 
-class Tavern implements Subcategory {
-  final String _subcategory;
-  const Tavern._(this._subcategory);
+// class Tavern implements Subcategory {
+//   final String _subcategory;
+//   const Tavern._(this._subcategory);
 
-  @override
-  String toString() {
-    return _subcategory;
+//   @override
+//   String toString() {
+//     return _subcategory;
+//   }
+
+//   static const Tavern fantasy = Tavern._('fantasy');
+// }
+
+class Tavern implements Category {
+  Tavern(subcategoryPref) {
+    activeSubcategory = parse(subcategoryPref);
   }
 
-  static const Tavern fantasy = Tavern._('fantasy');
+  @override
+  IconData icon = FontAwesomeIcons.beerMugEmpty;
+
+  @override
+  Subcategory activeSubcategory = FantasyTavern();
+
+  @override
+  List<Subcategory> subcategories = [FantasyTavern()];
+
+  @override
+  List<Subcategory> getSubcategories() {
+    return subcategories;
+  }
+
+  Subcategory parse(String subcategoryPref) {
+    Subcategory tempSubcategory = FantasyTavern();
+    for (Subcategory subcategory in subcategories) {
+      if (subcategoryPref == subcategory.toString()) {
+        tempSubcategory = subcategory;
+      }
+    }
+    return tempSubcategory;
+  }
 }

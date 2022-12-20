@@ -22,8 +22,8 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
 
   @override
   Widget build(BuildContext context) {
-    List<Map<IconData, Subcategory>> subcategoryToggles =
-        getSubCategoryToggles();
+    // List<Map<IconData, Subcategory>> subcategoryToggles =
+    //     getSubCategoryToggles();
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -119,81 +119,126 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                                     children: [
                                       Row(
                                         children: [
-                                          PanelButtonToggleable(
-                                              tooltip: 'Town',
-                                              icon: FontAwesomeIcons.building,
-                                              buttonBehavior: () =>
-                                                  _onToggleClick('town'),
-                                              toggled: widget.panelSettings
-                                                      .toggleCategory ==
-                                                  Category.town),
-                                          PanelButtonToggleable(
-                                              tooltip: 'Pirate',
-                                              icon: FontAwesomeIcons
-                                                  .skullCrossbones,
-                                              buttonBehavior: () =>
-                                                  _onToggleClick('pirate'),
-                                              toggled: widget.panelSettings
-                                                      .toggleCategory ==
-                                                  Category.pirate),
-                                          PanelButtonToggleable(
-                                              tooltip: 'Fantasy',
-                                              icon: FontAwesomeIcons.crown,
-                                              buttonBehavior: () =>
-                                                  _onToggleClick('fantasy'),
-                                              toggled: widget.panelSettings
-                                                      .toggleCategory ==
-                                                  Category.fantasy),
-                                          PanelButtonToggleable(
-                                              tooltip: 'Tavern',
-                                              icon:
-                                                  FontAwesomeIcons.beerMugEmpty,
-                                              buttonBehavior: () =>
-                                                  _onToggleClick('tavern'),
-                                              toggled: widget.panelSettings
-                                                      .toggleCategory ==
-                                                  Category.tavern),
-                                          PanelButtonToggleable(
-                                              tooltip: 'Chaos',
-                                              icon: FontAwesomeIcons.shuffle,
-                                              buttonBehavior: () =>
-                                                  _onToggleClick('chaos'),
-                                              toggled: widget.panelSettings
-                                                      .toggleCategory ==
-                                                  Category.chaos),
+                                          ListView.builder(
+                                            shrinkWrap: true,
+                                            scrollDirection: Axis.horizontal,
+                                            physics:
+                                                const NeverScrollableScrollPhysics(),
+                                            itemCount: widget
+                                                .panelSettings
+                                                .activeCategory
+                                                .subcategories
+                                                .length,
+                                            itemBuilder: ((context, index) {
+                                              return PanelButtonToggleable(
+                                                icon: widget.panelSettings
+                                                    .categories[index].icon,
+                                                tooltip: widget.panelSettings
+                                                    .categories[index]
+                                                    .toString(),
+                                                buttonBehavior: () =>
+                                                    _onToggleCategoryClick(
+                                                        widget.panelSettings
+                                                            .categories[index]
+                                                            .toString()),
+                                                toggled: widget.panelSettings
+                                                        .activeCategory
+                                                        .toString() ==
+                                                    widget.panelSettings
+                                                        .categories[index]
+                                                        .toString(),
+                                              );
+                                            }),
+                                          ),
+                                          // PanelButtonToggleable(
+                                          //     tooltip: 'Town',
+                                          //     icon: FontAwesomeIcons.building,
+                                          //     buttonBehavior: () =>
+                                          //         _onToggleClick('town'),
+                                          //     toggled: widget.panelSettings
+                                          //             .toggleCategory ==
+                                          //         Category.town),
+                                          // PanelButtonToggleable(
+                                          //     tooltip: 'Pirate',
+                                          //     icon: FontAwesomeIcons
+                                          //         .skullCrossbones,
+                                          //     buttonBehavior: () =>
+                                          //         _onToggleClick('pirate'),
+                                          //     toggled: widget.panelSettings
+                                          //             .toggleCategory ==
+                                          //         Category.pirate),
+                                          // PanelButtonToggleable(
+                                          //     tooltip: 'Fantasy',
+                                          //     icon: FontAwesomeIcons.crown,
+                                          //     buttonBehavior: () =>
+                                          //         _onToggleClick('fantasy'),
+                                          //     toggled: widget.panelSettings
+                                          //             .toggleCategory ==
+                                          //         Category.fantasy),
+                                          // PanelButtonToggleable(
+                                          //     tooltip: 'Tavern',
+                                          //     icon:
+                                          //         FontAwesomeIcons.beerMugEmpty,
+                                          //     buttonBehavior: () =>
+                                          //         _onToggleClick('tavern'),
+                                          //     toggled: widget.panelSettings
+                                          //             .toggleCategory ==
+                                          //         Category.tavern),
+                                          // PanelButtonToggleable(
+                                          //     tooltip: 'Chaos',
+                                          //     icon: FontAwesomeIcons.shuffle,
+                                          //     buttonBehavior: () =>
+                                          //         _onToggleClick('chaos'),
+                                          //     toggled: widget.panelSettings
+                                          //             .toggleCategory ==
+                                          //         Category.chaos),
                                         ],
                                       ),
                                       Visibility(
                                         visible: !App()
                                             .nonGenderedCategores
                                             .contains(widget
-                                                .panelSettings.toggleCategory),
+                                                .panelSettings.activeCategory),
                                         child: Row(
                                           children: [
                                             PanelButtonToggleable(
                                                 tooltip: 'Feminine',
                                                 icon: FontAwesomeIcons.mars,
                                                 buttonBehavior: () =>
-                                                    _onToggleClick('feminine'),
+                                                    App()
+                                                            .panelNames[
+                                                                widget.panelNum]
+                                                            .panelSettings
+                                                            .activeGender =
+                                                        Gender.masculine,
                                                 toggled: widget.panelSettings
-                                                        .toggleGender ==
+                                                        .activeGender ==
                                                     Gender.feminine),
                                             PanelButtonToggleable(
                                                 tooltip: 'Gender Neutral',
                                                 icon: FontAwesomeIcons.minus,
                                                 buttonBehavior: () =>
-                                                    _onToggleClick(
-                                                        'genderneutral'),
+                                                    App()
+                                                            .panelNames[
+                                                                widget.panelNum]
+                                                            .panelSettings
+                                                            .activeGender =
+                                                        Gender.genderNeutral,
                                                 toggled: widget.panelSettings
-                                                        .toggleGender ==
+                                                        .activeGender ==
                                                     Gender.genderNeutral),
                                             PanelButtonToggleable(
                                                 tooltip: 'Masculine',
                                                 icon: FontAwesomeIcons.venus,
                                                 buttonBehavior: () =>
-                                                    _onToggleClick('masculine'),
+                                                    App()
+                                                            .panelNames[
+                                                                widget.panelNum]
+                                                            .panelSettings
+                                                            .activeGender =
+                                                        Gender.masculine,
                                                 toggled: widget.panelSettings
-                                                        .toggleGender ==
+                                                        .activeGender ==
                                                     Gender.masculine),
                                           ],
                                         ),
@@ -214,65 +259,48 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                                               scrollDirection: Axis.horizontal,
                                               physics:
                                                   const NeverScrollableScrollPhysics(),
-                                              itemCount:
-                                                  subcategoryToggles.length,
+                                              itemCount: widget
+                                                  .panelSettings
+                                                  .activeCategory
+                                                  .subcategories
+                                                  .length,
                                               itemBuilder: ((context, index) {
                                                 return PanelButtonToggleable(
-                                                  icon:
-                                                      subcategoryToggles[index]
-                                                          .keys
-                                                          .elementAt(0),
-                                                  tooltip:
-                                                      subcategoryToggles[index]
-                                                          .values
-                                                          .elementAt(0)
-                                                          .toString()
-                                                          .capitalize(),
+                                                  icon: widget
+                                                      .panelSettings
+                                                      .activeCategory
+                                                      .subcategories[index]
+                                                      .icon,
+                                                  tooltip: widget
+                                                      .panelSettings
+                                                      .activeCategory
+                                                      .subcategories[index]
+                                                      .toString(),
                                                   buttonBehavior: () =>
-                                                      _onToggleClick(
-                                                          subcategoryToggles[
+                                                      _onToggleSubcategoryClick(
+                                                          widget.panelSettings
+                                                              .activeCategory
+                                                              .toString(),
+                                                          widget
+                                                              .panelSettings
+                                                              .activeCategory
+                                                              .subcategories[
                                                                   index]
-                                                              .values
-                                                              .elementAt(0)
                                                               .toString()),
-                                                  toggled: widget.panelSettings
-                                                      .toggleSubcategories
-                                                      .contains(
-                                                    subcategoryToggles[index]
-                                                        .values
-                                                        .elementAt(0),
-                                                  ),
+                                                  toggled: widget
+                                                          .panelSettings
+                                                          .activeCategory
+                                                          .subcategories[index]
+                                                          .toString() ==
+                                                      widget
+                                                          .panelSettings
+                                                          .activeCategory
+                                                          .activeSubcategory
+                                                          .toString(),
                                                 );
                                               }),
                                             ),
                                           ),
-                                          // PanelButtonToggleable(
-                                          //   icon: FontAwesomeIcons.hammer,
-                                          //   tooltip: 'Dwarf',
-                                          //   buttonBehavior: () =>
-                                          //       _onToggleClick('dwarf'),
-                                          //   toggled: widget.panelSettings
-                                          //           .toggleSubcategory ==
-                                          //       Fantasy.dwarf,
-                                          // ),
-                                          // PanelButtonToggleable(
-                                          //   icon: FontAwesomeIcons.earListen,
-                                          //   tooltip: 'Elf',
-                                          //   buttonBehavior: () =>
-                                          //       _onToggleClick('elf'),
-                                          //   toggled: widget.panelSettings
-                                          //           .toggleSubcategory ==
-                                          //       Fantasy.elf,
-                                          // ),
-                                          // PanelButtonToggleable(
-                                          //   icon: FontAwesomeIcons.user,
-                                          //   tooltip: 'Human',
-                                          //   buttonBehavior: () =>
-                                          //       _onToggleClick('human'),
-                                          //   toggled: widget.panelSettings
-                                          //           .toggleSubcategory ==
-                                          //       Fantasy.human,
-                                          // ),
                                         ],
                                       ),
                                     ],
@@ -360,55 +388,64 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
   }
 
   void _onRerollClick() {
+    // print(widget.panelNum);
     App().rerollName(widget.panelNum);
   }
 
-  void _onToggleClick(String toggle) {
-    App().togglePanelButton(widget.panelNum, toggle);
+  void _onToggleCategoryClick(String toggle) {
+    // print(widget.panelName.panelSettings.toggleSubcategories);
+    App().toggleCategoryPanelButton(widget.panelNum, toggle);
   }
 
-  List<Map<IconData, Subcategory>> fantasySubcategories = [
-    {FontAwesomeIcons.hammer: Fantasy.dwarf},
-    {FontAwesomeIcons.earListen: Fantasy.elf},
-    {FontAwesomeIcons.user: Fantasy.human},
-  ];
-
-  List<Map<IconData, Subcategory>> chaosSubcategories = [
-    {FontAwesomeIcons.shuffle: Chaos.blipblorp},
-  ];
-
-  List<Map<IconData, Subcategory>> townSubcategories = [
-    {FontAwesomeIcons.towerObservation: Town.real},
-  ];
-
-  List<Map<IconData, Subcategory>> pirateSubcategories = [
-    {FontAwesomeIcons.eye: Pirate.sailor},
-    {FontAwesomeIcons.anchor: Pirate.ship},
-  ];
-
-  List<Map<IconData, Subcategory>> tavernSubcategories = [
-    {FontAwesomeIcons.clock: Tavern.fantasy},
-  ];
-
-  List<Map<IconData, Subcategory>> getSubCategoryToggles() {
-    List<Map<IconData, Subcategory>> tempSubcategories = [];
-    switch (widget.panelSettings.toggleCategory) {
-      case Category.town:
-        tempSubcategories = townSubcategories;
-        break;
-      case Category.pirate:
-        tempSubcategories = pirateSubcategories;
-        break;
-      case Category.fantasy:
-        tempSubcategories = fantasySubcategories;
-        break;
-      case Category.tavern:
-        tempSubcategories = tavernSubcategories;
-        break;
-      case Category.chaos:
-        tempSubcategories = chaosSubcategories;
-        break;
-    }
-    return tempSubcategories;
+  void _onToggleSubcategoryClick(String category, String toggle) {
+    // print(widget.panelName.panelSettings.toggleSubcategories);
+    String categoryPlusSubcategory = '$category $toggle';
+    App()
+        .toggleSubcategoryPanelButton(widget.panelNum, categoryPlusSubcategory);
   }
+
+  // List<Map<IconData, Subcategory>> fantasySubcategories = [
+  //   {FontAwesomeIcons.hammer: Fantasy.dwarf},
+  //   {FontAwesomeIcons.earListen: Fantasy.elf},
+  //   {FontAwesomeIcons.user: Fantasy.human},
+  // ];
+
+  // List<Map<IconData, Subcategory>> chaosSubcategories = [
+  //   {FontAwesomeIcons.shuffle: Chaos.blipblorp},
+  // ];
+
+  // List<Map<IconData, Subcategory>> townSubcategories = [
+  //   {FontAwesomeIcons.towerObservation: Town.real},
+  // ];
+
+  // List<Map<IconData, Subcategory>> pirateSubcategories = [
+  //   {FontAwesomeIcons.eye: Pirate.sailor},
+  //   {FontAwesomeIcons.anchor: Pirate.ship},
+  // ];
+
+  // List<Map<IconData, Subcategory>> tavernSubcategories = [
+  //   {FontAwesomeIcons.clock: Tavern.fantasy},
+  // ];
+
+  // List<Map<IconData, Subcategory>> getSubCategoryToggles() {
+  //   List<Map<IconData, Subcategory>> tempSubcategories = [];
+  //   switch (widget.panelSettings.toggleCategory) {
+  //     case Category.town:
+  //       tempSubcategories = townSubcategories;
+  //       break;
+  //     case Category.pirate:
+  //       tempSubcategories = pirateSubcategories;
+  //       break;
+  //     case Category.fantasy:
+  //       tempSubcategories = fantasySubcategories;
+  //       break;
+  //     case Category.tavern:
+  //       tempSubcategories = tavernSubcategories;
+  //       break;
+  //     case Category.chaos:
+  //       tempSubcategories = chaosSubcategories;
+  //       break;
+  //   }
+  //   return tempSubcategories;
+  // }
 }
