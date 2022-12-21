@@ -7,7 +7,7 @@ class FantasyTown implements Subcategory {
   IconData icon = FontAwesomeIcons.wizardsOfTheCoast;
 
   @override
-  String toString() {
+  String getName() {
     return _name;
   }
 

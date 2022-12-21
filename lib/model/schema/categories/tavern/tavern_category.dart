@@ -15,6 +15,8 @@ part of tavern;
 // }
 
 class Tavern implements Category {
+  final String _name = 'Tavern';
+
   Tavern(subcategoryPref) {
     activeSubcategory = parse(subcategoryPref);
   }
@@ -33,13 +35,19 @@ class Tavern implements Category {
     return subcategories;
   }
 
+  @override
   Subcategory parse(String subcategoryPref) {
     Subcategory tempSubcategory = FantasyTavern();
     for (Subcategory subcategory in subcategories) {
-      if (subcategoryPref == subcategory.toString()) {
+      if (subcategoryPref == subcategory.getName()) {
         tempSubcategory = subcategory;
       }
     }
     return tempSubcategory;
+  }
+
+  @override
+  String getName() {
+    return _name;
   }
 }

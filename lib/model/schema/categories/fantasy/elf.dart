@@ -7,10 +7,11 @@ class Elf implements Subcategory {
   IconData icon = FontAwesomeIcons.earListen;
 
   @override
-  String toString() {
+  String getName() {
     return _name;
   }
 
+  @override
   String generate() {
     return 'Legolas';
   }

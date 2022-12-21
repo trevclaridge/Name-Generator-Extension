@@ -119,36 +119,36 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                                     children: [
                                       Row(
                                         children: [
-                                          ListView.builder(
-                                            shrinkWrap: true,
-                                            scrollDirection: Axis.horizontal,
-                                            physics:
-                                                const NeverScrollableScrollPhysics(),
-                                            itemCount: widget
-                                                .panelSettings
-                                                .activeCategory
-                                                .subcategories
-                                                .length,
-                                            itemBuilder: ((context, index) {
-                                              return PanelButtonToggleable(
-                                                icon: widget.panelSettings
-                                                    .categories[index].icon,
-                                                tooltip: widget.panelSettings
-                                                    .categories[index]
-                                                    .toString(),
-                                                buttonBehavior: () =>
-                                                    _onToggleCategoryClick(
-                                                        widget.panelSettings
-                                                            .categories[index]
-                                                            .toString()),
-                                                toggled: widget.panelSettings
-                                                        .activeCategory
-                                                        .toString() ==
-                                                    widget.panelSettings
-                                                        .categories[index]
-                                                        .toString(),
-                                              );
-                                            }),
+                                          SizedBox(
+                                            height: 30.0,
+                                            child: ListView.builder(
+                                              shrinkWrap: true,
+                                              scrollDirection: Axis.horizontal,
+                                              physics:
+                                                  const NeverScrollableScrollPhysics(),
+                                              itemCount:
+                                                  App().allCategories.length,
+                                              itemBuilder: ((context, index) {
+                                                return PanelButtonToggleable(
+                                                  icon: widget.panelSettings
+                                                      .categories[index].icon,
+                                                  tooltip: widget.panelSettings
+                                                      .categories[index]
+                                                      .getName(),
+                                                  buttonBehavior: () =>
+                                                      _onToggleCategoryClick(
+                                                          widget.panelSettings
+                                                              .categories[index]
+                                                              .getName()),
+                                                  toggled: widget.panelSettings
+                                                          .activeCategory
+                                                          .getName() ==
+                                                      widget.panelSettings
+                                                          .categories[index]
+                                                          .getName(),
+                                                );
+                                              }),
+                                            ),
                                           ),
                                           // PanelButtonToggleable(
                                           //     tooltip: 'Town',
@@ -210,7 +210,7 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                                                                 widget.panelNum]
                                                             .panelSettings
                                                             .activeGender =
-                                                        Gender.masculine,
+                                                        Gender.feminine,
                                                 toggled: widget.panelSettings
                                                         .activeGender ==
                                                     Gender.feminine),
@@ -275,28 +275,28 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                                                       .panelSettings
                                                       .activeCategory
                                                       .subcategories[index]
-                                                      .toString(),
+                                                      .getName(),
                                                   buttonBehavior: () =>
                                                       _onToggleSubcategoryClick(
                                                           widget.panelSettings
                                                               .activeCategory
-                                                              .toString(),
+                                                              .getName(),
                                                           widget
                                                               .panelSettings
                                                               .activeCategory
                                                               .subcategories[
                                                                   index]
-                                                              .toString()),
+                                                              .getName()),
                                                   toggled: widget
                                                           .panelSettings
                                                           .activeCategory
                                                           .subcategories[index]
-                                                          .toString() ==
+                                                          .getName() ==
                                                       widget
                                                           .panelSettings
                                                           .activeCategory
                                                           .activeSubcategory
-                                                          .toString(),
+                                                          .getName(),
                                                 );
                                               }),
                                             ),
@@ -388,64 +388,16 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
   }
 
   void _onRerollClick() {
-    // print(widget.panelNum);
     App().rerollName(widget.panelNum);
   }
 
   void _onToggleCategoryClick(String toggle) {
-    // print(widget.panelName.panelSettings.toggleSubcategories);
     App().toggleCategoryPanelButton(widget.panelNum, toggle);
   }
 
   void _onToggleSubcategoryClick(String category, String toggle) {
-    // print(widget.panelName.panelSettings.toggleSubcategories);
     String categoryPlusSubcategory = '$category $toggle';
     App()
         .toggleSubcategoryPanelButton(widget.panelNum, categoryPlusSubcategory);
   }
-
-  // List<Map<IconData, Subcategory>> fantasySubcategories = [
-  //   {FontAwesomeIcons.hammer: Fantasy.dwarf},
-  //   {FontAwesomeIcons.earListen: Fantasy.elf},
-  //   {FontAwesomeIcons.user: Fantasy.human},
-  // ];
-
-  // List<Map<IconData, Subcategory>> chaosSubcategories = [
-  //   {FontAwesomeIcons.shuffle: Chaos.blipblorp},
-  // ];
-
-  // List<Map<IconData, Subcategory>> townSubcategories = [
-  //   {FontAwesomeIcons.towerObservation: Town.real},
-  // ];
-
-  // List<Map<IconData, Subcategory>> pirateSubcategories = [
-  //   {FontAwesomeIcons.eye: Pirate.sailor},
-  //   {FontAwesomeIcons.anchor: Pirate.ship},
-  // ];
-
-  // List<Map<IconData, Subcategory>> tavernSubcategories = [
-  //   {FontAwesomeIcons.clock: Tavern.fantasy},
-  // ];
-
-  // List<Map<IconData, Subcategory>> getSubCategoryToggles() {
-  //   List<Map<IconData, Subcategory>> tempSubcategories = [];
-  //   switch (widget.panelSettings.toggleCategory) {
-  //     case Category.town:
-  //       tempSubcategories = townSubcategories;
-  //       break;
-  //     case Category.pirate:
-  //       tempSubcategories = pirateSubcategories;
-  //       break;
-  //     case Category.fantasy:
-  //       tempSubcategories = fantasySubcategories;
-  //       break;
-  //     case Category.tavern:
-  //       tempSubcategories = tavernSubcategories;
-  //       break;
-  //     case Category.chaos:
-  //       tempSubcategories = chaosSubcategories;
-  //       break;
-  //   }
-  //   return tempSubcategories;
-  // }
 }

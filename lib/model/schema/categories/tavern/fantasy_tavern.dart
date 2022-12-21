@@ -7,11 +7,12 @@ class FantasyTavern implements Subcategory {
   IconData icon = FontAwesomeIcons.glassWater;
 
   @override
-  String toString() {
+  String getName() {
     return _name;
   }
 
+  @override
   String generate() {
-    return 'The Prancing Poney';
+    return 'The Prancing Pony';
   }
 }

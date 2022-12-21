@@ -17,6 +17,8 @@ part of fantasy;
 // }
 
 class Fantasy implements Category {
+  final String _name = 'Fantasy';
+
   Fantasy(subcategoryPref) {
     activeSubcategory = parse(subcategoryPref);
   }
@@ -35,13 +37,19 @@ class Fantasy implements Category {
     return subcategories;
   }
 
+  @override
   Subcategory parse(String subcategoryPref) {
     Subcategory tempSubcategory = Elf();
     for (Subcategory subcategory in subcategories) {
-      if (subcategoryPref == subcategory.toString()) {
+      if (subcategoryPref == subcategory.getName()) {
         tempSubcategory = subcategory;
       }
     }
     return tempSubcategory;
+  }
+
+  @override
+  String getName() {
+    return _name;
   }
 }

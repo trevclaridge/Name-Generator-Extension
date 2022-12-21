@@ -7,10 +7,11 @@ class Human implements Subcategory {
   IconData icon = FontAwesomeIcons.user;
 
   @override
-  String toString() {
+  String getName() {
     return _name;
   }
 
+  @override
   String generate() {
     return 'Aragorn';
   }

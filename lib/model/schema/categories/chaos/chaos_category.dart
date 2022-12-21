@@ -15,6 +15,8 @@ part of chaos;
 // }
 
 class Chaos implements Category {
+  final String _name = 'Chaos';
+
   Chaos(subcategoryPref) {
     activeSubcategory = parse(subcategoryPref);
   }
@@ -32,13 +34,19 @@ class Chaos implements Category {
     return subcategories;
   }
 
+  @override
   Subcategory parse(String subcategoryPref) {
     Subcategory tempSubcategory = BlipBlorp();
     for (Subcategory subcategory in subcategories) {
-      if (subcategoryPref == subcategory.toString()) {
+      if (subcategoryPref == subcategory.getName()) {
         tempSubcategory = subcategory;
       }
     }
     return tempSubcategory;
+  }
+
+  @override
+  String getName() {
+    return _name;
   }
 }

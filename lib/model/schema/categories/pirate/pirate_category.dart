@@ -16,6 +16,8 @@ part of pirate;
 // }
 
 class Pirate implements Category {
+  final String _name = 'Pirate';
+
   Pirate(subcategoryPref) {
     activeSubcategory = parse(subcategoryPref);
   }
@@ -34,13 +36,19 @@ class Pirate implements Category {
     return subcategories;
   }
 
+  @override
   Subcategory parse(String subcategoryPref) {
     Subcategory tempSubcategory = Sailor();
     for (Subcategory subcategory in subcategories) {
-      if (subcategoryPref == subcategory.toString()) {
+      if (subcategoryPref == subcategory.getName()) {
         tempSubcategory = subcategory;
       }
     }
     return tempSubcategory;
+  }
+
+  @override
+  String getName() {
+    return _name;
   }
 }

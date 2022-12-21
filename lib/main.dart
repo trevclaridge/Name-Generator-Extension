@@ -6,7 +6,6 @@ import 'package:random_names_extension/model/model.dart';
 void main() async {
   // this variables exists only to ensure the async function completes before the evaluation below
   // ignore: unused_local_variable
-  App myApp = App();
   bool isFO = await App().checkFirstOpen();
   if (App().isFirstOpen) {
     App().initializeApp();
@@ -14,7 +13,6 @@ void main() async {
     App().populateSavedNames();
     App().populatePanelSettings();
   }
-  // App().initializeApp();
 
   runApp(
     ChangeNotifierProvider(

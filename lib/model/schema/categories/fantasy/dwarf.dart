@@ -7,11 +7,12 @@ class Dwarf implements Subcategory {
   IconData icon = FontAwesomeIcons.hammer;
 
   @override
-  String toString() {
-    return _name;
-  }
-
   String generate() {
     return 'Gimli';
+  }
+
+  @override
+  String getName() {
+    return _name;
   }
 }

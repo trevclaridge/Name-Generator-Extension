@@ -7,10 +7,11 @@ class Sailor implements Subcategory {
   IconData icon = FontAwesomeIcons.anchor;
 
   @override
-  String toString() {
+  String getName() {
     return _name;
   }
 
+  @override
   String generate() {
     return 'Captain Jack Sparrow';
   }

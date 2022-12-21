@@ -33,7 +33,6 @@ class SharedPrefs {
     for (int i = 0; i < 5; ++i) {
       String key = 'panel_setting_$i';
       String? panelSetting = prefs.getString(key);
-      if (panelSetting == null) {}
 
       App().panelNames[i].panelSettings =
           PanelSettings.fromPrefs(panelSetting!);
@@ -59,8 +58,14 @@ class SharedPrefs {
 
   Future<void> savePanelSettingsToPrefs() async {
     final prefs = await SharedPreferences.getInstance();
+    // print(App().panelNames[0].panelSettings.toJsonString());
+    // print(App().panelNames[1].panelSettings.toJsonString());
+    // print(App().panelNames[2].panelSettings.toJsonString());
+    // print(App().panelNames[3].panelSettings.toJsonString());
+    // print(App().panelNames[4].panelSettings.toJsonString());
 
     for (int i = 0; i < 5; ++i) {
+      // ignore: unused_local_variable
       await prefs.setString(
           'panel_setting_$i', App().panelNames[i].panelSettings.toJsonString());
     }

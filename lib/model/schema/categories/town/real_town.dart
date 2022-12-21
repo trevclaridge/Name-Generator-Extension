@@ -7,10 +7,11 @@ class RealTown implements Subcategory {
   IconData icon = FontAwesomeIcons.building;
 
   @override
-  String toString() {
+  String getName() {
     return _name;
   }
 
+  @override
   String generate() {
     return 'Leland';
   }

@@ -3,12 +3,11 @@
 library model;
 
 import 'dart:convert';
-import 'dart:html';
-import "dart:math";
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+// ignore: unused_import
 import 'package:random_names_extension/bin/bin.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:random_names_extension/model/schema/categories/categories.dart';
@@ -21,5 +20,5 @@ part 'schema/name.dart';
 part 'schema/saved_name.dart';
 part 'string_extension.dart';
 part 'schema/category.dart';
-part 'schema/categories/toggle_enums.dart';
+part 'schema/categories/gender_enum.dart';
 part 'schema/categories/subcategory.dart';

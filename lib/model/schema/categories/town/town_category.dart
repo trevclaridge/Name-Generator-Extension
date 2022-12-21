@@ -15,6 +15,8 @@ part of town;
 // }
 
 class Town implements Category {
+  final String _name = 'Town';
+
   Town(subcategoryPref) {
     activeSubcategory = parse(subcategoryPref);
   }
@@ -33,13 +35,19 @@ class Town implements Category {
     return subcategories;
   }
 
+  @override
   Subcategory parse(String subcategoryPref) {
     Subcategory tempSubcategory = RealTown();
     for (Subcategory subcategory in subcategories) {
-      if (subcategoryPref == subcategory.toString()) {
+      if (subcategoryPref == subcategory.getName()) {
         tempSubcategory = subcategory;
       }
     }
     return tempSubcategory;
+  }
+
+  @override
+  String getName() {
+    return _name;
   }
 }

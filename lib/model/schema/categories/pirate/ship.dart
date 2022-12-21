@@ -7,10 +7,11 @@ class Ship implements Subcategory {
   IconData icon = FontAwesomeIcons.sailboat;
 
   @override
-  String toString() {
+  String getName() {
     return _name;
   }
 
+  @override
   String generate() {
     return 'The Black Pearl';
   }
