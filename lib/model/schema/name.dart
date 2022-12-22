@@ -4,7 +4,7 @@ class Name {
   String name = 'Error generating name.';
   PanelSettings panelSettings = PanelSettings(
     numSyllables: 2,
-    activeCategory: Fantasy(Human().getName()),
+    activeCategoryIndex: 2,
     activeGender: Gender.genderNeutral,
     categories: localallCategories,
   );
@@ -14,7 +14,8 @@ class Name {
   }
 
   void generate(PanelSettings settings) {
-    name = settings.activeCategory.activeSubcategory.generate();
+    name = settings.categories[settings.activeCategoryIndex].activeSubcategory
+        .generate();
   }
 
   int numSyllables(String tempString) {

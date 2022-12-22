@@ -101,27 +101,27 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                       ),
                     ),
                     Visibility(
-                        visible: viewSettings,
-                        child: Padding(
+                      visible: viewSettings,
+                      child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                          child: Consumer<App>(
-                            builder: ((context, value, child) {
-                              return Column(
+                          child: Column(
+                            children: [
+                              Container(
+                                height: 1.0,
+                                color: Palette().genOrange,
+                              ),
+                              const SizedBox(height: 20),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Container(
-                                    height: 1.0,
-                                    color: Palette().genOrange,
-                                  ),
-                                  const SizedBox(height: 20),
                                   Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Row(
-                                        children: [
-                                          SizedBox(
-                                            height: 30.0,
-                                            child: ListView.builder(
+                                      SizedBox(
+                                        height: 30.0,
+                                        child: Consumer<App>(
+                                          builder: (context, value, child) {
+                                            return ListView.builder(
                                               shrinkWrap: true,
                                               scrollDirection: Axis.horizontal,
                                               physics:
@@ -137,208 +137,162 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                                                       .getName(),
                                                   buttonBehavior: () =>
                                                       _onToggleCategoryClick(
-                                                          widget.panelSettings
-                                                              .categories[index]
-                                                              .getName()),
+                                                    index,
+                                                  ),
                                                   toggled: widget.panelSettings
-                                                          .activeCategory
-                                                          .getName() ==
-                                                      widget.panelSettings
-                                                          .categories[index]
-                                                          .getName(),
+                                                          .activeCategoryIndex ==
+                                                      index,
                                                 );
                                               }),
-                                            ),
-                                          ),
-                                          // PanelButtonToggleable(
-                                          //     tooltip: 'Town',
-                                          //     icon: FontAwesomeIcons.building,
-                                          //     buttonBehavior: () =>
-                                          //         _onToggleClick('town'),
-                                          //     toggled: widget.panelSettings
-                                          //             .toggleCategory ==
-                                          //         Category.town),
-                                          // PanelButtonToggleable(
-                                          //     tooltip: 'Pirate',
-                                          //     icon: FontAwesomeIcons
-                                          //         .skullCrossbones,
-                                          //     buttonBehavior: () =>
-                                          //         _onToggleClick('pirate'),
-                                          //     toggled: widget.panelSettings
-                                          //             .toggleCategory ==
-                                          //         Category.pirate),
-                                          // PanelButtonToggleable(
-                                          //     tooltip: 'Fantasy',
-                                          //     icon: FontAwesomeIcons.crown,
-                                          //     buttonBehavior: () =>
-                                          //         _onToggleClick('fantasy'),
-                                          //     toggled: widget.panelSettings
-                                          //             .toggleCategory ==
-                                          //         Category.fantasy),
-                                          // PanelButtonToggleable(
-                                          //     tooltip: 'Tavern',
-                                          //     icon:
-                                          //         FontAwesomeIcons.beerMugEmpty,
-                                          //     buttonBehavior: () =>
-                                          //         _onToggleClick('tavern'),
-                                          //     toggled: widget.panelSettings
-                                          //             .toggleCategory ==
-                                          //         Category.tavern),
-                                          // PanelButtonToggleable(
-                                          //     tooltip: 'Chaos',
-                                          //     icon: FontAwesomeIcons.shuffle,
-                                          //     buttonBehavior: () =>
-                                          //         _onToggleClick('chaos'),
-                                          //     toggled: widget.panelSettings
-                                          //             .toggleCategory ==
-                                          //         Category.chaos),
-                                        ],
-                                      ),
-                                      Visibility(
-                                        visible: !App()
-                                            .nonGenderedCategores
-                                            .contains(widget
-                                                .panelSettings.activeCategory),
-                                        child: Row(
-                                          children: [
-                                            PanelButtonToggleable(
-                                                tooltip: 'Feminine',
-                                                icon: FontAwesomeIcons.mars,
-                                                buttonBehavior: () =>
-                                                    App()
-                                                            .panelNames[
-                                                                widget.panelNum]
-                                                            .panelSettings
-                                                            .activeGender =
-                                                        Gender.feminine,
-                                                toggled: widget.panelSettings
-                                                        .activeGender ==
-                                                    Gender.feminine),
-                                            PanelButtonToggleable(
-                                                tooltip: 'Gender Neutral',
-                                                icon: FontAwesomeIcons.minus,
-                                                buttonBehavior: () =>
-                                                    App()
-                                                            .panelNames[
-                                                                widget.panelNum]
-                                                            .panelSettings
-                                                            .activeGender =
-                                                        Gender.genderNeutral,
-                                                toggled: widget.panelSettings
-                                                        .activeGender ==
-                                                    Gender.genderNeutral),
-                                            PanelButtonToggleable(
-                                                tooltip: 'Masculine',
-                                                icon: FontAwesomeIcons.venus,
-                                                buttonBehavior: () =>
-                                                    App()
-                                                            .panelNames[
-                                                                widget.panelNum]
-                                                            .panelSettings
-                                                            .activeGender =
-                                                        Gender.masculine,
-                                                toggled: widget.panelSettings
-                                                        .activeGender ==
-                                                    Gender.masculine),
-                                          ],
+                                            );
+                                          },
                                         ),
                                       ),
                                     ],
                                   ),
-                                  const SizedBox(height: 12.0),
+                                  Visibility(
+                                    visible: !App()
+                                        .nonGenderedCategores
+                                        .contains(widget
+                                                .panelSettings.categories[
+                                            widget.panelSettings
+                                                .activeCategoryIndex]),
+                                    child: Row(
+                                      children: [
+                                        PanelButtonToggleable(
+                                            tooltip: 'Feminine',
+                                            icon: FontAwesomeIcons.mars,
+                                            buttonBehavior: () => App()
+                                                .panelNames[widget.panelNum]
+                                                .panelSettings
+                                                .activeGender = Gender.feminine,
+                                            toggled: widget.panelSettings
+                                                    .activeGender ==
+                                                Gender.feminine),
+                                        PanelButtonToggleable(
+                                            tooltip: 'Gender Neutral',
+                                            icon: FontAwesomeIcons.minus,
+                                            buttonBehavior: () => App()
+                                                    .panelNames[widget.panelNum]
+                                                    .panelSettings
+                                                    .activeGender =
+                                                Gender.genderNeutral,
+                                            toggled: widget.panelSettings
+                                                    .activeGender ==
+                                                Gender.genderNeutral),
+                                        PanelButtonToggleable(
+                                            tooltip: 'Masculine',
+                                            icon: FontAwesomeIcons.venus,
+                                            buttonBehavior: () => App()
+                                                    .panelNames[widget.panelNum]
+                                                    .panelSettings
+                                                    .activeGender =
+                                                Gender.masculine,
+                                            toggled: widget.panelSettings
+                                                    .activeGender ==
+                                                Gender.masculine),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 12.0),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
                                   Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Row(
-                                        children: [
-                                          SizedBox(
-                                            height: 30.0,
-                                            child: ListView.builder(
-                                              shrinkWrap: true,
-                                              scrollDirection: Axis.horizontal,
-                                              physics:
-                                                  const NeverScrollableScrollPhysics(),
-                                              itemCount: widget
-                                                  .panelSettings
-                                                  .activeCategory
-                                                  .subcategories
-                                                  .length,
-                                              itemBuilder: ((context, index) {
+                                      SizedBox(
+                                        height: 30.0,
+                                        child: ListView.builder(
+                                          shrinkWrap: true,
+                                          scrollDirection: Axis.horizontal,
+                                          physics:
+                                              const NeverScrollableScrollPhysics(),
+                                          itemCount: widget
+                                              .panelSettings
+                                              .categories[widget.panelSettings
+                                                  .activeCategoryIndex]
+                                              .subcategories
+                                              .length,
+                                          itemBuilder: ((context, index) {
+                                            return Consumer(
+                                              builder: (context, value, child) {
                                                 return PanelButtonToggleable(
                                                   icon: widget
                                                       .panelSettings
-                                                      .activeCategory
+                                                      .categories[widget
+                                                          .panelSettings
+                                                          .activeCategoryIndex]
                                                       .subcategories[index]
                                                       .icon,
                                                   tooltip: widget
                                                       .panelSettings
-                                                      .activeCategory
+                                                      .categories[widget
+                                                          .panelSettings
+                                                          .activeCategoryIndex]
                                                       .subcategories[index]
                                                       .getName(),
                                                   buttonBehavior: () =>
                                                       _onToggleSubcategoryClick(
-                                                          widget.panelSettings
-                                                              .activeCategory
-                                                              .getName(),
-                                                          widget
-                                                              .panelSettings
-                                                              .activeCategory
-                                                              .subcategories[
-                                                                  index]
-                                                              .getName()),
+                                                          index),
                                                   toggled: widget
                                                           .panelSettings
-                                                          .activeCategory
+                                                          .categories[widget
+                                                              .panelSettings
+                                                              .activeCategoryIndex]
                                                           .subcategories[index]
                                                           .getName() ==
                                                       widget
                                                           .panelSettings
-                                                          .activeCategory
+                                                          .categories[widget
+                                                              .panelSettings
+                                                              .activeCategoryIndex]
                                                           .activeSubcategory
                                                           .getName(),
                                                 );
-                                              }),
-                                            ),
-                                          ),
-                                        ],
+                                              },
+                                            );
+                                          }),
+                                        ),
                                       ),
                                     ],
                                   ),
-                                  // const SizedBox(height: 12.0),
-                                  // Row(
-                                  //   mainAxisAlignment:
-                                  //       MainAxisAlignment.spaceBetween,
-                                  //   children: [
-                                  //     Padding(
-                                  //       padding: const EdgeInsets.only(
-                                  //         left: 5.0,
-                                  //       ),
-                                  //       child: Text(
-                                  //         '# of Syllables:',
-                                  //         style: Palette().nameStyle.copyWith(
-                                  //               fontSize: 16.0,
-                                  //               fontWeight: FontWeight.w600,
-                                  //               color: const Color(0xFF1E1E1E)
-                                  //                   .withOpacity(0.85),
-                                  //             ),
-                                  //       ),
-                                  //     ),
-                                  //     Padding(
-                                  //       padding:
-                                  //           const EdgeInsets.only(right: 16.0),
-                                  //       child: Counter(
-                                  //         panelSettings: widget.panelSettings,
-                                  //         panelNum: widget.panelNum,
-                                  //       ),
-                                  //     )
-                                  //   ],
-                                  // )
                                 ],
-                              );
-                            }),
-                          ),
-                        )),
+                              ),
+                              // const SizedBox(height: 12.0),
+                              // Row(
+                              //   mainAxisAlignment:
+                              //       MainAxisAlignment.spaceBetween,
+                              //   children: [
+                              //     Padding(
+                              //       padding: const EdgeInsets.only(
+                              //         left: 5.0,
+                              //       ),
+                              //       child: Text(
+                              //         '# of Syllables:',
+                              //         style: Palette().nameStyle.copyWith(
+                              //               fontSize: 16.0,
+                              //               fontWeight: FontWeight.w600,
+                              //               color: const Color(0xFF1E1E1E)
+                              //                   .withOpacity(0.85),
+                              //             ),
+                              //       ),
+                              //     ),
+                              //     Padding(
+                              //       padding:
+                              //           const EdgeInsets.only(right: 16.0),
+                              //       child: Counter(
+                              //         panelSettings: widget.panelSettings,
+                              //         panelNum: widget.panelNum,
+                              //       ),
+                              //     )
+                              //   ],
+                              // )
+                            ],
+                          )),
+                    )
                   ],
                 ),
                 Transform.translate(
@@ -391,13 +345,12 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
     App().rerollName(widget.panelNum);
   }
 
-  void _onToggleCategoryClick(String toggle) {
-    App().toggleCategoryPanelButton(widget.panelNum, toggle);
+  void _onToggleCategoryClick(int categoryIndex) {
+    App().toggleCategoryPanelButton(widget.panelNum, categoryIndex);
   }
 
-  void _onToggleSubcategoryClick(String category, String toggle) {
-    String categoryPlusSubcategory = '$category $toggle';
-    App()
-        .toggleSubcategoryPanelButton(widget.panelNum, categoryPlusSubcategory);
+  void _onToggleSubcategoryClick(int subcategoryIndex) {
+    print(widget.panelNum);
+    App().toggleSubcategoryPanelButton(widget.panelNum, subcategoryIndex);
   }
 }

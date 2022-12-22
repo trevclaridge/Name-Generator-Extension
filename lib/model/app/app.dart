@@ -108,40 +108,30 @@ class App extends ChangeNotifier {
     SharedPrefs().savePanelSettingsToPrefs();
   }
 
-  void toggleSubcategoryPanelButton(int panelNum, String toggle) {
-    Category toggleCategory = Fantasy(Human().toString());
-    final split = toggle.split(' ');
-
-    for (var appCategory in App().allCategories) {
-      if (split[0] == appCategory.getName()) {
-        toggleCategory = appCategory;
-      }
-    }
-
+  void toggleSubcategoryPanelButton(int panelNum, int subCategoryIndex) {
     App()
-        .panelNames[panelNum]
-        .panelSettings
-        .categories
-        .singleWhere((element) => element.getName() == toggleCategory.getName(),
-            orElse: () => Fantasy(Elf().getName()))
-        .activeSubcategory = toggleCategory.parse(split[1]);
-
-    App().panelNames[panelNum].panelSettings.activeCategory.activeSubcategory =
-        toggleCategory.parse(split[1]);
+            .panelNames[panelNum]
+            .panelSettings
+            .categories[
+                App().panelNames[panelNum].panelSettings.activeCategoryIndex]
+            .activeSubcategory =
+        App()
+            .panelNames[panelNum]
+            .panelSettings
+            .categories[
+                App().panelNames[panelNum].panelSettings.activeCategoryIndex]
+            .subcategories[subCategoryIndex];
 
     rerollName(panelNum);
     saveSettingstoPrefs();
-    // notifyListeners();
+    notifyListeners();
   }
 
-  void toggleCategoryPanelButton(int panelNum, String toggle) {
-    for (var appCategory in App().allCategories) {
-      if (toggle == appCategory.getName()) {
-        App().panelNames[panelNum].panelSettings.activeCategory = appCategory;
-      }
-      rerollName(panelNum);
-      saveSettingstoPrefs();
-      notifyListeners();
-    }
+  void toggleCategoryPanelButton(int panelNum, int toggle) {
+    App().panelNames[panelNum].panelSettings.activeCategoryIndex = toggle;
+
+    rerollName(panelNum);
+    saveSettingstoPrefs();
+    notifyListeners();
   }
 }

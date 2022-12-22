@@ -2,13 +2,13 @@ part of model;
 
 class PanelSettings {
   int numSyllables = 2;
-  Category activeCategory = Fantasy(Elf().getName());
+  int activeCategoryIndex = 2;
   List<Category> categories = allCategories;
   Gender activeGender = Gender.genderNeutral;
 
   PanelSettings(
       {required this.numSyllables,
-      required this.activeCategory,
+      required this.activeCategoryIndex,
       required this.categories,
       required this.activeGender});
 
@@ -22,21 +22,16 @@ class PanelSettings {
     for (int i = 0; i < subcategoriesPref.length; ++i) {
       subcategoriesPref[i] = subcategoriesPref[i].toString();
     }
+
     List<Category> appCategories = App().allCategories;
     for (int i = 0; i < appCategories.length; ++i) {
       appCategories[i].activeSubcategory =
           appCategories[i].parse(subcategoriesPref[i]);
     }
 
-    Category category = Fantasy(Elf().toString());
-    for (var appCategory in App().allCategories) {
-      if (json['activeCategory'] == appCategory.getName()) {
-        category = appCategory;
-      }
-    }
     return PanelSettings(
         numSyllables: int.parse(json['numSyllables']),
-        activeCategory: category,
+        activeCategoryIndex: int.parse(json['activeCategoryIndex']),
         activeGender:
             EnumToString.fromString(Gender.values, json['activeGender'])!,
         categories: appCategories);
@@ -49,7 +44,7 @@ class PanelSettings {
     }
     Map<String, dynamic> json = {
       'numSyllables': numSyllables.toString(),
-      'activeCategory': activeCategory.getName(),
+      'activeCategoryIndex': activeCategoryIndex.toString(),
       'activeGender': EnumToString.convertToString(activeGender),
       'subcategories': subcategories
     };

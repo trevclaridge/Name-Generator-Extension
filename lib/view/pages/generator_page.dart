@@ -32,23 +32,22 @@ class _GeneratorPageState extends State<GeneratorPage> {
                 ),
                 ListView.builder(
                   physics: const NeverScrollableScrollPhysics(),
-                  itemCount: 5,
+                  itemCount: App().panelNames.length,
                   shrinkWrap: true,
                   itemBuilder: ((context, index) {
-                    return Consumer<App>(builder: (context, value, child) {
-                      // return NamePanel(
-                      //   fullName: App().panelNames[index],
-                      //   panelSettings: App().panelSettings[index],
-                      // );
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 8.0),
-                        child: GeneratorPanel(
-                          panelNum: index,
-                          panelName: App().panelNames[index],
-                          panelSettings: App().panelNames[index].panelSettings,
-                        ),
-                      );
-                    });
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      child: Consumer<App>(
+                        builder: (context, value, child) {
+                          return GeneratorPanel(
+                            panelNum: index,
+                            panelName: App().panelNames[index],
+                            panelSettings:
+                                App().panelNames[index].panelSettings,
+                          );
+                        },
+                      ),
+                    );
                   }),
                 ),
               ],
