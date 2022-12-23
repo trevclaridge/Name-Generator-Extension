@@ -45,7 +45,7 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                 Radius.circular(10.0),
               ),
             ),
-            height: (viewSettings) ? 210.0 : 70,
+            height: (viewSettings) ? 180 : 70,
             child: Stack(
               children: [
                 Column(
@@ -147,12 +147,18 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                                     ],
                                   ),
                                   Visibility(
-                                    visible: !App()
-                                        .nonGenderedCategories
-                                        .contains(
-                                            widget.panelSettings.categories[
-                                                widget.panelSettings
-                                                    .activeCategoryIndex]),
+                                    visible: !Categories()
+                                        .nonGenderedSubcategories
+                                        .contains(widget
+                                            .panelSettings
+                                            .categories[widget.panelSettings
+                                                .activeCategoryIndex]
+                                            .subcategories[widget
+                                                .panelSettings
+                                                .categories[widget.panelSettings
+                                                    .activeCategoryIndex]
+                                                .activeSubcategory]
+                                            .getName()),
                                     child: Row(
                                       children: [
                                         PanelButtonToggleable(
@@ -241,34 +247,34 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                                   ),
                                 ],
                               ),
-                              const SizedBox(height: 12.0),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                      left: 5.0,
-                                    ),
-                                    child: Text(
-                                      '# of Syllables:',
-                                      style: Palette().nameStyle.copyWith(
-                                            fontSize: 16.0,
-                                            fontWeight: FontWeight.w600,
-                                            color: const Color(0xFF1E1E1E)
-                                                .withOpacity(0.85),
-                                          ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 16.0),
-                                    child: Counter(
-                                      panelSettings: widget.panelSettings,
-                                      panelNum: widget.panelNum,
-                                    ),
-                                  )
-                                ],
-                              )
+                              // const SizedBox(height: 12.0),
+                              // Row(
+                              //   mainAxisAlignment:
+                              //       MainAxisAlignment.spaceBetween,
+                              //   children: [
+                              //     Padding(
+                              //       padding: const EdgeInsets.only(
+                              //         left: 5.0,
+                              //       ),
+                              //       child: Text(
+                              //         '# of Syllables:',
+                              //         style: Palette().nameStyle.copyWith(
+                              //               fontSize: 16.0,
+                              //               fontWeight: FontWeight.w600,
+                              //               color: const Color(0xFF1E1E1E)
+                              //                   .withOpacity(0.85),
+                              //             ),
+                              //       ),
+                              //     ),
+                              //     Padding(
+                              //       padding: const EdgeInsets.only(right: 16.0),
+                              //       child: Counter(
+                              //         panelSettings: widget.panelSettings,
+                              //         panelNum: widget.panelNum,
+                              //       ),
+                              //     )
+                              //   ],
+                              // )
                             ],
                           )),
                     )
@@ -330,5 +336,25 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
 
   void _onToggleSubcategoryClick(int subcategoryIndex) {
     App().toggleSubcategoryPanelButton(widget.panelNum, subcategoryIndex);
+  }
+
+  double getPanelSize(PanelSettings settings, bool showSettings) {
+    if (!showSettings) {
+      return 70.0;
+    }
+    if (settings
+            .categories[settings.activeCategoryIndex].subcategories.length ==
+        1) {
+      return 200.0;
+    }
+    if (Categories().syllabledSubcategories.contains(settings
+        .categories[settings.activeCategoryIndex]
+        .subcategories[
+            settings.categories[settings.activeCategoryIndex].activeSubcategory]
+        .getName())) {
+      return 210.0;
+    }
+    throw 'Panel size not measured';
+    // return 70.0;
   }
 }

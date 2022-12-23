@@ -14,7 +14,7 @@ class _GeneratorPageState extends State<GeneratorPage> {
       appBar: null,
       body: ListView(
         children: [
-          const SizedBox(height: 20.0),
+          const SizedBox(height: 10.0),
           Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

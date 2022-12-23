@@ -13,8 +13,6 @@ class App extends ChangeNotifier {
   final List<SavedName> _savedNames = [];
   List<SavedName> get savedNames => _savedNames;
 
-  List<Category> nonGenderedCategories = [Tavern(0), Town(0)];
-
   final List<Name> panelNames = [
     Name(),
     Name(),
