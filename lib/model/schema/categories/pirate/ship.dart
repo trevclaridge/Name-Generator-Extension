@@ -8,7 +8,7 @@ class Ship implements Subcategory {
   //     const ImageIcon(AssetImage('lib/assets/pirate-ship.png')) as IconData;
 
   @override
-  AssetImage icon = const AssetImage('lib/assets/icons/png/pirate-ship.png');
+  String icon = 'lib/assets/icons/svg/pirate_ship.svg';
 
   @override
   String getName() {

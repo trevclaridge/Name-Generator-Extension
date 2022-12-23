@@ -19,7 +19,8 @@
 * Dwarf face icon: <a href="https://www.flaticon.com/free-icons/fairy-tale" title="fairy tale icons">Fairy tale icons created by Freepik - Flaticon</a>
 * Elf face icon: <a href="https://www.flaticon.com/free-icons/fairy-tale" title="fairy tale icons">Fairy tale icons created by Freepik - Flaticon</a>
 * Warrior icon <a href="https://www.flaticon.com/free-icons/fairy-tale" title="fairy tale icons">Fairy tale icons created by Freepik - Flaticon</a>
-* Fantasy category icon (sword with dragon wings): <a href="https://www.flaticon.com/free-icons/fairy-tale" title="fairy tale icons">Fairy tale icons created by Freepik - Flaticon</a>
+* Fantasy category icon (book): <a href="https://www.flaticon.com/free-icons/fairy-tale" title="fairy tale icons">Fairy tale icons created by Freepik - Flaticon</a>
+* 
 
 ### Town Icons
 * Modern city icon: <a href="https://www.flaticon.com/free-icons/architecture-and-city" title="architecture and city icons">Architecture and city icons created by Freepik - Flaticon</a>

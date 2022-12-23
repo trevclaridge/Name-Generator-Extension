@@ -26,8 +26,7 @@ class Pirate implements Category {
   // IconData icon = FontAwesomeIcons.skullCrossbones;
 
   @override
-  AssetImage icon =
-      const AssetImage('lib/assets/icons/png/skull_crossbones.png');
+  String icon = 'lib/assets/icons/svg/skull_crossbones.svg';
 
   @override
   int activeSubcategory = 0;

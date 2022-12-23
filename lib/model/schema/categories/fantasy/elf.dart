@@ -7,7 +7,7 @@ class Elf implements Subcategory {
   // IconData icon = FontAwesomeIcons.earListen;
 
   @override
-  AssetImage icon = const AssetImage('lib/assets/icons/png/elf.png');
+  String icon = 'lib/assets/icons/svg/elf.svg';
 
   @override
   String getName() {

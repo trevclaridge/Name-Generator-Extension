@@ -7,7 +7,7 @@ abstract class Subcategory {
 
   // IconData icon = FontAwesomeIcons.e;
 
-  AssetImage icon = const AssetImage('lib/assets/icons/png/error.png');
+  String icon = 'lib/assets/icons/svg/error.svg';
 
   String getName() {
     return _name;

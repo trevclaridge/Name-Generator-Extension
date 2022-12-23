@@ -27,7 +27,7 @@ class Fantasy implements Category {
   // IconData icon = FontAwesomeIcons.dragon;
 
   @override
-  AssetImage icon = const AssetImage('lib/assets/icons/png/dragon_sword.png');
+  String icon = 'lib/assets/icons/svg/book.svg';
 
   @override
   int activeSubcategory = 0;

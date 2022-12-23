@@ -7,7 +7,7 @@ class FantasyTavern implements Subcategory {
   // IconData icon = FontAwesomeIcons.glassWater;
 
   @override
-  AssetImage icon = const AssetImage('lib/assets/icons/png/beer.png');
+  String icon = 'lib/assets/icons/svg/beer.svg';
 
   @override
   String getName() {

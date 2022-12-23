@@ -7,7 +7,7 @@ class RealTown implements Subcategory {
   // IconData icon = FontAwesomeIcons.building;
 
   @override
-  AssetImage icon = const AssetImage('lib/assets/icons/png/skyscraper.png');
+  String icon = 'lib/assets/icons/svg/skyscraper.svg';
 
   @override
   String getName() {

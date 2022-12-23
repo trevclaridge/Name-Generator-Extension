@@ -1,14 +1,14 @@
 part of view;
 
 class PanelButtonToggleable extends StatefulWidget {
-  final AssetImage icon;
+  final String iconString;
   final String tooltip;
   final VoidCallback buttonBehavior;
   final bool toggled;
 
   const PanelButtonToggleable(
       {Key? key,
-      required this.icon,
+      required this.iconString,
       required this.tooltip,
       required this.buttonBehavior,
       required this.toggled})
@@ -26,7 +26,7 @@ class _PanelButtonToggleableState extends State<PanelButtonToggleable> {
     return Tooltip(
       message: widget.tooltip,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 3.0),
+        padding: const EdgeInsets.symmetric(horizontal: 1.0),
         child: MouseRegion(
           cursor: SystemMouseCursors.click,
           onHover: (event) => setState(() {
@@ -45,19 +45,11 @@ class _PanelButtonToggleableState extends State<PanelButtonToggleable> {
                       ? Palette().genOrange
                       : Palette().genOrangeAccent,
                   borderRadius: BorderRadius.circular(5)),
-              width: 40.0,
-              height: 40.0,
+              width: 30.0,
+              height: 30.0,
               child: Center(
-                // child: FaIcon(
-                //   widget.icon,
-                //   size: 17.0,
-                //   color: getColor(),
-                // ),
-                child: ImageIcon(
-                  widget.icon,
-                  color: getColor(),
-                  size: 30,
-                ),
+                child: SvgPicture.asset(widget.iconString,
+                    color: getColor(), width: 22.0, height: 22.0),
               ),
             ),
           ),

@@ -6,7 +6,6 @@ import 'dart:convert';
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 // ignore: unused_import
 import 'package:random_names_extension/bin/bin.dart';
 import 'package:shared_preferences/shared_preferences.dart';

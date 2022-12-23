@@ -24,7 +24,7 @@ class Chaos implements Category {
   // IconData icon = FontAwesomeIcons.fantasyFlightGames;
 
   @override
-  AssetImage icon = const AssetImage('lib/assets/icons/png/mess.png');
+  String icon = 'lib/assets/icons/svg/mess.svg';
 
   @override
   int activeSubcategory = 0;

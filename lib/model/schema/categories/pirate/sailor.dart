@@ -7,8 +7,7 @@ class Sailor implements Subcategory {
   // IconData icon = FontAwesomeIcons.anchor;
 
   @override
-  AssetImage icon =
-      const AssetImage('lib/assets/icons/png/starfish_pirate.png');
+  String icon = 'lib/assets/icons/svg/starfish_pirate.svg';
 
   @override
   String getName() {

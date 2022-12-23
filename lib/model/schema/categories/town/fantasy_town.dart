@@ -7,7 +7,7 @@ class FantasyTown implements Subcategory {
   // IconData icon = FontAwesomeIcons.wizardsOfTheCoast;
 
   @override
-  AssetImage icon = const AssetImage('lib/assets/icons/png/windmill.png');
+  String icon = 'lib/assets/icons/svg/windmill.svg';
 
   @override
   String getName() {

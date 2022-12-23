@@ -24,8 +24,8 @@ class Town implements Category {
   // @override
   // IconData icon = FontAwesomeIcons.towerBroadcast;
 
-    @override
-  AssetImage icon = const AssetImage('lib/assets/icons/png/village.png');
+  @override
+  String icon = 'lib/assets/icons/svg/village.svg';
 
   @override
   int activeSubcategory = 0;

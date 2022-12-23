@@ -25,7 +25,7 @@ class Tavern implements Category {
   // IconData icon = FontAwesomeIcons.beerMugEmpty;
 
   @override
-  AssetImage icon = const AssetImage('lib/assets/icons/png/saloon.png');
+  String icon = 'lib/assets/icons/svg/saloon.svg';
 
   @override
   int activeSubcategory = 0;

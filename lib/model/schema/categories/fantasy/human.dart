@@ -7,7 +7,7 @@ class Human implements Subcategory {
   // IconData icon = FontAwesomeIcons.user;
 
   @override
-  AssetImage icon = const AssetImage('lib/assets/icons/png/warrior.png');
+  String icon = 'lib/assets/icons/svg/warrior.svg';
 
   @override
   String getName() {

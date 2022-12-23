@@ -4,7 +4,7 @@ class BlipBlorp implements Subcategory {
   final String _name = 'Blip Blorp';
 
   @override
-  AssetImage icon = const AssetImage('lib/assets/icons/png/rings.png');
+  String icon = 'lib/assets/icons/svg/rings.svg';
 
   @override
   String generate() {

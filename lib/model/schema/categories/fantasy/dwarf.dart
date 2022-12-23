@@ -7,7 +7,7 @@ class Dwarf implements Subcategory {
   // IconData icon = FontAwesomeIcons.hammer;
 
   @override
-  AssetImage icon = const AssetImage('lib/assets/icons/png/dwarf.png');
+  String icon = 'lib/assets/icons/svg/dwarf.svg';
 
   @override
   String generate() {
