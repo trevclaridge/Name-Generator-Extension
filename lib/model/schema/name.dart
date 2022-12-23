@@ -4,7 +4,7 @@ class Name {
   String name = 'Error generating name.';
   PanelSettings panelSettings = PanelSettings(
     numSyllables: 2,
-    activeCategoryIndex: 2,
+    activeCategoryIndex: 0,
     activeGender: Gender.genderNeutral,
     categories: Categories().categories,
   );

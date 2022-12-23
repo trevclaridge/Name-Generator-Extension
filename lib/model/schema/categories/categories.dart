@@ -2,7 +2,7 @@ part of model;
 
 class Categories {
   List<Category> categories = [
-    Fantasy(0),
+    Fantasy(1),
     Pirate(0),
     Tavern(0),
     Town(0),

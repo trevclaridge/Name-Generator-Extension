@@ -64,7 +64,7 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Palette().genOrange,
         currentIndex: bottomSelectedIndex,
-        elevation: 0.0,
+        // elevation: 0.0,
         onTap: (index) {
           bottomTapped(index);
         },

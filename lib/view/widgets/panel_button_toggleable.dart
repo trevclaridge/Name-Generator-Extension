@@ -24,6 +24,7 @@ class _PanelButtonToggleableState extends State<PanelButtonToggleable> {
   @override
   Widget build(BuildContext context) {
     return Tooltip(
+      preferBelow: isSubcategory(),
       message: widget.tooltip,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 1.0),
@@ -41,15 +42,13 @@ class _PanelButtonToggleableState extends State<PanelButtonToggleable> {
               duration: const Duration(milliseconds: 200),
               curve: Curves.easeInOutCubic,
               decoration: BoxDecoration(
-                  color: (widget.toggled)
-                      ? Palette().genOrange
-                      : Palette().genOrangeAccent,
+                  color: getToggleColor(),
                   borderRadius: BorderRadius.circular(5)),
               width: 30.0,
               height: 30.0,
               child: Center(
                 child: SvgPicture.asset(widget.iconString,
-                    color: getColor(), width: 22.0, height: 22.0),
+                    color: getIconColor(), width: 22.0, height: 22.0),
               ),
             ),
           ),
@@ -58,7 +57,7 @@ class _PanelButtonToggleableState extends State<PanelButtonToggleable> {
     );
   }
 
-  Color getColor() {
+  Color getIconColor() {
     if (widget.toggled) {
       return Colors.white;
     }
@@ -66,5 +65,45 @@ class _PanelButtonToggleableState extends State<PanelButtonToggleable> {
       return Colors.black;
     }
     return Palette().unhoveredGrey;
+  }
+
+  bool isSubcategory() {
+    List<String> allSubcategories = [];
+    for (var category in Categories().categories) {
+      for (var subcategory in category.subcategories) {
+        allSubcategories.add(subcategory.getName());
+      }
+    }
+    if (allSubcategories.contains(widget.tooltip)) {
+      return true;
+    }
+    return false;
+  }
+
+  bool isGender() {
+    List<String> genders = ['Gender Neutral', 'Feminine', 'Masculine'];
+    if (genders.contains(widget.tooltip)) {
+      return true;
+    }
+    return false;
+  }
+
+  Color getToggleColor() {
+    List<String> allSubcategories = [];
+    for (var category in Categories().categories) {
+      for (var subcategory in category.subcategories) {
+        allSubcategories.add(subcategory.getName());
+      }
+    }
+    if (!widget.toggled) {
+      return Palette().genOrangeAccent;
+    }
+    if (widget.toggled && isGender()) {
+      return Palette().genPurple;
+    }
+    if (widget.toggled && isSubcategory()) {
+      return Palette().subcategoryTeal;
+    }
+    return Palette().genOrange;
   }
 }

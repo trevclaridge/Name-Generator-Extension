@@ -22,9 +22,6 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
 
   @override
   Widget build(BuildContext context) {
-    // List<Map<IconData, Subcategory>> subcategoryToggles =
-    //     getSubCategoryToggles();
-
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
       child: MouseRegion(
@@ -166,7 +163,7 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                                         PanelButtonToggleable(
                                             tooltip: 'Feminine',
                                             iconString:
-                                                'lib/assets/icons/svg/venus.svg',
+                                                'lib/assets/icons/svg/feminine.svg',
                                             buttonBehavior: () => App()
                                                 .panelNames[widget.panelNum]
                                                 .panelSettings
@@ -177,7 +174,7 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                                         PanelButtonToggleable(
                                             tooltip: 'Gender Neutral',
                                             iconString:
-                                                'lib/assets/icons/svg/delete.svg',
+                                                'lib/assets/icons/svg/hyphen.svg',
                                             buttonBehavior: () => App()
                                                     .panelNames[widget.panelNum]
                                                     .panelSettings
@@ -189,7 +186,7 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                                         PanelButtonToggleable(
                                             tooltip: 'Masculine',
                                             iconString:
-                                                'lib/assets/icons/svg/mars.svg',
+                                                'lib/assets/icons/svg/masculine.svg',
                                             buttonBehavior: () => App()
                                                     .panelNames[widget.panelNum]
                                                     .panelSettings
