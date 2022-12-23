@@ -3,8 +3,11 @@ part of town;
 class FantasyTown implements Subcategory {
   final String _name = 'FantasyTown';
 
+  // @override
+  // IconData icon = FontAwesomeIcons.wizardsOfTheCoast;
+
   @override
-  IconData icon = FontAwesomeIcons.wizardsOfTheCoast;
+  AssetImage icon = const AssetImage('lib/assets/icons/png/windmill.png');
 
   @override
   String getName() {

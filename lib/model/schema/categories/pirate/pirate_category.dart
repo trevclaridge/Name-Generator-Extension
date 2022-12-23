@@ -22,8 +22,12 @@ class Pirate implements Category {
     activeSubcategory = subcategoryPref;
   }
 
+  // @override
+  // IconData icon = FontAwesomeIcons.skullCrossbones;
+
   @override
-  IconData icon = FontAwesomeIcons.earthOceania;
+  AssetImage icon =
+      const AssetImage('lib/assets/icons/png/skull_crossbones.png');
 
   @override
   int activeSubcategory = 0;

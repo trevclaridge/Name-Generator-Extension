@@ -4,7 +4,10 @@ part of model;
 
 abstract class Subcategory {
   final String _name = 'Error: Subcategory name';
-  IconData icon = FontAwesomeIcons.e;
+
+  // IconData icon = FontAwesomeIcons.e;
+
+  AssetImage icon = const AssetImage('lib/assets/icons/png/error.png');
 
   String getName() {
     return _name;

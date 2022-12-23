@@ -3,8 +3,11 @@ part of fantasy;
 class Human implements Subcategory {
   final String _name = 'Human';
 
+  // @override
+  // IconData icon = FontAwesomeIcons.user;
+
   @override
-  IconData icon = FontAwesomeIcons.user;
+  AssetImage icon = const AssetImage('lib/assets/icons/png/warrior.png');
 
   @override
   String getName() {

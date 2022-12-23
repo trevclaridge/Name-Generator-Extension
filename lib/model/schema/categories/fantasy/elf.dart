@@ -3,8 +3,11 @@ part of fantasy;
 class Elf implements Subcategory {
   final String _name = 'Elf';
 
+  // @override
+  // IconData icon = FontAwesomeIcons.earListen;
+
   @override
-  IconData icon = FontAwesomeIcons.earListen;
+  AssetImage icon = const AssetImage('lib/assets/icons/png/elf.png');
 
   @override
   String getName() {

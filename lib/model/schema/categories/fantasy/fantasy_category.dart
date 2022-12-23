@@ -23,8 +23,11 @@ class Fantasy implements Category {
     activeSubcategory = subcategoryPref;
   }
 
+  // @override
+  // IconData icon = FontAwesomeIcons.dragon;
+
   @override
-  IconData icon = FontAwesomeIcons.sprayCanSparkles;
+  AssetImage icon = const AssetImage('lib/assets/icons/png/dragon_sword.png');
 
   @override
   int activeSubcategory = 0;

@@ -3,8 +3,11 @@ part of town;
 class RealTown implements Subcategory {
   final String _name = 'Real Town';
 
+  // @override
+  // IconData icon = FontAwesomeIcons.building;
+
   @override
-  IconData icon = FontAwesomeIcons.building;
+  AssetImage icon = const AssetImage('lib/assets/icons/png/skyscraper.png');
 
   @override
   String getName() {

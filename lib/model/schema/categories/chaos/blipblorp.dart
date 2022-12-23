@@ -4,7 +4,7 @@ class BlipBlorp implements Subcategory {
   final String _name = 'Blip Blorp';
 
   @override
-  IconData icon = FontAwesomeIcons.shuffle;
+  AssetImage icon = const AssetImage('lib/assets/icons/png/rings.png');
 
   @override
   String generate() {

@@ -20,8 +20,11 @@ class Chaos implements Category {
   Chaos(subcategoryPref) {
     activeSubcategory = subcategoryPref;
   }
+  // @override
+  // IconData icon = FontAwesomeIcons.fantasyFlightGames;
+
   @override
-  IconData icon = FontAwesomeIcons.fantasyFlightGames;
+  AssetImage icon = const AssetImage('lib/assets/icons/png/mess.png');
 
   @override
   int activeSubcategory = 0;

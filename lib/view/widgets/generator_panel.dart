@@ -45,7 +45,7 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                 Radius.circular(10.0),
               ),
             ),
-            height: (viewSettings) ? 180 : 70,
+            height: (viewSettings) ? 190 : 70,
             child: Stack(
               children: [
                 Column(
@@ -118,7 +118,7 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                                   Row(
                                     children: [
                                       SizedBox(
-                                        height: 30.0,
+                                        height: 40.0,
                                         child: Consumer<App>(
                                           builder: (context, value, child) {
                                             return Row(
@@ -163,7 +163,8 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                                       children: [
                                         PanelButtonToggleable(
                                             tooltip: 'Feminine',
-                                            icon: FontAwesomeIcons.mars,
+                                            icon: const AssetImage(
+                                                'lib/assets/icons/png/venus.png'),
                                             buttonBehavior: () => App()
                                                 .panelNames[widget.panelNum]
                                                 .panelSettings
@@ -173,7 +174,8 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                                                 Gender.feminine),
                                         PanelButtonToggleable(
                                             tooltip: 'Gender Neutral',
-                                            icon: FontAwesomeIcons.minus,
+                                            icon: const AssetImage(
+                                                'lib/assets/icons/png/delete.png'),
                                             buttonBehavior: () => App()
                                                     .panelNames[widget.panelNum]
                                                     .panelSettings
@@ -184,7 +186,8 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                                                 Gender.genderNeutral),
                                         PanelButtonToggleable(
                                             tooltip: 'Masculine',
-                                            icon: FontAwesomeIcons.venus,
+                                            icon: const AssetImage(
+                                                'lib/assets/icons/png/mars.png'),
                                             buttonBehavior: () => App()
                                                     .panelNames[widget.panelNum]
                                                     .panelSettings
@@ -206,7 +209,7 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                                   Row(
                                     children: [
                                       SizedBox(
-                                        height: 30.0,
+                                        height: 40.0,
                                         child: Row(
                                           children: List.generate(
                                             widget

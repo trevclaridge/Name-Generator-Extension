@@ -3,8 +3,12 @@ part of pirate;
 class Sailor implements Subcategory {
   final String _name = 'Sailor';
 
+  // @override
+  // IconData icon = FontAwesomeIcons.anchor;
+
   @override
-  IconData icon = FontAwesomeIcons.anchor;
+  AssetImage icon =
+      const AssetImage('lib/assets/icons/png/starfish_pirate.png');
 
   @override
   String getName() {
