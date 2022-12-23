@@ -18,14 +18,14 @@ class Town implements Category {
   final String _name = 'Town';
 
   Town(subcategoryPref) {
-    activeSubcategory = parse(subcategoryPref);
+    activeSubcategory = subcategoryPref;
   }
 
   @override
   IconData icon = FontAwesomeIcons.towerBroadcast;
 
   @override
-  Subcategory activeSubcategory = RealTown();
+  int activeSubcategory = 0;
 
   @override
   List<Subcategory> subcategories = [RealTown(), FantasyTown()];

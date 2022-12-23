@@ -6,7 +6,7 @@ class Name {
     numSyllables: 2,
     activeCategoryIndex: 2,
     activeGender: Gender.genderNeutral,
-    categories: localallCategories,
+    categories: Categories().categories,
   );
 
   String getName() {
@@ -14,7 +14,10 @@ class Name {
   }
 
   void generate(PanelSettings settings) {
-    name = settings.categories[settings.activeCategoryIndex].activeSubcategory
+    name = settings
+        .categories[settings.activeCategoryIndex]
+        .subcategories[
+            settings.categories[settings.activeCategoryIndex].activeSubcategory]
         .generate();
   }
 
@@ -45,11 +48,3 @@ class Name {
     return count;
   }
 }
-
-List<Category> localallCategories = [
-  Chaos(BlipBlorp().getName()),
-  Fantasy(Human().getName()),
-  Pirate(Sailor().getName()),
-  Tavern(FantasyTavern().getName()),
-  Town(RealTown().getName())
-];

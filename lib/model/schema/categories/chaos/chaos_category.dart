@@ -18,13 +18,13 @@ class Chaos implements Category {
   final String _name = 'Chaos';
 
   Chaos(subcategoryPref) {
-    activeSubcategory = parse(subcategoryPref);
+    activeSubcategory = subcategoryPref;
   }
   @override
   IconData icon = FontAwesomeIcons.fantasyFlightGames;
 
   @override
-  Subcategory activeSubcategory = BlipBlorp();
+  int activeSubcategory = 0;
 
   @override
   List<Subcategory> subcategories = [BlipBlorp()];

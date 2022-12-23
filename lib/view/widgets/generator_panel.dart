@@ -45,7 +45,7 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                 Radius.circular(10.0),
               ),
             ),
-            height: (viewSettings) ? 180.0 : 70,
+            height: (viewSettings) ? 210.0 : 70,
             child: Stack(
               children: [
                 Column(
@@ -121,29 +121,25 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                                         height: 30.0,
                                         child: Consumer<App>(
                                           builder: (context, value, child) {
-                                            return ListView.builder(
-                                              shrinkWrap: true,
-                                              scrollDirection: Axis.horizontal,
-                                              physics:
-                                                  const NeverScrollableScrollPhysics(),
-                                              itemCount:
-                                                  App().allCategories.length,
-                                              itemBuilder: ((context, index) {
-                                                return PanelButtonToggleable(
-                                                  icon: widget.panelSettings
-                                                      .categories[index].icon,
-                                                  tooltip: widget.panelSettings
-                                                      .categories[index]
-                                                      .getName(),
-                                                  buttonBehavior: () =>
-                                                      _onToggleCategoryClick(
-                                                    index,
-                                                  ),
-                                                  toggled: widget.panelSettings
-                                                          .activeCategoryIndex ==
-                                                      index,
-                                                );
-                                              }),
+                                            return Row(
+                                              children: List.generate(
+                                                widget.panelSettings.categories
+                                                    .length,
+                                                (index) => PanelButtonToggleable(
+                                                    icon: widget.panelSettings
+                                                        .categories[index].icon,
+                                                    tooltip: widget
+                                                        .panelSettings
+                                                        .categories[index]
+                                                        .getName(),
+                                                    buttonBehavior: () =>
+                                                        _onToggleCategoryClick(
+                                                            index),
+                                                    toggled: widget
+                                                            .panelSettings
+                                                            .activeCategoryIndex ==
+                                                        index),
+                                              ),
                                             );
                                           },
                                         ),
@@ -152,11 +148,11 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                                   ),
                                   Visibility(
                                     visible: !App()
-                                        .nonGenderedCategores
-                                        .contains(widget
-                                                .panelSettings.categories[
-                                            widget.panelSettings
-                                                .activeCategoryIndex]),
+                                        .nonGenderedCategories
+                                        .contains(
+                                            widget.panelSettings.categories[
+                                                widget.panelSettings
+                                                    .activeCategoryIndex]),
                                     child: Row(
                                       children: [
                                         PanelButtonToggleable(
@@ -205,91 +201,74 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                                     children: [
                                       SizedBox(
                                         height: 30.0,
-                                        child: ListView.builder(
-                                          shrinkWrap: true,
-                                          scrollDirection: Axis.horizontal,
-                                          physics:
-                                              const NeverScrollableScrollPhysics(),
-                                          itemCount: widget
-                                              .panelSettings
-                                              .categories[widget.panelSettings
-                                                  .activeCategoryIndex]
-                                              .subcategories
-                                              .length,
-                                          itemBuilder: ((context, index) {
-                                            return Consumer(
-                                              builder: (context, value, child) {
-                                                return PanelButtonToggleable(
-                                                  icon: widget
-                                                      .panelSettings
-                                                      .categories[widget
-                                                          .panelSettings
-                                                          .activeCategoryIndex]
-                                                      .subcategories[index]
-                                                      .icon,
-                                                  tooltip: widget
-                                                      .panelSettings
-                                                      .categories[widget
-                                                          .panelSettings
-                                                          .activeCategoryIndex]
-                                                      .subcategories[index]
-                                                      .getName(),
-                                                  buttonBehavior: () =>
-                                                      _onToggleSubcategoryClick(
-                                                          index),
-                                                  toggled: widget
-                                                          .panelSettings
-                                                          .categories[widget
-                                                              .panelSettings
-                                                              .activeCategoryIndex]
-                                                          .subcategories[index]
-                                                          .getName() ==
-                                                      widget
-                                                          .panelSettings
-                                                          .categories[widget
-                                                              .panelSettings
-                                                              .activeCategoryIndex]
-                                                          .activeSubcategory
-                                                          .getName(),
-                                                );
-                                              },
-                                            );
-                                          }),
+                                        child: Row(
+                                          children: List.generate(
+                                            widget
+                                                .panelSettings
+                                                .categories[widget.panelSettings
+                                                    .activeCategoryIndex]
+                                                .subcategories
+                                                .length,
+                                            (index) => PanelButtonToggleable(
+                                                icon: widget
+                                                    .panelSettings
+                                                    .categories[widget
+                                                        .panelSettings
+                                                        .activeCategoryIndex]
+                                                    .subcategories[index]
+                                                    .icon,
+                                                tooltip: widget
+                                                    .panelSettings
+                                                    .categories[widget
+                                                        .panelSettings
+                                                        .activeCategoryIndex]
+                                                    .subcategories[index]
+                                                    .getName(),
+                                                buttonBehavior: () =>
+                                                    _onToggleSubcategoryClick(
+                                                        index),
+                                                toggled: widget
+                                                        .panelSettings
+                                                        .categories[widget
+                                                            .panelSettings
+                                                            .activeCategoryIndex]
+                                                        .activeSubcategory ==
+                                                    index),
+                                          ),
                                         ),
                                       ),
                                     ],
                                   ),
                                 ],
                               ),
-                              // const SizedBox(height: 12.0),
-                              // Row(
-                              //   mainAxisAlignment:
-                              //       MainAxisAlignment.spaceBetween,
-                              //   children: [
-                              //     Padding(
-                              //       padding: const EdgeInsets.only(
-                              //         left: 5.0,
-                              //       ),
-                              //       child: Text(
-                              //         '# of Syllables:',
-                              //         style: Palette().nameStyle.copyWith(
-                              //               fontSize: 16.0,
-                              //               fontWeight: FontWeight.w600,
-                              //               color: const Color(0xFF1E1E1E)
-                              //                   .withOpacity(0.85),
-                              //             ),
-                              //       ),
-                              //     ),
-                              //     Padding(
-                              //       padding:
-                              //           const EdgeInsets.only(right: 16.0),
-                              //       child: Counter(
-                              //         panelSettings: widget.panelSettings,
-                              //         panelNum: widget.panelNum,
-                              //       ),
-                              //     )
-                              //   ],
-                              // )
+                              const SizedBox(height: 12.0),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                      left: 5.0,
+                                    ),
+                                    child: Text(
+                                      '# of Syllables:',
+                                      style: Palette().nameStyle.copyWith(
+                                            fontSize: 16.0,
+                                            fontWeight: FontWeight.w600,
+                                            color: const Color(0xFF1E1E1E)
+                                                .withOpacity(0.85),
+                                          ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 16.0),
+                                    child: Counter(
+                                      panelSettings: widget.panelSettings,
+                                      panelNum: widget.panelNum,
+                                    ),
+                                  )
+                                ],
+                              )
                             ],
                           )),
                     )
@@ -332,7 +311,7 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
     // ignore: use_build_context_synchronously
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('$name copied to clipboard'),
+        content: Text('$name copied to clipboard.'),
       ),
     );
   }
@@ -350,7 +329,6 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
   }
 
   void _onToggleSubcategoryClick(int subcategoryIndex) {
-    print(widget.panelNum);
     App().toggleSubcategoryPanelButton(widget.panelNum, subcategoryIndex);
   }
 }

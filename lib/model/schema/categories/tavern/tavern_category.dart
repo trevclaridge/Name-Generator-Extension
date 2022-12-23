@@ -18,14 +18,14 @@ class Tavern implements Category {
   final String _name = 'Tavern';
 
   Tavern(subcategoryPref) {
-    activeSubcategory = parse(subcategoryPref);
+    activeSubcategory = subcategoryPref;
   }
 
   @override
   IconData icon = FontAwesomeIcons.beerMugEmpty;
 
   @override
-  Subcategory activeSubcategory = FantasyTavern();
+  int activeSubcategory = 0;
 
   @override
   List<Subcategory> subcategories = [FantasyTavern()];

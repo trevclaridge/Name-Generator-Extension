@@ -3,7 +3,7 @@ part of model;
 class PanelSettings {
   int numSyllables = 2;
   int activeCategoryIndex = 2;
-  List<Category> categories = allCategories;
+  List<Category> categories = Categories().categories;
   Gender activeGender = Gender.genderNeutral;
 
   PanelSettings(
@@ -20,13 +20,12 @@ class PanelSettings {
     final json = jsonDecode(settings);
     List<dynamic> subcategoriesPref = json['subcategories'];
     for (int i = 0; i < subcategoriesPref.length; ++i) {
-      subcategoriesPref[i] = subcategoriesPref[i].toString();
+      subcategoriesPref[i] = subcategoriesPref[i];
     }
 
-    List<Category> appCategories = App().allCategories;
+    List<Category> appCategories = Categories().categories;
     for (int i = 0; i < appCategories.length; ++i) {
-      appCategories[i].activeSubcategory =
-          appCategories[i].parse(subcategoriesPref[i]);
+      appCategories[i].activeSubcategory = int.parse(subcategoriesPref[i]);
     }
 
     return PanelSettings(
@@ -40,7 +39,7 @@ class PanelSettings {
   String toJsonString() {
     List<String> subcategories = [];
     for (int i = 0; i < categories.length; ++i) {
-      subcategories.add(categories[i].activeSubcategory.getName());
+      subcategories.add(categories[i].activeSubcategory.toString());
     }
     Map<String, dynamic> json = {
       'numSyllables': numSyllables.toString(),
@@ -52,11 +51,3 @@ class PanelSettings {
     return jsonEncode(json);
   }
 }
-
-List<Category> allCategories = [
-  Chaos(BlipBlorp().getName()),
-  Fantasy(Human().getName()),
-  Pirate(Sailor().getName()),
-  Tavern(FantasyTavern().getName()),
-  Town(RealTown().getName())
-];

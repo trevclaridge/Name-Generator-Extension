@@ -2,12 +2,12 @@ part of model;
 
 abstract class Category {
   final String _name = 'Error: Category name';
-  List<Subcategory> subcategories = [Sailor()];
-  Subcategory activeSubcategory = Sailor();
+  late List<Subcategory> subcategories;
+  int activeSubcategory = 0;
   IconData icon = FontAwesomeIcons.x;
 
   @override
-  Category(String subcategoryPref);
+  Category(int subcategoryPref);
 
   String getName() {
     return _name;

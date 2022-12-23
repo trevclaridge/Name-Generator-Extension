@@ -20,14 +20,14 @@ class Fantasy implements Category {
   final String _name = 'Fantasy';
 
   Fantasy(subcategoryPref) {
-    activeSubcategory = parse(subcategoryPref);
+    activeSubcategory = subcategoryPref;
   }
 
   @override
   IconData icon = FontAwesomeIcons.sprayCanSparkles;
 
   @override
-  Subcategory activeSubcategory = Elf();
+  int activeSubcategory = 0;
 
   @override
   List<Subcategory> subcategories = [Elf(), Human(), Dwarf()];

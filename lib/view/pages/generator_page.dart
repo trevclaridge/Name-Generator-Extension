@@ -31,6 +31,7 @@ class _GeneratorPageState extends State<GeneratorPage> {
                   ),
                 ),
                 ListView.builder(
+                  addAutomaticKeepAlives: false,
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: App().panelNames.length,
                   shrinkWrap: true,

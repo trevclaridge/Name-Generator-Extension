@@ -67,7 +67,9 @@ class SharedPrefs {
     for (int i = 0; i < 5; ++i) {
       // ignore: unused_local_variable
       await prefs.setString(
-          'panel_setting_$i', App().panelNames[i].panelSettings.toJsonString());
+        'panel_setting_$i',
+        App().panelNames[i].panelSettings.toJsonString(),
+      );
     }
   }
 }

@@ -1,7 +1,11 @@
-library categories;
+part of model;
 
-export 'chaos/chaos.dart';
-export 'fantasy/fantasy.dart';
-export 'town/town.dart';
-export 'tavern/tavern.dart';
-export 'pirate/pirate.dart';
+class Categories {
+  List<Category> categories = [
+    Chaos(0),
+    Fantasy(0),
+    Pirate(0),
+    Tavern(0),
+    Town(0)
+  ];
+}

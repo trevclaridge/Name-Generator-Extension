@@ -13,18 +13,7 @@ class App extends ChangeNotifier {
   final List<SavedName> _savedNames = [];
   List<SavedName> get savedNames => _savedNames;
 
-  List<Category> nonGenderedCategores = [
-    Tavern(FantasyTavern().getName()),
-    Town(RealTown().getName())
-  ];
-
-  List<Category> allCategories = [
-    Chaos(BlipBlorp().getName()),
-    Fantasy(Human().getName()),
-    Pirate(Sailor().getName()),
-    Tavern(FantasyTavern().getName()),
-    Town(RealTown().getName())
-  ];
+  List<Category> nonGenderedCategories = [Tavern(0), Town(0)];
 
   final List<Name> panelNames = [
     Name(),
@@ -109,18 +98,14 @@ class App extends ChangeNotifier {
   }
 
   void toggleSubcategoryPanelButton(int panelNum, int subCategoryIndex) {
+    var categoryIndex =
+        App().panelNames[panelNum].panelSettings.activeCategoryIndex;
+
     App()
-            .panelNames[panelNum]
-            .panelSettings
-            .categories[
-                App().panelNames[panelNum].panelSettings.activeCategoryIndex]
-            .activeSubcategory =
-        App()
-            .panelNames[panelNum]
-            .panelSettings
-            .categories[
-                App().panelNames[panelNum].panelSettings.activeCategoryIndex]
-            .subcategories[subCategoryIndex];
+        .panelNames[panelNum]
+        .panelSettings
+        .categories[categoryIndex]
+        .activeSubcategory = subCategoryIndex;
 
     rerollName(panelNum);
     saveSettingstoPrefs();

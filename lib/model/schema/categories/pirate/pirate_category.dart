@@ -19,14 +19,14 @@ class Pirate implements Category {
   final String _name = 'Pirate';
 
   Pirate(subcategoryPref) {
-    activeSubcategory = parse(subcategoryPref);
+    activeSubcategory = subcategoryPref;
   }
 
   @override
   IconData icon = FontAwesomeIcons.earthOceania;
 
   @override
-  Subcategory activeSubcategory = Sailor();
+  int activeSubcategory = 0;
 
   @override
   List<Subcategory> subcategories = [Sailor(), Ship()];
