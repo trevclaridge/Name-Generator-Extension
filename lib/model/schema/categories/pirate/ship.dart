@@ -16,7 +16,7 @@ class Ship implements Subcategory {
   }
 
   @override
-  String generate() {
+  String generate(PanelSettings settings) {
     return 'The Black Pearl';
   }
 }

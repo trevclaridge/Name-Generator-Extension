@@ -1,7 +1,7 @@
 part of town;
 
 class FantasyTown implements Subcategory {
-  final String _name = 'FantasyTown';
+  final String _name = 'Fantasy Town';
 
   // @override
   // IconData icon = FontAwesomeIcons.wizardsOfTheCoast;
@@ -15,7 +15,7 @@ class FantasyTown implements Subcategory {
   }
 
   @override
-  String generate() {
+  String generate(PanelSettings settings) {
     return 'Whiterun';
   }
 }

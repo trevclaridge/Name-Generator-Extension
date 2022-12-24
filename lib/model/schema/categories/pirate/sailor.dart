@@ -15,7 +15,7 @@ class Sailor implements Subcategory {
   }
 
   @override
-  String generate() {
+  String generate(PanelSettings settings) {
     return 'Captain Jack Sparrow';
   }
 }

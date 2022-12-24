@@ -15,7 +15,7 @@ class FantasyTavern implements Subcategory {
   }
 
   @override
-  String generate() {
+  String generate(PanelSettings settings) {
     return 'The Prancing Pony';
   }
 }

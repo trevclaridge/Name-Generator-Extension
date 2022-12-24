@@ -165,9 +165,9 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                                             iconString:
                                                 'lib/assets/icons/svg/feminine.svg',
                                             buttonBehavior: () => App()
-                                                .panelNames[widget.panelNum]
-                                                .panelSettings
-                                                .activeGender = Gender.feminine,
+                                                .toggleGenderPanelButton(
+                                                    widget.panelNum,
+                                                    Gender.feminine),
                                             toggled: widget.panelSettings
                                                     .activeGender ==
                                                 Gender.feminine),
@@ -176,10 +176,9 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                                             iconString:
                                                 'lib/assets/icons/svg/hyphen.svg',
                                             buttonBehavior: () => App()
-                                                    .panelNames[widget.panelNum]
-                                                    .panelSettings
-                                                    .activeGender =
-                                                Gender.genderNeutral,
+                                                .toggleGenderPanelButton(
+                                                    widget.panelNum,
+                                                    Gender.genderNeutral),
                                             toggled: widget.panelSettings
                                                     .activeGender ==
                                                 Gender.genderNeutral),
@@ -188,10 +187,9 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                                             iconString:
                                                 'lib/assets/icons/svg/masculine.svg',
                                             buttonBehavior: () => App()
-                                                    .panelNames[widget.panelNum]
-                                                    .panelSettings
-                                                    .activeGender =
-                                                Gender.masculine,
+                                                .toggleGenderPanelButton(
+                                                    widget.panelNum,
+                                                    Gender.masculine),
                                             toggled: widget.panelSettings
                                                     .activeGender ==
                                                 Gender.masculine),

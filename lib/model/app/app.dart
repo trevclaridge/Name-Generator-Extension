@@ -117,4 +117,11 @@ class App extends ChangeNotifier {
     saveSettingstoPrefs();
     notifyListeners();
   }
+
+  void toggleGenderPanelButton(int panelNum, Gender gender) {
+    App().panelNames[panelNum].panelSettings.activeGender = gender;
+    rerollName(panelNum);
+    saveSettingstoPrefs();
+    notifyListeners();
+  }
 }

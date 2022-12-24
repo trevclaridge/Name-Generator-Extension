@@ -5,13 +5,11 @@ part of model;
 abstract class Subcategory {
   final String _name = 'Error: Subcategory name';
 
-  // IconData icon = FontAwesomeIcons.e;
-
   String icon = 'lib/assets/icons/svg/error.svg';
 
   String getName() {
     return _name;
   }
 
-  String generate();
+  String generate(PanelSettings settings);
 }

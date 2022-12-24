@@ -2,29 +2,12 @@
 
 part of fantasy;
 
-// class Fantasy implements Subcategory {
-//   final String _subcategory;
-//   const Fantasy._(this._subcategory);
-
-//   @override
-//   String toString() {
-//     return _subcategory;
-//   }
-
-//   static const Fantasy elf = Fantasy._('elf');
-//   static const Fantasy dwarf = Fantasy._('dwarf');
-//   static const Fantasy human = Fantasy._('human');
-// }
-
 class Fantasy implements Category {
   final String _name = 'Fantasy';
 
   Fantasy(subcategoryPref) {
     activeSubcategory = subcategoryPref;
   }
-
-  // @override
-  // IconData icon = FontAwesomeIcons.dragon;
 
   @override
   String icon = 'lib/assets/icons/svg/book.svg';

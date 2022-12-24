@@ -18,7 +18,7 @@ class Name {
         .categories[settings.activeCategoryIndex]
         .subcategories[
             settings.categories[settings.activeCategoryIndex].activeSubcategory]
-        .generate();
+        .generate(settings);
   }
 
   int numSyllables(String tempString) {

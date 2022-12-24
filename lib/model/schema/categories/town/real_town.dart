@@ -15,7 +15,8 @@ class RealTown implements Subcategory {
   }
 
   @override
-  String generate() {
-    return 'Leland';
+  String generate(PanelSettings settings) {
+    var random = Random();
+    return Names().places[random.nextInt(Names().places.length - 1)];
   }
 }
