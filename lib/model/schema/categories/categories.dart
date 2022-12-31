@@ -13,10 +13,13 @@ class Categories {
     Ship().getName(),
     FantasyTavern().getName(),
     RealTown().getName(),
-    FantasyTown().getName()
+    FantasyTown().getName(),
+    BlipBlorp().getName()
   ];
 
   List<String> syllabledSubcategories = [
     BlipBlorp().getName(),
+    Elf().getName(),
+    Dwarf().getName()
   ];
 }

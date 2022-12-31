@@ -36,7 +36,7 @@ class _HomePageState extends State<HomePage> {
         actions: [
           (bottomSelectedIndex == 0)
               ? Padding(
-                  padding: const EdgeInsets.only(right: 40.0),
+                  padding: const EdgeInsets.only(right: 25.0),
                   child: Row(
                     children: [
                       IconButton(
@@ -64,7 +64,6 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Palette().genOrange,
         currentIndex: bottomSelectedIndex,
-        // elevation: 0.0,
         onTap: (index) {
           bottomTapped(index);
         },

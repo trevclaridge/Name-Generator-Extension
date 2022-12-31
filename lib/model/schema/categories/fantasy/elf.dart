@@ -21,20 +21,17 @@ class Elf implements Subcategory {
     String firstName = '';
 
     for (int i = 0; i < settings.numSyllables - 1; ++i) {
-      firstName += elfStarts[random.nextInt(elfStarts.length - 1)];
+      firstName += elfStarts.getRandomElement();
     }
 
     if (settings.activeGender == Gender.masculine) {
-      firstName +=
-          elfMasculineEnds[random.nextInt(elfMasculineEnds.length - 1)];
+      firstName += elfMasculineEnds.getRandomElement();
     } else if (settings.activeGender == Gender.feminine) {
-      firstName += elfFeminineEnds[random.nextInt(elfFeminineEnds.length - 1)];
+      firstName += elfFeminineEnds.getRandomElement();
     } else {
       firstName = (random.nextBool())
-          ? firstName +=
-              elfMasculineEnds[random.nextInt(elfMasculineEnds.length - 1)]
-          : firstName +=
-              elfFeminineEnds[random.nextInt(elfFeminineEnds.length - 1)];
+          ? firstName += elfMasculineEnds.getRandomElement()
+          : firstName += elfFeminineEnds.getRandomElement();
     }
 
     return firstName;
@@ -48,11 +45,11 @@ class Elf implements Subcategory {
       int path = 0;
       path = random.nextInt(3);
       if (path == 0) {
-        lastName += elfMasculineEnds[random.nextInt(elfMasculineEnds.length)];
+        lastName += elfMasculineEnds.getRandomElement();
       } else if (path == 1) {
-        lastName += elfMasculineEnds[random.nextInt(elfMasculineEnds.length)];
+        lastName += elfMasculineEnds.getRandomElement();
       } else {
-        lastName += elfStarts[random.nextInt(elfStarts.length)];
+        lastName += elfStarts.getRandomElement();
       }
     }
 
@@ -64,14 +61,14 @@ class Elf implements Subcategory {
     String title = '';
 
     title += ' of the ';
-    title += adjectives[random.nextInt(adjectives.length)].capitalize();
+    title += natureAdjectives.getRandomElement().capitalize();
     title += ' ';
 
     if (random.nextBool()) {
-      title += natureWords[random.nextInt(natureWords.length)].capitalize();
+      title += natureNouns.getRandomElement().capitalize();
     } else {
       title += PluralRules()
-          .convertToPluralNoun(natureWords[random.nextInt(natureWords.length)])
+          .convertToPluralNoun(natureNouns.getRandomElement())
           .capitalize();
     }
 
@@ -143,7 +140,7 @@ class Elf implements Subcategory {
     'ynn'
   ];
 
-  List<String> natureWords = [
+  List<String> natureNouns = [
     'leaf',
     'plant',
     'rock',
@@ -229,7 +226,7 @@ class Elf implements Subcategory {
     'wild'
   ];
 
-  List<String> adjectives = [
+  List<String> natureAdjectives = [
     'gleaming',
     'rotten',
     'shining',

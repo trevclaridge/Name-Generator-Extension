@@ -51,12 +51,14 @@ class _CounterState extends State<Counter> {
         Consumer<App>(
           builder: (context, value, child) {
             return SizedBox(
-              width: 10.0,
-              child: Text(
-                widget.panelSettings.numSyllables.toString(),
-                style: Palette().nameStyle.copyWith(
-                      color: const Color(0xFF1E1E1E).withOpacity(0.80),
-                    ),
+              width: 26.0,
+              child: Center(
+                child: Text(
+                  '0${widget.panelSettings.numSyllables}',
+                  style: Palette().nameStyle.copyWith(
+                        color: const Color(0xFF1E1E1E).withOpacity(0.80),
+                      ),
+                ),
               ),
             );
           },

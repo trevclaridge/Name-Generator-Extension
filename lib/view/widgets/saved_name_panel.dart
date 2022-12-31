@@ -29,18 +29,26 @@ class _SavedNamePanelState extends State<SavedNamePanel> {
           onHover: _onHover,
           onExit: _onExit,
           child: Container(
-            color: savedNamePanelColor,
+            decoration: BoxDecoration(
+              color: savedNamePanelColor,
+              borderRadius: const BorderRadius.all(
+                Radius.circular(10.0),
+              ),
+            ),
             child: Column(
               children: [
                 const SizedBox(height: 12.0),
                 FittedBox(
                   fit: BoxFit.fitWidth,
-                  child: SelectableText(
-                    widget.savedName.name,
-                    style: Theme.of(context)
-                        .textTheme
-                        .displaySmall!
-                        .copyWith(fontSize: 32.0),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: SelectableText(
+                      widget.savedName.name,
+                      style: Theme.of(context)
+                          .textTheme
+                          .displaySmall!
+                          .copyWith(fontSize: 32.0),
+                    ),
                   ),
                 ),
                 const SizedBox(height: 8.0),

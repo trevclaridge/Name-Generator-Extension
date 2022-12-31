@@ -24,31 +24,25 @@ class Dwarf implements Subcategory {
     String firstName = '';
 
     for (var i = 0; i < settings.numSyllables - 1; ++i) {
-      firstName +=
-          dwarfFirstStarts[random.nextInt(dwarfFirstStarts.length - 1)];
+      firstName += dwarfFirstStarts.getRandomElement();
     }
     if (settings.activeGender == Gender.masculine) {
-      firstName += dwarfFirstMasculineEnds[
-          random.nextInt(dwarfFirstMasculineEnds.length - 1)];
+      firstName += dwarfFirstMasculineEnds.getRandomElement();
     } else if (settings.activeGender == Gender.feminine) {
-      firstName += dwarfFirstFeminineEnds[
-          random.nextInt(dwarfFirstFeminineEnds.length - 1)];
+      firstName += dwarfFirstFeminineEnds.getRandomElement();
     } else {
       firstName = (random.nextBool())
-          ? firstName += dwarfFirstMasculineEnds[
-              random.nextInt(dwarfFirstMasculineEnds.length - 1)]
-          : firstName += dwarfFirstFeminineEnds[
-              random.nextInt(dwarfFirstFeminineEnds.length - 1)];
+          ? firstName += dwarfFirstMasculineEnds.getRandomElement()
+          : firstName += dwarfFirstFeminineEnds.getRandomElement();
     }
     return firstName;
   }
 
   String getLastName() {
-    var random = Random();
     String lastName = '';
 
-    lastName += dwarfLastStarts[random.nextInt(dwarfLastStarts.length - 1)];
-    lastName += dwarfLastEnds[random.nextInt(dwarfLastEnds.length - 1)];
+    lastName += dwarfLastStarts.getRandomElement();
+    lastName += dwarfLastEnds.getRandomElement();
 
     return lastName;
   }

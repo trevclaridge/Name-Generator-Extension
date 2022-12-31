@@ -24,18 +24,15 @@ class Human implements Subcategory {
       firstName = (random.nextBool()) ? getFeminineName() : getMasculineName();
     }
 
-    String lastName =
-        FinNLP().lastNames[random.nextInt(FinNLP().lastNames.length - 1)];
+    String lastName = FinNLP().lastNames.getRandomElement();
     return '$firstName $lastName';
   }
 
   String getFeminineName() {
-    var random = Random();
-    return Names().feminine[random.nextInt(Names().feminine.length - 1)];
+    return Names().feminine.getRandomElement();
   }
 
   String getMasculineName() {
-    var random = Random();
-    return Names().masculine[random.nextInt(Names().masculine.length - 1)];
+    return Names().masculine.getRandomElement();
   }
 }

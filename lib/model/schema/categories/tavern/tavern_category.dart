@@ -2,18 +2,6 @@
 
 part of tavern;
 
-// class Tavern implements Subcategory {
-//   final String _subcategory;
-//   const Tavern._(this._subcategory);
-
-//   @override
-//   String toString() {
-//     return _subcategory;
-//   }
-
-//   static const Tavern fantasy = Tavern._('fantasy');
-// }
-
 class Tavern implements Category {
   final String _name = 'Tavern';
 
@@ -21,11 +9,8 @@ class Tavern implements Category {
     activeSubcategory = subcategoryPref;
   }
 
-  // @override
-  // IconData icon = FontAwesomeIcons.beerMugEmpty;
-
   @override
-  String icon = 'lib/assets/icons/svg/saloon.svg';
+  String icon = 'lib/assets/icons/svg/beer.svg';
 
   @override
   int activeSubcategory = 0;

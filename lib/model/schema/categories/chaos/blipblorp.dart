@@ -13,13 +13,11 @@ class BlipBlorp implements Subcategory {
 
   @override
   String generate(PanelSettings settings) {
-    var random = Random();
     String firstName = '';
     String lastName = '';
 
     for (int i = 0; i < settings.numSyllables; ++i) {
-      firstName +=
-          blipblorpSyllables[random.nextInt(blipblorpSyllables.length - 1)];
+      firstName += blipblorpSyllables.getRandomElement();
     }
     if (!firstName.endsWith('p') &&
         vowels.contains(firstName[firstName.length - 1])) {
@@ -27,8 +25,7 @@ class BlipBlorp implements Subcategory {
     }
 
     for (int i = 0; i < settings.numSyllables + 1; ++i) {
-      lastName +=
-          blipblorpSyllables[random.nextInt(blipblorpSyllables.length - 1)];
+      lastName += blipblorpSyllables.getRandomElement();
     }
     if (!lastName.endsWith('p') &&
         vowels.contains(lastName[lastName.length - 1])) {
