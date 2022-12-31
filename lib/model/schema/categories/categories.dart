@@ -20,6 +20,7 @@ class Categories {
   List<String> syllabledSubcategories = [
     BlipBlorp().getName(),
     Elf().getName(),
-    Dwarf().getName()
+    Dwarf().getName(),
+    FantasyTown().getName()
   ];
 }

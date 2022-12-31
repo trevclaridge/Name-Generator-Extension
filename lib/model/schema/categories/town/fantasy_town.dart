@@ -3,9 +3,6 @@ part of town;
 class FantasyTown implements Subcategory {
   final String _name = 'Fantasy Town';
 
-  // @override
-  // IconData icon = FontAwesomeIcons.wizardsOfTheCoast;
-
   @override
   String icon = 'lib/assets/icons/svg/windmill.svg';
 
@@ -16,6 +13,33 @@ class FantasyTown implements Subcategory {
 
   @override
   String generate(PanelSettings settings) {
-    return 'Whiterun';
+    String fantasyTownName = '';
+
+    for (int i = 0; i < settings.numSyllables; ++i) {
+      fantasyTownName += Syllables().syllables.getRandomElement();
+    }
+
+    fantasyTownName += townSuffixes.getRandomElement();
+
+    return fantasyTownName.capitalize();
   }
+
+  List<String> townSuffixes = [
+    'ville',
+    'holme',
+    'run',
+    'ton',
+    'ham',
+    'moor',
+    'fair',
+    'eld',
+    'bury',
+    'field',
+    'fields',
+    'shire',
+    'den',
+    'stead',
+    'dale',
+    'wick'
+  ];
 }
