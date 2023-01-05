@@ -40,7 +40,7 @@ class _PanelButtonToggleableState extends State<PanelButtonToggleable> {
             onTap: widget.buttonBehavior,
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 200),
-              curve: Curves.easeInOutCubic,
+              curve: Curves.ease,
               decoration: BoxDecoration(
                   color: getToggleColor(),
                   borderRadius: BorderRadius.circular(5)),

@@ -361,6 +361,8 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
 
   void _onSaveClick() {
     App().addNameToSaved(SavedName(name: widget.panelName.name));
+    App().appPageController.animateToPage(1,
+        duration: const Duration(milliseconds: 500), curve: Curves.ease);
   }
 
   void _onRerollClick() {

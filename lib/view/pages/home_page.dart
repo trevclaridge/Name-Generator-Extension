@@ -13,7 +13,7 @@ class _HomePageState extends State<HomePage> {
     BottomNavigationBarItem(icon: Icon(Icons.archive), label: 'Saved'),
   ];
 
-  PageController pageController = PageController();
+  PageController pageController = App().appPageController;
   int bottomSelectedIndex = 0;
 
   @override

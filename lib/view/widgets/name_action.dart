@@ -17,7 +17,7 @@ class NameAction extends StatefulWidget {
 }
 
 class _NameActionState extends State<NameAction> {
-  Color iconColor = Palette().unhoveredGrey;
+  bool hovered = false;
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
@@ -26,20 +26,35 @@ class _NameActionState extends State<NameAction> {
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
         onTap: widget.buttonBehavior,
-        child: Icon(widget.icon, color: iconColor, size: 20.0),
+        child: Icon(widget.icon, color: getColor(), size: 20.0),
       ),
     );
   }
 
   void _onExit(event) {
     setState(() {
-      iconColor = Palette().unhoveredGrey;
+      hovered = false;
     });
   }
 
   void _onEnter(event) {
     setState(() {
-      iconColor = Colors.black;
+      hovered = true;
     });
+  }
+
+  Color getColor() {
+    List<String> savedNamesAsStrings = List.generate(
+        App().savedNames.length, (index) => App().savedNames[index].name);
+
+    if (savedNamesAsStrings.contains(widget.fullName) &&
+        widget.icon == FontAwesomeIcons.floppyDisk) {
+      return Palette().genOrange;
+    }
+    if (hovered) {
+      return Colors.black;
+    } else {
+      return Palette().unhoveredGrey;
+    }
   }
 }

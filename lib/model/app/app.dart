@@ -21,6 +21,8 @@ class App extends ChangeNotifier {
     Name(),
   ];
 
+  PageController appPageController = PageController();
+
   void addNameToSaved(SavedName name) {
     for (var savedName in _savedNames) {
       if (name.name == savedName.name) {
