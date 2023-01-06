@@ -22,11 +22,15 @@ class _SavedPageState extends State<SavedPage> {
                   ),
                 )
               : ListView.builder(
+                  reverse: true,
                   itemCount: App().savedNames.length,
                   shrinkWrap: true,
                   itemBuilder: ((context, index) {
+                    // auto scroll to bottom from: https://stackoverflow.com/questions/53483263/flutter-how-to-make-a-list-that-always-scrolls-to-the-bottom
+                    final reversedIndex = App().savedNames.length - 1 - index;
+                    final element = App().savedNames.elementAt(reversedIndex);
                     return SavedNamePanel(
-                      savedName: App().savedNames.elementAt(index),
+                      savedName: element,
                     );
                   }),
                 ),

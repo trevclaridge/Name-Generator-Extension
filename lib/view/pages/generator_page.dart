@@ -37,7 +37,7 @@ class _GeneratorPageState extends State<GeneratorPage> {
                   shrinkWrap: true,
                   itemBuilder: ((context, index) {
                     return Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      padding: const EdgeInsets.symmetric(vertical: 6.0),
                       child: Consumer<App>(
                         builder: (context, value, child) {
                           return GeneratorPanel(

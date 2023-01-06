@@ -120,37 +120,40 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                           ),
                         ),
                       ),
-                      Row(
-                        children: [
-                          Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 4.0),
-                            child: NameAction(
-                              fullName: widget.panelName.getName(),
-                              buttonBehavior: () =>
-                                  _onCopyClick(widget.panelName.getName()),
-                              icon: FontAwesomeIcons.copy,
+                      Padding(
+                        padding: const EdgeInsets.only(left: 6.0),
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 4.0),
+                              child: NameAction(
+                                fullName: widget.panelName.getName(),
+                                buttonBehavior: () =>
+                                    _onCopyClick(widget.panelName.getName()),
+                                icon: FontAwesomeIcons.copy,
+                              ),
                             ),
-                          ),
-                          Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 4.0),
-                            child: NameAction(
-                              fullName: widget.panelName.getName(),
-                              buttonBehavior: _onRerollClick,
-                              icon: FontAwesomeIcons.arrowsRotate,
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 4.0),
+                              child: NameAction(
+                                fullName: widget.panelName.getName(),
+                                buttonBehavior: _onRerollClick,
+                                icon: FontAwesomeIcons.arrowsRotate,
+                              ),
                             ),
-                          ),
-                          Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 4.0),
-                            child: NameAction(
-                              fullName: widget.panelName.getName(),
-                              buttonBehavior: _onSaveClick,
-                              icon: FontAwesomeIcons.floppyDisk,
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 4.0),
+                              child: NameAction(
+                                fullName: widget.panelName.getName(),
+                                buttonBehavior: _onSaveClick,
+                                icon: FontAwesomeIcons.floppyDisk,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ],
                   ),
