@@ -13,6 +13,11 @@ class _HomePageState extends State<HomePage> {
     BottomNavigationBarItem(icon: Icon(Icons.archive), label: 'Saved'),
   ];
 
+  //   List<BottomNavigationAction> actions = const [
+  //   BottomNavigationAction(icon: Icons.reorder, label: 'Generator', selected: true,),
+  //   BottomNavigationAction(icon: Icons.archive, label: 'Saved', selected: false,),
+  // ];
+
   PageController pageController = App().appPageController;
   int bottomSelectedIndex = 0;
 
@@ -84,5 +89,42 @@ class _HomePageState extends State<HomePage> {
       pageController.animateToPage(index,
           duration: const Duration(milliseconds: 500), curve: Curves.ease);
     });
+  }
+}
+
+class BottomNavigationAction extends StatefulWidget {
+  const BottomNavigationAction(
+      {super.key,
+      required this.selected,
+      required this.icon,
+      required this.label});
+
+  final bool selected;
+  final IconData icon;
+  final String label;
+
+  @override
+  State<BottomNavigationAction> createState() => _BottomNavigationActionState();
+}
+
+class _BottomNavigationActionState extends State<BottomNavigationAction> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        color:
+            (widget.selected) ? Colors.transparent : Palette().genOrangeAccent,
+        child: Center(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Icon(widget.icon, color: Colors.white),
+              Text(
+                widget.label,
+                style: const TextStyle(color: Colors.white),
+              ),
+            ],
+          ),
+        ));
   }
 }

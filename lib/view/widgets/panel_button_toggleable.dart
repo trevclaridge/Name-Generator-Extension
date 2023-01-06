@@ -48,7 +48,10 @@ class _PanelButtonToggleableState extends State<PanelButtonToggleable> {
               height: 30.0,
               child: Center(
                 child: SvgPicture.asset(widget.iconString,
-                    color: getIconColor(), width: 22.0, height: 22.0),
+                    semanticsLabel: widget.tooltip,
+                    color: getIconColor(),
+                    width: 22.0,
+                    height: 22.0),
               ),
             ),
           ),

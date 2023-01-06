@@ -19,7 +19,7 @@
 ### Town Icons
 * Modern city icon: <a href="https://www.flaticon.com/free-icons/architecture-and-city" title="architecture and city icons">Architecture and city icons created by Freepik - Flaticon</a>
 * Fantasy Village icon (windmill): <a href="https://www.flaticon.com/free-icons/wind-energy" title="wind energy icons">Wind energy icons created by Freepik - Flaticon</a>
-* Town icon: <a href="https://www.flaticon.com/free-icons/village" title="village icons">Village icons created by Freepik - Flaticon</a>
+* Town icon: <a href="https://www.flaticon.com/free-icons/neighborhood" title="neighborhood icons">Neighborhood icons created by Freepik - Flaticon</a>
 
 ### Chaos Icons
 * Chaos icon: <a href="https://www.flaticon.com/free-icons/chaos" title="chaos icons">Chaos icons created by Freepik - Flaticon</a>

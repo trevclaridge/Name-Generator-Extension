@@ -1,1 +1,0 @@
-Command to build web app compatible as Chrome extension: flutter build web --web-renderer html --csp
