@@ -127,7 +127,7 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                             Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 4.0),
-                              child: NameAction(
+                              child: GenAction(
                                 fullName: widget.panelName.getName(),
                                 buttonBehavior: () =>
                                     _onCopyClick(widget.panelName.getName()),
@@ -137,7 +137,7 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                             Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 4.0),
-                              child: NameAction(
+                              child: GenAction(
                                 fullName: widget.panelName.getName(),
                                 buttonBehavior: _onRerollClick,
                                 icon: FontAwesomeIcons.arrowsRotate,
@@ -146,7 +146,7 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                             Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 4.0),
-                              child: NameAction(
+                              child: GenAction(
                                 fullName: widget.panelName.getName(),
                                 buttonBehavior: _onSaveClick,
                                 icon: FontAwesomeIcons.floppyDisk,

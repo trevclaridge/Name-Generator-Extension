@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_web_libraries_in_flutter
+
 library view;
 
 import 'package:flutter/cupertino.dart';
@@ -8,15 +10,17 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'dart:js' as js;
 
-part 'pages/about_page.dart';
+part 'pages/settings_page.dart';
 part 'pages/home_page.dart';
 part 'pages/generator_page.dart';
 part 'pages/saved_page.dart';
 part 'theme/palette.dart';
 part 'theme/theme.dart';
+part 'widgets/appbar_generate_button.dart';
 part 'widgets/counter.dart';
-part 'widgets/name_action.dart';
+part 'widgets/gen_action.dart';
 part 'widgets/generator_panel.dart';
 part 'widgets//panel_button_toggleable.dart';
 part 'widgets/saved_name_panel.dart';

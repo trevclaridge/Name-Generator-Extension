@@ -1,7 +1,7 @@
 part of view;
 
-class NameAction extends StatefulWidget {
-  const NameAction(
+class GenAction extends StatefulWidget {
+  const GenAction(
       {Key? key,
       required this.fullName,
       required this.buttonBehavior,
@@ -13,10 +13,10 @@ class NameAction extends StatefulWidget {
   final IconData icon;
 
   @override
-  State<NameAction> createState() => _NameActionState();
+  State<GenAction> createState() => _GenActionState();
 }
 
-class _NameActionState extends State<NameAction> {
+class _GenActionState extends State<GenAction> {
   bool hovered = false;
   @override
   Widget build(BuildContext context) {

@@ -59,13 +59,13 @@ class _SavedNamePanelState extends State<SavedNamePanel> {
                     children: [
                       Row(
                         children: [
-                          NameAction(
+                          GenAction(
                               fullName: widget.savedName.name,
                               buttonBehavior: () =>
                                   _onCopyClick(widget.savedName.name),
                               icon: FontAwesomeIcons.copy),
                           const SizedBox(width: 10.0),
-                          NameAction(
+                          GenAction(
                               fullName: widget.savedName.name,
                               buttonBehavior: () => onDeleteClick(),
                               icon: FontAwesomeIcons.trash)

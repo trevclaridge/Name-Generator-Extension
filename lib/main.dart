@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
       theme: CustomTheme.defaultTheme,
       initialRoute: 'home',
       routes: <String, WidgetBuilder>{
-        // 'about': (context) => const AboutPage(),
+        'settings': (context) => const SettingsPage(),
         'home': (context) => const HomePage()
       },
     );
