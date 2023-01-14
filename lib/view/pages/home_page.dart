@@ -32,22 +32,22 @@ class _HomePageState extends State<HomePage> {
               style: Theme.of(context).appBarTheme.titleTextStyle),
         ),
         actions: [
-          (bottomSelectedIndex == 0)
-              ? Padding(
-                  padding: const EdgeInsets.only(right: 25.0),
-                  child: Row(
-                    children: [
-                      const AppBarGenerateButton(),
-                      const SizedBox(width: 15.0),
-                      GenAction(
-                          fullName: 'placeholder',
-                          buttonBehavior: () =>
-                              Navigator.pushNamed(context, 'settings'),
-                          icon: Icons.settings),
-                    ],
-                  ),
-                )
-              : Container()
+          Padding(
+            padding: const EdgeInsets.only(right: 26.0),
+            child: Row(
+              children: [
+                (bottomSelectedIndex == 0)
+                    ? const AppBarGenerateButton()
+                    : Container(),
+                const SizedBox(width: 15.0),
+                GenAction(
+                    fullName: 'placeholder',
+                    buttonBehavior: () =>
+                        Navigator.pushNamed(context, 'settings'),
+                    icon: Icons.settings),
+              ],
+            ),
+          )
         ],
       ),
       body: PageView(

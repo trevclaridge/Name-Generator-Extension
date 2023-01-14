@@ -8,6 +8,11 @@ class CustomTheme {
             color: Palette().unhoveredGrey,
             fontWeight: FontWeight.w200,
             fontFamily: GoogleFonts.inter().fontFamily),
+        labelLarge: TextStyle(
+            color: Palette().unhoveredGrey,
+            fontWeight: FontWeight.w200,
+            fontFamily: GoogleFonts.inter().fontFamily,
+            fontSize: 16.0),
         bodyMedium: TextStyle(
           fontFamily: GoogleFonts.inter().fontFamily,
           fontSize: 18.0,

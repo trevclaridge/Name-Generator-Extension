@@ -29,7 +29,7 @@ class App extends ChangeNotifier {
         return;
       }
     }
-    _savedNames.add(name);
+    _savedNames.insert(0, name);
     SharedPrefs().saveNameListToPrefs();
   }
 

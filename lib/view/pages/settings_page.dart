@@ -19,12 +19,6 @@ class _SettingsPageState extends State<SettingsPage> {
         ),
         title: Text('Random Names',
             style: Theme.of(context).appBarTheme.titleTextStyle),
-        actions: [
-          GenAction(
-              fullName: 'placeholder',
-              buttonBehavior: () => Navigator.pushNamed(context, 'settings'),
-              icon: Icons.settings),
-        ],
       ),
       body: ListView(
         children: [

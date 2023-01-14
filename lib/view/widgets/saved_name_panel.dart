@@ -19,14 +19,14 @@ class _SavedNamePanelState extends State<SavedNamePanel> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 5.0),
+      padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
       child: MouseRegion(
         onHover: _onHover,
         onExit: _onExit,
         child: SizedBox(
           height: 70.0,
           child: Stack(
-            alignment: Alignment.topRight,
+            alignment: Alignment.bottomRight,
             children: [
               Container(
                 decoration: BoxDecoration(
@@ -42,13 +42,10 @@ class _SavedNamePanelState extends State<SavedNamePanel> {
                     FittedBox(
                       fit: BoxFit.fitWidth,
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: SelectableText(
                           widget.savedName.name,
-                          style: Theme.of(context)
-                              .textTheme
-                              .displaySmall!
-                              .copyWith(fontSize: 24.0),
+                          style: Theme.of(context).textTheme.bodyMedium,
                         ),
                       ),
                     ),
@@ -88,8 +85,8 @@ class _SavedNamePanelState extends State<SavedNamePanel> {
                   width: 60.0,
                   child: Padding(
                     padding: const EdgeInsets.only(
+                      bottom: 8.0,
                       right: 8.0,
-                      top: 8.0,
                     ),
                     child: Row(
                       children: [
