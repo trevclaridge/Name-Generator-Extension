@@ -127,9 +127,9 @@ class _SavedNamePanelState extends State<SavedNamePanel> {
         .nonGenderedSubcategories
         .contains(widget.savedName.subcategory.getName())) {
       if (widget.savedName.gender == Gender.feminine) {
-        icons.add('lib/assets/icons/svg/feminine.svg');
+        icons.add('assets/icons/svg/feminine.svg');
       } else if (widget.savedName.gender == Gender.masculine) {
-        icons.add('lib/assets/icons/svg/masculine.svg');
+        icons.add('assets/icons/svg/masculine.svg');
       }
     }
 

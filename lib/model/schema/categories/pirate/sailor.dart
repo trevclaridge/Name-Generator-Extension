@@ -4,7 +4,7 @@ class Sailor implements Subcategory {
   final String _name = 'Sailor';
 
   @override
-  String icon = 'lib/assets/icons/svg/starfish_pirate.svg';
+  String icon = 'assets/icons/svg/starfish_pirate.svg';
 
   @override
   String getName() {

@@ -5,7 +5,7 @@ part of model;
 abstract class Subcategory {
   final String _name = 'Error: Subcategory name';
 
-  String icon = 'lib/assets/icons/svg/error.svg';
+  String icon = 'assets/icons/svg/error.svg';
 
   String getName() {
     return _name;

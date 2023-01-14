@@ -4,7 +4,7 @@ class Human implements Subcategory {
   final String _name = 'Human';
 
   @override
-  String icon = 'lib/assets/icons/svg/warrior.svg';
+  String icon = 'assets/icons/svg/warrior.svg';
 
   @override
   String getName() {

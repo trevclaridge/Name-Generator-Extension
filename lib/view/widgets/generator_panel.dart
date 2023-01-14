@@ -222,7 +222,7 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                                       PanelButtonToggleable(
                                         tooltip: 'Feminine',
                                         iconString:
-                                            'lib/assets/icons/svg/feminine.svg',
+                                            'assets/icons/svg/feminine.svg',
                                         buttonBehavior: () =>
                                             App().toggleGenderPanelButton(
                                           widget.panelNum,
@@ -235,7 +235,7 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                                       PanelButtonToggleable(
                                         tooltip: 'Gender Neutral',
                                         iconString:
-                                            'lib/assets/icons/svg/hyphen.svg',
+                                            'assets/icons/svg/hyphen.svg',
                                         buttonBehavior: () =>
                                             App().toggleGenderPanelButton(
                                           widget.panelNum,
@@ -248,7 +248,7 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                                       PanelButtonToggleable(
                                         tooltip: 'Masculine',
                                         iconString:
-                                            'lib/assets/icons/svg/masculine.svg',
+                                            'assets/icons/svg/masculine.svg',
                                         buttonBehavior: () =>
                                             App().toggleGenderPanelButton(
                                           widget.panelNum,
@@ -450,9 +450,9 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
             .activeSubcategory]
         .getName())) {
       if (widget.panelSettings.activeGender == Gender.feminine) {
-        icons.add('lib/assets/icons/svg/feminine.svg');
+        icons.add('assets/icons/svg/feminine.svg');
       } else if (widget.panelSettings.activeGender == Gender.masculine) {
-        icons.add('lib/assets/icons/svg/masculine.svg');
+        icons.add('assets/icons/svg/masculine.svg');
       }
     }
 

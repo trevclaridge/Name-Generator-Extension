@@ -4,7 +4,7 @@ class Elf implements Subcategory {
   final String _name = 'Elf';
 
   @override
-  String icon = 'lib/assets/icons/svg/elf.svg';
+  String icon = 'assets/icons/svg/elf.svg';
 
   @override
   String getName() {

@@ -3,11 +3,8 @@ part of town;
 class RealTown implements Subcategory {
   final String _name = 'Real Town';
 
-  // @override
-  // IconData icon = FontAwesomeIcons.building;
-
   @override
-  String icon = 'lib/assets/icons/svg/skyscraper.svg';
+  String icon = 'assets/icons/svg/skyscraper.svg';
 
   @override
   String getName() {

@@ -4,7 +4,7 @@ class FantasyTavern implements Subcategory {
   final String _name = 'Fantasy Tavern';
 
   @override
-  String icon = 'lib/assets/icons/svg/saloon.svg';
+  String icon = 'assets/icons/svg/saloon.svg';
 
   @override
   String getName() {

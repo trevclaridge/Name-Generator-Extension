@@ -1,19 +1,4 @@
-// ignore_for_file: constant_identifier_names
-
 part of pirate;
-
-// class Pirate implements Subcategory {
-//   final String _subcategory;
-//   const Pirate._(this._subcategory);
-
-//   @override
-//   String toString() {
-//     return _subcategory;
-//   }
-
-//   static const Pirate sailor = Pirate._('sailor');
-//   static const Pirate ship = Pirate._('ship');
-// }
 
 class Pirate implements Category {
   final String _name = 'Pirate';
@@ -22,11 +7,8 @@ class Pirate implements Category {
     activeSubcategory = subcategoryPref;
   }
 
-  // @override
-  // IconData icon = FontAwesomeIcons.skullCrossbones;
-
   @override
-  String icon = 'lib/assets/icons/svg/skull_crossbones.svg';
+  String icon = 'assets/icons/svg/skull_crossbones.svg';
 
   @override
   int activeSubcategory = 0;

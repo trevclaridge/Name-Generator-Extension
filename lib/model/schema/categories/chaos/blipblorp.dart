@@ -4,7 +4,7 @@ class BlipBlorp implements Subcategory {
   final String _name = 'Blip Blorp';
 
   @override
-  String icon = 'lib/assets/icons/svg/rings.svg';
+  String icon = 'assets/icons/svg/rings.svg';
 
   @override
   String getName() {

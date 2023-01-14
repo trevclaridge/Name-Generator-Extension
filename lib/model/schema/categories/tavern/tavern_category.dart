@@ -10,7 +10,7 @@ class Tavern implements Category {
   }
 
   @override
-  String icon = 'lib/assets/icons/svg/beer.svg';
+  String icon = 'assets/icons/svg/beer.svg';
 
   @override
   int activeSubcategory = 0;

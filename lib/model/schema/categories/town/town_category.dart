@@ -2,18 +2,6 @@
 
 part of town;
 
-// class Town implements Subcategory {
-//   final String _subcategory;
-//   const Town._(this._subcategory);
-
-//   @override
-//   String toString() {
-//     return _subcategory;
-//   }
-
-//   static const Town real = Town._('real');
-// }
-
 class Town implements Category {
   final String _name = 'Town';
 
@@ -21,11 +9,8 @@ class Town implements Category {
     activeSubcategory = subcategoryPref;
   }
 
-  // @override
-  // IconData icon = FontAwesomeIcons.towerBroadcast;
-
   @override
-  String icon = 'lib/assets/icons/svg/village.svg';
+  String icon = 'assets/icons/svg/village.svg';
 
   @override
   int activeSubcategory = 0;

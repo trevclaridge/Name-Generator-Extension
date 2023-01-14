@@ -4,7 +4,7 @@ class Ship implements Subcategory {
   final String _name = 'Ship';
 
   @override
-  String icon = 'lib/assets/icons/svg/pirate_ship.svg';
+  String icon = 'assets/icons/svg/pirate_ship.svg';
 
   @override
   String getName() {

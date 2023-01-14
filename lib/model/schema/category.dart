@@ -4,7 +4,7 @@ abstract class Category {
   final String _name = 'Error: Category name';
   late List<Subcategory> subcategories;
   int activeSubcategory = 0;
-  String icon = 'lib/assets/icons/png/error.svg';
+  String icon = 'assets/icons/svg/error.svg';
 
   @override
   Category(int subcategoryPref);

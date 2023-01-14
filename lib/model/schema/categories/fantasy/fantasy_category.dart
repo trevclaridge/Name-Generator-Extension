@@ -10,7 +10,7 @@ class Fantasy implements Category {
   }
 
   @override
-  String icon = 'lib/assets/icons/svg/book.svg';
+  String icon = 'assets/icons/svg/book.svg';
 
   @override
   int activeSubcategory = 0;

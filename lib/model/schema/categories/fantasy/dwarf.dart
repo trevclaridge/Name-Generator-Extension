@@ -3,11 +3,8 @@ part of fantasy;
 class Dwarf implements Subcategory {
   final String _name = 'Dwarf';
 
-  // @override
-  // IconData icon = FontAwesomeIcons.hammer;
-
   @override
-  String icon = 'lib/assets/icons/svg/dwarf.svg';
+  String icon = 'assets/icons/svg/dwarf.svg';
 
   @override
   String getName() {
