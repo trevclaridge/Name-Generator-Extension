@@ -4,10 +4,10 @@ import 'package:random_names_extension/view/view.dart';
 import 'package:random_names_extension/model/model.dart';
 
 void main() async {
-  runApp(
-      const Center(child: CircularProgressIndicator(color: Color(0xFFFF8C44))));
+  runApp(Center(child: CircularProgressIndicator(color: Palette().genOrange)));
 
-  // this variables exists only to ensure the async function completes before the evaluation below
+  // this variables exists only to ensure the async
+  // function completes before the evaluation below
   // ignore: unused_local_variable
   bool isFO = await App().checkFirstOpen();
   if (App().isFirstOpen) {

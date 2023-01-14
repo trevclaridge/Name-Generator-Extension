@@ -3,7 +3,6 @@
 library view;
 
 import 'package:flutter/cupertino.dart';
-import 'package:intl/intl.dart';
 import 'package:random_names_extension/model/model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

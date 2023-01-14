@@ -16,7 +16,6 @@ class SavedName {
 
   factory SavedName.fromPrefs(String prefNameJson) {
     var json = jsonDecode(prefNameJson);
-    final dateFormat = DateFormat('yMd');
 
     Category savedCategory = Categories().parse(json['category']);
     Subcategory savedSubcategory = savedCategory.parse(json['subcategory']);
@@ -26,18 +25,16 @@ class SavedName {
         category: savedCategory,
         subcategory: savedSubcategory,
         gender: EnumToString.fromString(Gender.values, json['gender'])!,
-        date: dateFormat.parse(json['date']));
+        date: Constants.DATE_FORMAT.parse(json['date']));
   }
 
   String toJsonString() {
-    final dateFormat = DateFormat('yMd');
-
     Map<String, dynamic> json = {
       'name': name,
       'category': category.getName(),
       'subcategory': subcategory.getName(),
       'gender': EnumToString.convertToString(gender),
-      'date': dateFormat.format(date)
+      'date': Constants.DATE_FORMAT.format(date)
     };
 
     return jsonEncode(json);

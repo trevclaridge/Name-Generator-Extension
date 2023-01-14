@@ -16,8 +16,6 @@ class SavedNamePanel extends StatefulWidget {
 
 class _SavedNamePanelState extends State<SavedNamePanel> {
   bool hovered = false;
-  DateFormat dateFormat = DateFormat('yMd');
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -75,8 +73,10 @@ class _SavedNamePanelState extends State<SavedNamePanel> {
                             ),
                           ),
                         ),
-                        Text(dateFormat.format(widget.savedName.date),
-                            style: Theme.of(context).textTheme.labelMedium),
+                        Text(
+                          Constants.DATE_FORMAT.format(widget.savedName.date),
+                          style: Theme.of(context).textTheme.labelMedium,
+                        ),
                       ],
                     )
                   ],
