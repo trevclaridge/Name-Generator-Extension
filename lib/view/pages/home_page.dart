@@ -12,12 +12,6 @@ class _HomePageState extends State<HomePage> {
     BottomNavigationBarItem(icon: Icon(Icons.reorder), label: 'Generator'),
     BottomNavigationBarItem(icon: Icon(Icons.archive), label: 'Saved'),
   ];
-
-  //   List<BottomNavigationAction> actions = const [
-  //   BottomNavigationAction(icon: Icons.reorder, label: 'Generator', selected: true,),
-  //   BottomNavigationAction(icon: Icons.archive, label: 'Saved', selected: false,),
-  // ];
-
   PageController pageController = App().appPageController;
   int bottomSelectedIndex = 0;
 
@@ -31,24 +25,51 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
         title: Padding(
           padding: const EdgeInsets.only(left: 12.0),
-          child: Text('Random Names', style: Palette().titleStyle),
+          child: Text('Random Names',
+              style: Theme.of(context).appBarTheme.titleTextStyle),
         ),
-        backgroundColor: Palette().genOrange,
-        foregroundColor: Colors.white,
-        elevation: 0.0,
         actions: [
           (bottomSelectedIndex == 0)
               ? Padding(
                   padding: const EdgeInsets.only(right: 25.0),
                   child: Row(
                     children: [
-                      IconButton(
-                        icon: const FaIcon(FontAwesomeIcons.arrowsRotate),
-                        onPressed: () {
-                          App().rerollNames();
-                        },
+                      InkWell(
+                        splashColor: Palette().genOrange,
+                        enableFeedback: true,
+                        onTap: () => App().rerollNames(),
+                        borderRadius: BorderRadius.circular(20.0),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              color: Palette().genOrangeAccent,
+                              borderRadius: BorderRadius.circular(20.0)),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              width: 90.0,
+                              height: 25.0,
+                              decoration: BoxDecoration(
+                                  color: Palette().genOrange,
+                                  borderRadius: BorderRadius.circular(20.0)),
+                              child: Center(
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 6.0, vertical: 1.0),
+                                  child: Text(
+                                    'Generate',
+                                    style: TextStyle(
+                                        color: Palette().scaffoldWhite,
+                                        fontSize: 12.0,
+                                        fontWeight: FontWeight.w100),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -67,7 +88,12 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Palette().genOrange,
+        backgroundColor: Palette().genOrange,
+        selectedLabelStyle: TextStyle(
+            color: Palette().scaffoldWhite,
+            fontFamily: Theme.of(context).textTheme.bodyMedium!.fontFamily,
+            fontWeight: FontWeight.w200),
+        selectedItemColor: Palette().scaffoldWhite,
         currentIndex: bottomSelectedIndex,
         onTap: (index) {
           bottomTapped(index);
@@ -89,42 +115,5 @@ class _HomePageState extends State<HomePage> {
       pageController.animateToPage(index,
           duration: const Duration(milliseconds: 500), curve: Curves.ease);
     });
-  }
-}
-
-class BottomNavigationAction extends StatefulWidget {
-  const BottomNavigationAction(
-      {super.key,
-      required this.selected,
-      required this.icon,
-      required this.label});
-
-  final bool selected;
-  final IconData icon;
-  final String label;
-
-  @override
-  State<BottomNavigationAction> createState() => _BottomNavigationActionState();
-}
-
-class _BottomNavigationActionState extends State<BottomNavigationAction> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        color:
-            (widget.selected) ? Colors.transparent : Palette().genOrangeAccent,
-        child: Center(
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Icon(widget.icon, color: Colors.white),
-              Text(
-                widget.label,
-                style: const TextStyle(color: Colors.white),
-              ),
-            ],
-          ),
-        ));
   }
 }

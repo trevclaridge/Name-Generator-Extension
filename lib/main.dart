@@ -33,9 +33,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Random Names',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: CustomTheme.defaultTheme,
       initialRoute: 'home',
       routes: <String, WidgetBuilder>{
         // 'about': (context) => const AboutPage(),

@@ -25,9 +25,7 @@ class _GeneratorPageState extends State<GeneratorPage> {
                       horizontal: 26.0, vertical: 10.0),
                   child: Text(
                     'Let\'s generate some names!',
-                    style: TextStyle(
-                        color: Palette().unhoveredGrey,
-                        fontFamily: GoogleFonts.inter().fontFamily),
+                    style: Theme.of(context).textTheme.labelMedium,
                   ),
                 ),
                 ListView.builder(

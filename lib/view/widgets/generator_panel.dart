@@ -114,7 +114,7 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                             fit: BoxFit.fitWidth,
                             child: SelectableText(
                               widget.panelName.getName(),
-                              style: Palette().nameStyle,
+                              style: Theme.of(context).textTheme.bodyMedium,
                               maxLines: 1,
                             ),
                           ),
@@ -333,11 +333,14 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                                 children: [
                                   Padding(
                                     padding: const EdgeInsets.only(
-                                      left: 4.0,
+                                      left: 2.0,
                                     ),
                                     child: Text(
-                                      '# of Syllables:',
-                                      style: Palette().nameStyle.copyWith(
+                                      'Name length:',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium!
+                                          .copyWith(
                                             fontSize: 16.0,
                                             fontWeight: FontWeight.w600,
                                             color: const Color(0xFF1E1E1E)
@@ -421,10 +424,6 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
               .activeSubcategory]
           .icon);
     }
-
-    // String feminine = 'lib/assets/icons/svg/feminine.svg';
-    // String masculine = 'lib/assets/icons/svg/masculine.svg';
-    // String genderNeutral = 'lib/assets/icons/svg/hyphen.svg';
 
     if (!Categories().nonGenderedSubcategories.contains(widget
         .panelSettings

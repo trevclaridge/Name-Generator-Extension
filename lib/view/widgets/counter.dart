@@ -55,9 +55,7 @@ class _CounterState extends State<Counter> {
               child: Center(
                 child: Text(
                   '0${widget.panelSettings.numSyllables}',
-                  style: Palette().nameStyle.copyWith(
-                        color: const Color(0xFF1E1E1E).withOpacity(0.80),
-                      ),
+                  style: Theme.of(context).textTheme.bodyMedium,
                 ),
               ),
             );

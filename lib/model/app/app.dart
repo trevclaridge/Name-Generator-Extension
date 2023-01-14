@@ -41,7 +41,8 @@ class App extends ChangeNotifier {
 
   void decrementSyllables(int panelNum) {
     --panelNames[panelNum].panelSettings.numSyllables;
-    if (panelNames[panelNum].panelSettings.numSyllables < 1) {
+    if (panelNames[panelNum].panelSettings.numSyllables <
+        Constants.MIN_NUM_SYLLABLES) {
       incrementSyllables(panelNum);
     }
     saveSettingstoPrefs();
@@ -60,7 +61,8 @@ class App extends ChangeNotifier {
   void incrementSyllables(int panelNum) {
     ++panelNames[panelNum].panelSettings.numSyllables;
 
-    if (panelNames[panelNum].panelSettings.numSyllables > 8) {
+    if (panelNames[panelNum].panelSettings.numSyllables >
+        Constants.MAX_NUM_SYLLABLES) {
       decrementSyllables(panelNum);
     }
     saveSettingstoPrefs();
