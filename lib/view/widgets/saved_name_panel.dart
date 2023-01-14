@@ -15,91 +15,139 @@ class SavedNamePanel extends StatefulWidget {
 }
 
 class _SavedNamePanelState extends State<SavedNamePanel> {
-  Color savedNamePanelColor = Colors.transparent;
   bool hovered = false;
+  DateFormat dateFormat = DateFormat('yMd');
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30.0),
-      child: SizedBox(
-        height: 95,
-        child: MouseRegion(
-          onEnter: _onEnter,
-          onHover: _onHover,
-          onExit: _onExit,
-          child: Container(
-            decoration: BoxDecoration(
-              color: savedNamePanelColor,
-              borderRadius: const BorderRadius.all(
-                Radius.circular(10.0),
+      padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 5.0),
+      child: MouseRegion(
+        onHover: _onHover,
+        onExit: _onExit,
+        child: SizedBox(
+          height: 70.0,
+          child: Stack(
+            alignment: Alignment.topRight,
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  color: Palette().genOrangeAccent,
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(10.0),
+                  ),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    FittedBox(
+                      fit: BoxFit.fitWidth,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: SelectableText(
+                          widget.savedName.name,
+                          style: Theme.of(context)
+                              .textTheme
+                              .displaySmall!
+                              .copyWith(fontSize: 24.0),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 8.0),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: List.generate(
+                            getIcons().length,
+                            (index) => Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 2.0),
+                              child: SvgPicture.asset(
+                                getIcons()[index],
+                                color: Palette().unhoveredGrey,
+                                width: 15.0,
+                                height: 15.0,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Text(dateFormat.format(widget.savedName.date),
+                            style: Theme.of(context).textTheme.labelMedium),
+                      ],
+                    )
+                  ],
+                ),
               ),
-            ),
-            child: Column(
-              children: [
-                const SizedBox(height: 12.0),
-                FittedBox(
-                  fit: BoxFit.fitWidth,
+              Visibility(
+                visible: hovered,
+                child: SizedBox(
+                  width: 60.0,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: SelectableText(
-                      widget.savedName.name,
-                      style: Theme.of(context)
-                          .textTheme
-                          .displaySmall!
-                          .copyWith(fontSize: 32.0),
+                    padding: const EdgeInsets.only(
+                      right: 8.0,
+                      top: 8.0,
+                    ),
+                    child: Row(
+                      children: [
+                        GenAction(
+                            fullName: widget.savedName.name,
+                            buttonBehavior: () =>
+                                _onCopyClick(widget.savedName.name),
+                            icon: FontAwesomeIcons.copy),
+                        const SizedBox(width: 10.0),
+                        GenAction(
+                            fullName: widget.savedName.name,
+                            buttonBehavior: () => onDeleteClick(),
+                            icon: FontAwesomeIcons.trash)
+                      ],
                     ),
                   ),
                 ),
-                const SizedBox(height: 8.0),
-                Visibility(
-                  visible: hovered,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Row(
-                        children: [
-                          GenAction(
-                              fullName: widget.savedName.name,
-                              buttonBehavior: () =>
-                                  _onCopyClick(widget.savedName.name),
-                              icon: FontAwesomeIcons.copy),
-                          const SizedBox(width: 10.0),
-                          GenAction(
-                              fullName: widget.savedName.name,
-                              buttonBehavior: () => onDeleteClick(),
-                              icon: FontAwesomeIcons.trash)
-                        ],
-                      )
-                    ],
-                  ),
-                )
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
     );
   }
 
+  List<String> getIcons() {
+    List<String> icons = [];
+    icons.add(widget.savedName.category.icon);
+
+    if (widget.savedName.category.subcategories.length > 1) {
+      icons.add(widget.savedName.subcategory.icon);
+    }
+
+    if (!Categories()
+        .nonGenderedSubcategories
+        .contains(widget.savedName.subcategory.getName())) {
+      if (widget.savedName.gender == Gender.feminine) {
+        icons.add('lib/assets/icons/svg/feminine.svg');
+      } else if (widget.savedName.gender == Gender.masculine) {
+        icons.add('lib/assets/icons/svg/masculine.svg');
+      }
+    }
+
+    return icons;
+  }
+
   void _onExit(event) {
     setState(() {
-      savedNamePanelColor = Colors.transparent;
       hovered = false;
     });
   }
 
   void _onHover(event) {
-    setState(() {
-      savedNamePanelColor = const Color(0xffF6F6F6);
-    });
-  }
-
-  void _onEnter(event) {
-    setState(() {
-      savedNamePanelColor = const Color(0xffF6F6F6);
-      hovered = true;
-    });
+    setState(
+      () {
+        hovered = true;
+      },
+    );
   }
 
   void _onCopyClick(String name) async {

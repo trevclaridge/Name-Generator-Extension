@@ -385,7 +385,23 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
   }
 
   void _onSaveClick() {
-    App().addNameToSaved(SavedName(name: widget.panelName.name));
+    App().addNameToSaved(
+      SavedName(
+        name: widget.panelName.name,
+        category: widget
+            .panelSettings.categories[widget.panelSettings.activeCategoryIndex],
+        subcategory: widget
+                .panelSettings
+                .categories[widget.panelSettings.activeCategoryIndex]
+                .subcategories[
+            widget
+                .panelSettings
+                .categories[widget.panelSettings.activeCategoryIndex]
+                .activeSubcategory],
+        date: DateTime.now(),
+        gender: widget.panelSettings.activeGender,
+      ),
+    );
     App().appPageController.animateToPage(1,
         duration: const Duration(milliseconds: 500), curve: Curves.ease);
   }
@@ -437,8 +453,6 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
         icons.add('lib/assets/icons/svg/feminine.svg');
       } else if (widget.panelSettings.activeGender == Gender.masculine) {
         icons.add('lib/assets/icons/svg/masculine.svg');
-      } else {
-        icons.add('lib/assets/icons/svg/hyphen.svg');
       }
     }
 

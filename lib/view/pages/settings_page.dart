@@ -19,6 +19,12 @@ class _SettingsPageState extends State<SettingsPage> {
         ),
         title: Text('Random Names',
             style: Theme.of(context).appBarTheme.titleTextStyle),
+        actions: [
+          GenAction(
+              fullName: 'placeholder',
+              buttonBehavior: () => Navigator.pushNamed(context, 'settings'),
+              icon: Icons.settings),
+        ],
       ),
       body: ListView(
         children: [
@@ -27,7 +33,8 @@ class _SettingsPageState extends State<SettingsPage> {
               _launchUrl(
                   'https://github.com/trevclaridge/Name-Generator-Extension');
             },
-            title: const Text('Help build this app!'),
+            title: const Text('Help build this extension!'),
+            leading: const Icon(FontAwesomeIcons.github),
           ),
           ListTile(
             onTap: () {

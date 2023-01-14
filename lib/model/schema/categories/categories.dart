@@ -9,6 +9,18 @@ class Categories {
     Chaos(0),
   ];
 
+  Category parse(String category) {
+    Category categoryForReturn = Fantasy(1);
+
+    for (var item in categories) {
+      if (category == item.getName()) {
+        categoryForReturn = item;
+      }
+    }
+
+    return categoryForReturn;
+  }
+
   List<String> nonGenderedSubcategories = [
     Ship().getName(),
     FantasyTavern().getName(),

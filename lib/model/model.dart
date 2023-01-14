@@ -8,10 +8,9 @@ import 'dart:math';
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-// ignore: unused_import
-import 'package:random_names_extension/bin/bin.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:random_names_extension/model/schema/categories/categories_package.dart';
+import 'package:intl/intl.dart';
 
 part 'app/app.dart';
 part 'app/shared_prefs.dart';

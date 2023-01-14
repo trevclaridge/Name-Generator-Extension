@@ -41,6 +41,7 @@ dependencies:
   enum_to_string: ^2.0.1
   flutter_svg: ^1.1.6
   plural_noun: ^0.1.2
+  intl: ^0.18.0
 
 dev_dependencies:
   flutter_test:

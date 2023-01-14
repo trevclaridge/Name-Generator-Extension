@@ -46,14 +46,13 @@ class SharedPrefs {
 
   Future<void> saveNameListToPrefs() async {
     final prefs = await SharedPreferences.getInstance();
-    List<SavedName> savedFullNameObjects = App().savedNames;
-    List<String> fullNamesAsStrings = [];
+    List<String> savedNamesAsStrings = [];
 
-    for (SavedName name in savedFullNameObjects) {
-      fullNamesAsStrings.add(name.name);
+    for (SavedName name in App().savedNames) {
+      savedNamesAsStrings.add(name.toJsonString());
     }
 
-    await prefs.setStringList('saved_names', fullNamesAsStrings);
+    await prefs.setStringList('saved_names', savedNamesAsStrings);
   }
 
   Future<void> savePanelSettingsToPrefs() async {
