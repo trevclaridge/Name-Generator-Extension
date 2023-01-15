@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+        shadowColor: Palette().genOrange,
         title: Padding(
           padding: const EdgeInsets.only(left: 12.0),
           child: Text('Random Names',

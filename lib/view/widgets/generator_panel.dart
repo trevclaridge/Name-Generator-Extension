@@ -93,7 +93,7 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                             thumbColor: (sliderHovered)
                                 ? Palette().textBlack.withOpacity(0.7)
                                 : Palette().sliderGrey,
-                            trackColor: Colors.white,
+                            trackColor: Palette().scaffoldWhite,
                             activeColor: Palette().genOrange,
                           ),
                         ),
@@ -343,7 +343,8 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                                           .copyWith(
                                             fontSize: 16.0,
                                             fontWeight: FontWeight.w600,
-                                            color: const Color(0xFF1E1E1E)
+                                            color: Palette()
+                                                .textBlack
                                                 .withOpacity(0.85),
                                           ),
                                     ),

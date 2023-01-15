@@ -17,17 +17,18 @@ class CustomTheme {
           fontFamily: GoogleFonts.inter().fontFamily,
           fontSize: 18.0,
           fontWeight: FontWeight.w600,
-          color: const Color(0xFF1E1E1E),
+          color: Palette().textBlack,
         ),
         bodySmall: TextStyle(
           fontFamily: GoogleFonts.inter().fontFamily,
           fontSize: 16.0,
           fontWeight: FontWeight.w600,
-          color: const Color(0xFF1E1E1E).withOpacity(0.85),
+          color: Palette().textBlack.withOpacity(0.85),
         ),
       ),
       appBarTheme: AppBarTheme(
         backgroundColor: Palette().scaffoldWhite,
+        shadowColor: Palette().genOrange,
         titleTextStyle: TextStyle(
           fontFamily: GoogleFonts.cabin().fontFamily,
           fontSize: 24.0,

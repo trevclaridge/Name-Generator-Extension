@@ -1,6 +1,6 @@
 library bin;
 
-part 'FinNLP.dart';
+part 'fin_nlp.dart';
 part 'syllables.dart';
 part 'names.dart';
 part 'adjectives.dart';

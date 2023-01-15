@@ -1,5 +1,3 @@
-//ignore_for_file: file_names
-
 part of bin;
 
 class FinNLP {
