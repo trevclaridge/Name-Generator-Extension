@@ -41,9 +41,11 @@ class _HomePageState extends State<HomePage> {
                     : Container(),
                 const SizedBox(width: 15.0),
                 GenAction(
-                    fullName: 'placeholder',
-                    buttonBehavior: () => Navigator.pushNamed(context, 'about'),
-                    icon: Icons.settings),
+                  fullName: 'placeholder',
+                  buttonBehavior: () =>
+                      Navigator.pushNamed(context, 'settings'),
+                  icon: Icons.settings,
+                ),
               ],
             ),
           )
