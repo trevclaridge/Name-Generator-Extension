@@ -12,6 +12,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:js' as js;
 
+part 'pages/about_page.dart';
 part 'pages/settings_page.dart';
 part 'pages/home_page.dart';
 part 'pages/generator_page.dart';

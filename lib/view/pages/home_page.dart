@@ -42,8 +42,7 @@ class _HomePageState extends State<HomePage> {
                 const SizedBox(width: 15.0),
                 GenAction(
                     fullName: 'placeholder',
-                    buttonBehavior: () =>
-                        Navigator.pushNamed(context, 'settings'),
+                    buttonBehavior: () => Navigator.pushNamed(context, 'about'),
                     icon: Icons.settings),
               ],
             ),
