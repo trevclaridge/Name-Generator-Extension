@@ -20,4 +20,3 @@ jobs:
         with:
           baseHref: /Name-Generator-Extension/
           webRenderer: html
-          customArgs: --csp
