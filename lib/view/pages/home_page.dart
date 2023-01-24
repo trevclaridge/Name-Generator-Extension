@@ -28,8 +28,10 @@ class _HomePageState extends State<HomePage> {
         shadowColor: Palette().genOrange,
         title: Padding(
           padding: const EdgeInsets.only(left: 12.0),
-          child: Text('Random Names',
-              style: Theme.of(context).appBarTheme.titleTextStyle),
+          child: Text(
+            'Random Names',
+            style: Theme.of(context).appBarTheme.titleTextStyle,
+          ),
         ),
         actions: [
           Padding(
@@ -64,9 +66,10 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Palette().genOrange,
         selectedLabelStyle: TextStyle(
-            color: Palette().scaffoldWhite,
-            fontFamily: Theme.of(context).textTheme.bodyMedium!.fontFamily,
-            fontWeight: FontWeight.w200),
+          color: Palette().scaffoldWhite,
+          fontFamily: Theme.of(context).textTheme.bodyMedium!.fontFamily,
+          fontWeight: FontWeight.w200,
+        ),
         selectedItemColor: Palette().scaffoldWhite,
         currentIndex: bottomSelectedIndex,
         onTap: (index) {
@@ -86,8 +89,11 @@ class _HomePageState extends State<HomePage> {
   void bottomTapped(int index) {
     setState(() {
       bottomSelectedIndex = index;
-      pageController.animateToPage(index,
-          duration: const Duration(milliseconds: 500), curve: Curves.ease);
+      pageController.animateToPage(
+        index,
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.ease,
+      );
     });
   }
 }
