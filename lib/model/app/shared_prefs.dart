@@ -11,14 +11,14 @@ class SharedPrefs {
   Future<bool> getFirstOpen() async {
     final prefs = await SharedPreferences.getInstance();
 
-    bool? isFO = prefs.getBool('is_first_open');
+    bool? isFO = prefs.getBool('nge_is_first_open');
     return isFO ?? true;
   }
 
   Future<void> getNameListFromPrefs() async {
     final prefs = await SharedPreferences.getInstance();
 
-    final List<String>? names = prefs.getStringList('saved_names');
+    final List<String>? names = prefs.getStringList('nge_saved_names');
     if (names != null) {
       var reversedList = names.reversed.toList();
       for (var name in reversedList) {
@@ -31,7 +31,7 @@ class SharedPrefs {
     final prefs = await SharedPreferences.getInstance();
 
     for (int i = 0; i < 5; ++i) {
-      String key = 'panel_setting_$i';
+      String key = 'nge_panel_setting_$i';
       String? panelSetting = prefs.getString(key);
 
       App().panelNames[i].panelSettings =
@@ -41,7 +41,7 @@ class SharedPrefs {
 
   Future<void> setFirstOpen() async {
     final prefs = await SharedPreferences.getInstance();
-    prefs.setBool('is_first_open', false);
+    prefs.setBool('nge_is_first_open', false);
   }
 
   Future<void> saveNameListToPrefs() async {
@@ -52,21 +52,14 @@ class SharedPrefs {
       savedNamesAsStrings.add(name.toJsonString());
     }
 
-    await prefs.setStringList('saved_names', savedNamesAsStrings);
+    await prefs.setStringList('nge_saved_names', savedNamesAsStrings);
   }
 
   Future<void> savePanelSettingsToPrefs() async {
     final prefs = await SharedPreferences.getInstance();
-    // print(App().panelNames[0].panelSettings.toJsonString());
-    // print(App().panelNames[1].panelSettings.toJsonString());
-    // print(App().panelNames[2].panelSettings.toJsonString());
-    // print(App().panelNames[3].panelSettings.toJsonString());
-    // print(App().panelNames[4].panelSettings.toJsonString());
-
     for (int i = 0; i < 5; ++i) {
-      // ignore: unused_local_variable
       await prefs.setString(
-        'panel_setting_$i',
+        'nge_panel_setting_$i',
         App().panelNames[i].panelSettings.toJsonString(),
       );
     }
