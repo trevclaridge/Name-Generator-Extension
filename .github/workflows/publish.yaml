@@ -1,0 +1,23 @@
+
+name: Publish to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+      - run: flutter pub get
+      - run: flutter test
+      - uses: bluefireteam/flutter-gh-pages@v7
+        with:
+          baseHref: /Name-Generator-Extension/
+          webRenderer: html
+          customArgs: --csp

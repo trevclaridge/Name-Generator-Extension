@@ -38,7 +38,6 @@ class MyApp extends StatelessWidget {
       routes: <String, WidgetBuilder>{
         'settings': (context) => const SettingsPage(),
         'home': (context) => const HomePage(),
-        'about': (context) => const AboutPage()
       },
     );
   }

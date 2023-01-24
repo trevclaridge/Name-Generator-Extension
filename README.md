@@ -19,7 +19,11 @@ This is a chrome extension that generates a list of five names customizable by t
 * Adventurers Guild names
 * Thieves Guild names
 
-Command to build web app compatible as Chrome extension: 
+## Our Trello Board
+https://trello.com/b/CZVh1GwY/nge-issues-features-future
+
+
+####Command to build web app compatible as Chrome extension: 
 ```
 flutter build web --web-renderer html --csp
 ```
