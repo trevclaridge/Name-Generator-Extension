@@ -19,9 +19,9 @@ class SharedPrefs {
     final prefs = await SharedPreferences.getInstance();
 
     final List<String>? names = prefs.getStringList('saved_names');
-
     if (names != null) {
-      for (var name in names) {
+      var reversedList = names.reversed.toList();
+      for (var name in reversedList) {
         App().addNameToSaved(SavedName.fromPrefs(name));
       }
     }
