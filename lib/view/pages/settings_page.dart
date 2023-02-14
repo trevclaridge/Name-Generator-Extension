@@ -8,7 +8,6 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  bool diceRoller = false;
   bool colorSwatchHovered = false;
   @override
   Widget build(BuildContext context) {
@@ -123,32 +122,35 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
               ),
               const SizedBox(height: 8.0),
-              SwitchListTile(
-                onChanged: (bool value) {
-                  setState(() {
-                    diceRoller = value;
-                  });
+              Consumer<UserSettings>(
+                builder: (context, value, child) {
+                  return SwitchListTile(
+                    onChanged: (bool value) {
+                      UserSettings().toggleDiceRoller();
+                    },
+                    hoverColor: Palette().genOrangeAccent,
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(
+                        color: Palette().genOrange,
+                        strokeAlign: StrokeAlign.outside,
+                        width: 1.2,
+                      ),
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(12.0),
+                      ),
+                    ),
+                    activeTrackColor: Palette().genOrange,
+                    activeColor: Palette().sliderGrey,
+                    title: Text(
+                      'Show Dice Roller',
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyMedium!
+                          .copyWith(fontSize: 14.0),
+                    ),
+                    value: UserSettings().showDiceRoller,
+                  );
                 },
-                hoverColor: Palette().genOrangeAccent,
-                shape: RoundedRectangleBorder(
-                  side: BorderSide(
-                      color: Palette().genOrange,
-                      strokeAlign: StrokeAlign.outside,
-                      width: 1.2),
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(12.0),
-                  ),
-                ),
-                activeTrackColor: Palette().genOrange,
-                activeColor: Palette().sliderGrey,
-                title: Text(
-                  'Show Dice Roller',
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyMedium!
-                      .copyWith(fontSize: 14.0),
-                ),
-                value: diceRoller,
               ),
             ],
           ),

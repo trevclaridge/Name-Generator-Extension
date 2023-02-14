@@ -18,8 +18,11 @@ void main() async {
   }
 
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => App(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => App()),
+        ChangeNotifierProvider(create: (context) => UserSettings()),
+      ],
       child: const MyApp(),
     ),
   );

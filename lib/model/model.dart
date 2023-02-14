@@ -24,3 +24,4 @@ part 'schema/category.dart';
 part 'schema/categories/categories.dart';
 part 'schema/categories/gender_enum.dart';
 part 'schema/categories/subcategory.dart';
+part 'app/user_settings.dart';
