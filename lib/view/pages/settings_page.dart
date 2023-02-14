@@ -78,7 +78,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 shape: RoundedRectangleBorder(
                   side: BorderSide(
                       color: Palette().genOrange,
-                      strokeAlign: StrokeAlign.outside,
+                      strokeAlign: BorderSide.strokeAlignCenter,
                       width: 1.2),
                   borderRadius: const BorderRadius.all(
                     Radius.circular(12.0),
@@ -132,7 +132,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     shape: RoundedRectangleBorder(
                       side: BorderSide(
                         color: Palette().genOrange,
-                        strokeAlign: StrokeAlign.outside,
+                        strokeAlign: BorderSide.strokeAlignCenter,
                         width: 1.2,
                       ),
                       borderRadius: const BorderRadius.all(
@@ -177,7 +177,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 shape: RoundedRectangleBorder(
                   side: BorderSide(
                       color: Palette().genOrange,
-                      strokeAlign: StrokeAlign.outside,
+                      strokeAlign: BorderSide.strokeAlignCenter,
                       width: 1.2),
                   borderRadius: const BorderRadius.all(
                     Radius.circular(12.0),
@@ -204,7 +204,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 shape: RoundedRectangleBorder(
                   side: BorderSide(
                       color: Palette().genOrange,
-                      strokeAlign: StrokeAlign.outside,
+                      strokeAlign: BorderSide.strokeAlignCenter,
                       width: 1.2),
                   borderRadius: const BorderRadius.all(
                     Radius.circular(12.0),
