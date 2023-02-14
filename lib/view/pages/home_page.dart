@@ -28,9 +28,43 @@ class _HomePageState extends State<HomePage> {
         shadowColor: Palette().genOrange,
         title: Padding(
           padding: const EdgeInsets.only(left: 12.0),
-          child: Text(
-            'Random Names',
-            style: Theme.of(context).appBarTheme.titleTextStyle,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  color: Palette().genOrangeAccent,
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(6.0),
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 8.0, vertical: 4.0),
+                  child: Text(
+                    'NGE',
+                    style: Theme.of(context)
+                        .appBarTheme
+                        .titleTextStyle!
+                        .copyWith(
+                            fontSize: 14.0,
+                            color: Palette().textBlack,
+                            fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 2.0),
+                child: Text(
+                  'A name generating extension.',
+                  style: Theme.of(context)
+                      .appBarTheme
+                      .titleTextStyle!
+                      .copyWith(fontSize: 12.0),
+                ),
+              ),
+            ],
           ),
         ),
         actions: [

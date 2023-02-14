@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Random Names',
+      title: 'Name Generator Extension',
       theme: CustomTheme.defaultTheme,
       initialRoute: 'home',
       routes: <String, WidgetBuilder>{

@@ -22,8 +22,7 @@ This is a chrome extension that generates a list of five random names of various
 ## Our Trello Board
 https://trello.com/b/CZVh1GwY/nge-issues-features-future
 
-
-####Command to build web app compatible as Chrome extension: 
+Command to build web app compatible as Chrome extension: 
 ```
 flutter build web --web-renderer html --csp
 ```

@@ -39,7 +39,7 @@ class _PanelButtonToggleableState extends State<PanelButtonToggleable> {
           child: GestureDetector(
             onTap: widget.buttonBehavior,
             child: AnimatedContainer(
-              duration: const Duration(milliseconds: 200),
+              duration: const Duration(milliseconds: 300),
               curve: Curves.ease,
               decoration: BoxDecoration(
                   color: getToggleColor(),
