@@ -17,6 +17,7 @@ part 'pages/home_page.dart';
 part 'pages/generator_page.dart';
 part 'pages/saved_page.dart';
 part 'theme/palette.dart';
+part 'theme/text_styles.dart';
 part 'theme/theme.dart';
 part 'widgets/appbar_generate_button.dart';
 part 'widgets/counter.dart';

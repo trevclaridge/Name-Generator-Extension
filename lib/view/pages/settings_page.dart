@@ -24,7 +24,7 @@ class _SettingsPageState extends State<SettingsPage> {
           children: [
             Container(
               decoration: BoxDecoration(
-                color: Palette().genOrangeAccent,
+                color: Theme.of(context).accentColor,
                 borderRadius: const BorderRadius.all(
                   Radius.circular(6.0),
                 ),
@@ -72,19 +72,18 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
               ListTile(
                 onTap: () {
-                  _launchUrl(
-                      'https://github.com/trevclaridge/Name-Generator-Extension/blob/main/assets/attributions.md');
+                  UserSettings().changeUserTheme();
                 },
                 shape: RoundedRectangleBorder(
                   side: BorderSide(
-                      color: Palette().genOrange,
+                      color: Theme.of(context).primaryColor,
                       strokeAlign: BorderSide.strokeAlignCenter,
                       width: 1.2),
                   borderRadius: const BorderRadius.all(
                     Radius.circular(12.0),
                   ),
                 ),
-                hoverColor: Palette().genOrangeAccent,
+                hoverColor: Theme.of(context).accentColor,
                 title: Text(
                   'App Theme Color',
                   style: Theme.of(context)
@@ -107,7 +106,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     width: 70.0,
                     height: 20.0,
                     decoration: BoxDecoration(
-                      color: Palette().genOrange,
+                      color: Theme.of(context).primaryColor,
                       borderRadius: const BorderRadius.all(
                         Radius.circular(15.0),
                       ),
@@ -128,10 +127,10 @@ class _SettingsPageState extends State<SettingsPage> {
                     onChanged: (bool value) {
                       UserSettings().toggleDiceRoller();
                     },
-                    hoverColor: Palette().genOrangeAccent,
+                    hoverColor: Theme.of(context).accentColor,
                     shape: RoundedRectangleBorder(
                       side: BorderSide(
-                        color: Palette().genOrange,
+                        color: Theme.of(context).primaryColor,
                         strokeAlign: BorderSide.strokeAlignCenter,
                         width: 1.2,
                       ),
@@ -139,7 +138,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         Radius.circular(12.0),
                       ),
                     ),
-                    activeTrackColor: Palette().genOrange,
+                    activeTrackColor: Theme.of(context).primaryColor,
                     activeColor: Palette().sliderGrey,
                     title: Text(
                       'Show Dice Roller',
@@ -173,10 +172,10 @@ class _SettingsPageState extends State<SettingsPage> {
                   _launchUrl(
                       'https://github.com/trevclaridge/Name-Generator-Extension');
                 },
-                hoverColor: Palette().genOrangeAccent,
+                hoverColor: Theme.of(context).accentColor,
                 shape: RoundedRectangleBorder(
                   side: BorderSide(
-                      color: Palette().genOrange,
+                      color: Theme.of(context).primaryColor,
                       strokeAlign: BorderSide.strokeAlignCenter,
                       width: 1.2),
                   borderRadius: const BorderRadius.all(
@@ -203,14 +202,14 @@ class _SettingsPageState extends State<SettingsPage> {
                 },
                 shape: RoundedRectangleBorder(
                   side: BorderSide(
-                      color: Palette().genOrange,
+                      color: Theme.of(context).primaryColor,
                       strokeAlign: BorderSide.strokeAlignCenter,
                       width: 1.2),
                   borderRadius: const BorderRadius.all(
                     Radius.circular(12.0),
                   ),
                 ),
-                hoverColor: Palette().genOrangeAccent,
+                hoverColor: Theme.of(context).accentColor,
                 title: Text(
                   'Attributions',
                   style: Theme.of(context)

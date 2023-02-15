@@ -9,6 +9,8 @@ class Palette {
   Color textBlack = const Color(0xFF1E1E1E);
   Color sliderGrey = const Color(0XFF786F69);
   Color scaffoldWhite = Colors.white;
+  Color genBlue = const Color(0xFF3066be);
+  Color genBlueAccent = const Color(0x66B4C5e4);
 
   // unused as of yet
   Color genLightBlue = const Color(0xFFA7E2E3);

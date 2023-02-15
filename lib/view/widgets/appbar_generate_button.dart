@@ -8,13 +8,13 @@ class AppBarGenerateButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      splashColor: Palette().genOrange,
+      splashColor: Theme.of(context).primaryColor,
       enableFeedback: true,
       onTap: () => App().rerollNames(),
       borderRadius: BorderRadius.circular(20.0),
       child: Container(
         decoration: BoxDecoration(
-            color: Palette().genOrangeAccent,
+            color: Theme.of(context).accentColor,
             borderRadius: BorderRadius.circular(20.0)),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -22,7 +22,7 @@ class AppBarGenerateButton extends StatelessWidget {
             width: 90.0,
             height: 25.0,
             decoration: BoxDecoration(
-                color: Palette().genOrange,
+                color: Theme.of(context).primaryColor,
                 borderRadius: BorderRadius.circular(20.0)),
             child: Center(
               child: Padding(

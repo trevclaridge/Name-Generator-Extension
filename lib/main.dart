@@ -4,7 +4,8 @@ import 'package:random_names_extension/view/view.dart';
 import 'package:random_names_extension/model/model.dart';
 
 void main() async {
-  runApp(Center(child: CircularProgressIndicator(color: Palette().genOrange)));
+  // runApp(Center(
+  //     child: CircularProgressIndicator(color: Theme.of(context).primaryColor)));
 
   // this variables exists only to ensure the async
   // function completes before the evaluation below
@@ -33,14 +34,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Name Generator Extension',
-      theme: CustomTheme.defaultTheme,
-      initialRoute: 'home',
-      routes: <String, WidgetBuilder>{
-        'settings': (context) => const SettingsPage(),
-        'home': (context) => const HomePage(),
+    return Consumer<UserSettings>(
+      builder: (context, value, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Name Generator Extension',
+          theme: UserSettings().userTheme,
+          initialRoute: 'home',
+          routes: <String, WidgetBuilder>{
+            'settings': (context) => const SettingsPage(),
+            'home': (context) => const HomePage(),
+          },
+        );
       },
     );
   }

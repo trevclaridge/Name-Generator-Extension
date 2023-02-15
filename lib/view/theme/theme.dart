@@ -1,31 +1,29 @@
 part of view;
 
 class CustomTheme {
-  static ThemeData get defaultTheme {
-    return ThemeData(
-      textTheme: TextTheme(
-        labelMedium: TextStyle(
-            color: Palette().unhoveredGrey,
-            fontWeight: FontWeight.w200,
-            fontFamily: GoogleFonts.inter().fontFamily),
-        labelLarge: TextStyle(
-            color: Palette().unhoveredGrey,
-            fontWeight: FontWeight.w200,
-            fontFamily: GoogleFonts.inter().fontFamily,
-            fontSize: 16.0),
-        bodyMedium: TextStyle(
-          fontFamily: GoogleFonts.inter().fontFamily,
-          fontSize: 18.0,
-          fontWeight: FontWeight.w600,
-          color: Palette().textBlack,
-        ),
-        bodySmall: TextStyle(
-          fontFamily: GoogleFonts.inter().fontFamily,
-          fontSize: 16.0,
-          fontWeight: FontWeight.w600,
-          color: Palette().textBlack.withOpacity(0.85),
-        ),
+  final ThemeData _baseTheme = ThemeData(
+    textTheme: TextTheme(
+      labelMedium: TextStyles().pageSubtitleStyle,
+      labelLarge: TextStyles().emptyPageStyle,
+      bodyMedium: TextStyles().panelNameStyle,
+    ),
+    appBarTheme: AppBarTheme(
+      backgroundColor: Palette().scaffoldWhite,
+      shadowColor: Palette().genOrange,
+      titleTextStyle: TextStyle(
+        fontFamily: GoogleFonts.cabin().fontFamily,
+        fontSize: 24.0,
+        color: Palette().genOrange,
       ),
+    ),
+    scaffoldBackgroundColor: Palette().scaffoldWhite,
+  );
+
+  ThemeData get orangeTheme {
+    return _baseTheme.copyWith(
+      primaryColor: Palette().genOrange,
+      shadowColor: Palette().genOrange,
+      accentColor: Palette().genOrangeAccent,
       appBarTheme: AppBarTheme(
         backgroundColor: Palette().scaffoldWhite,
         shadowColor: Palette().genOrange,
@@ -35,7 +33,23 @@ class CustomTheme {
           color: Palette().genOrange,
         ),
       ),
-      scaffoldBackgroundColor: Palette().scaffoldWhite,
+    );
+  }
+
+  ThemeData get blueTheme {
+    return _baseTheme.copyWith(
+      primaryColor: Palette().genBlue,
+      shadowColor: Palette().genBlue,
+      accentColor: Palette().genBlueAccent,
+      appBarTheme: AppBarTheme(
+        backgroundColor: Palette().scaffoldWhite,
+        shadowColor: Palette().genBlue,
+        titleTextStyle: TextStyle(
+          fontFamily: GoogleFonts.cabin().fontFamily,
+          fontSize: 24.0,
+          color: Palette().genBlue,
+        ),
+      ),
     );
   }
 }

@@ -30,7 +30,7 @@ class _SavedNamePanelState extends State<SavedNamePanel> {
             children: [
               Container(
                 decoration: BoxDecoration(
-                  color: Palette().genOrangeAccent,
+                  color: Theme.of(context).accentColor,
                   borderRadius: const BorderRadius.all(
                     Radius.circular(10.0),
                   ),

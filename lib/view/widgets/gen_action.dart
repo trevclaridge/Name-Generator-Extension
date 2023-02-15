@@ -49,7 +49,7 @@ class _GenActionState extends State<GenAction> {
 
     if (savedNamesAsStrings.contains(widget.fullName) &&
         widget.icon == FontAwesomeIcons.floppyDisk) {
-      return Palette().genOrange;
+      return Theme.of(context).primaryColor;
     }
     if (hovered) {
       return Colors.black;

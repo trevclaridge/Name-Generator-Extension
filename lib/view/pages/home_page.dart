@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        shadowColor: Palette().genOrange,
+        shadowColor: Theme.of(context).primaryColor,
         title: Padding(
           padding: const EdgeInsets.only(left: 12.0),
           child: Column(
@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
             children: [
               Container(
                 decoration: BoxDecoration(
-                  color: Palette().genOrangeAccent,
+                  color: Theme.of(context).accentColor,
                   borderRadius: const BorderRadius.all(
                     Radius.circular(6.0),
                   ),
@@ -98,7 +98,7 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Palette().genOrange,
+        backgroundColor: Theme.of(context).primaryColor,
         selectedLabelStyle: TextStyle(
           color: Palette().scaffoldWhite,
           fontFamily: Theme.of(context).textTheme.bodyMedium!.fontFamily,

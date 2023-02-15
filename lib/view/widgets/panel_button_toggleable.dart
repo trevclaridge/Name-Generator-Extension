@@ -99,7 +99,7 @@ class _PanelButtonToggleableState extends State<PanelButtonToggleable> {
       }
     }
     if (!widget.toggled) {
-      return Palette().genOrangeAccent;
+      return Theme.of(context).accentColor;
     }
     if (widget.toggled && isGender()) {
       return Palette().genPurple;
@@ -107,6 +107,6 @@ class _PanelButtonToggleableState extends State<PanelButtonToggleable> {
     if (widget.toggled && isSubcategory()) {
       return Palette().subcategoryTeal;
     }
-    return Palette().genOrange;
+    return Theme.of(context).primaryColor;
   }
 }

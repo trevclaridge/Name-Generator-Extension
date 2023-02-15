@@ -30,7 +30,7 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
         curve: Curves.easeInOutCubic,
         child: Container(
           decoration: BoxDecoration(
-            color: Palette().genOrangeAccent,
+            color: Theme.of(context).accentColor,
             borderRadius: const BorderRadius.all(
               Radius.circular(10.0),
             ),
@@ -85,7 +85,7 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                               ? Palette().textBlack.withOpacity(0.7)
                               : Palette().sliderGrey,
                           trackColor: Palette().scaffoldWhite,
-                          activeColor: Palette().genOrange,
+                          activeColor: Theme.of(context).primaryColor,
                         ),
                       ),
                     ),
@@ -159,7 +159,7 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                       children: [
                         Container(
                           height: 1.0,
-                          color: Palette().genOrange,
+                          color: Theme.of(context).primaryColor,
                         ),
                         getSettings(),
                       ],
@@ -184,7 +184,7 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
     return Column(children: [
       Container(
         height: 1.0,
-        color: Palette().genOrange,
+        color: Theme.of(context).primaryColor,
       ),
       ...settings
     ]);

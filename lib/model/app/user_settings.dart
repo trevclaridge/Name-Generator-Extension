@@ -9,6 +9,31 @@ class UserSettings extends ChangeNotifier {
   UserSettings._internal();
 
   bool showDiceRoller = false;
+  ThemeData userTheme = CustomTheme().orangeTheme;
+
+  final Map<ThemeData, String> themeMap = {
+    CustomTheme().orangeTheme: 'orange',
+    CustomTheme().blueTheme: 'blue',
+  };
+
+  void changeUserTheme() {
+    if (userTheme == CustomTheme().orangeTheme) {
+      userTheme = CustomTheme().blueTheme;
+    } else {
+      userTheme = CustomTheme().orangeTheme;
+    }
+    saveUserSettingsToPrefs();
+    notifyListeners();
+  }
+
+  ThemeData decodeThemeFromString(String themeString) {
+    return themeMap.keys.firstWhere((k) => themeMap[k] == themeString,
+        orElse: () => CustomTheme().orangeTheme);
+  }
+
+  void saveUserSettingsToPrefs() {
+    SharedPrefs().saveUserSettingsToPrefs();
+  }
 
   void toggleDiceRoller() {
     showDiceRoller = !showDiceRoller;

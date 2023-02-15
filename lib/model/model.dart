@@ -6,8 +6,8 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:enum_to_string/enum_to_string.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:random_names_extension/view/view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:random_names_extension/model/schema/categories/categories_package.dart';
 import 'package:intl/intl.dart';

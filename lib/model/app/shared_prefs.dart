@@ -64,4 +64,13 @@ class SharedPrefs {
       );
     }
   }
+
+  Future<void> saveUserSettingsToPrefs() async {
+    final prefs = await SharedPreferences.getInstance();
+    Map<String, dynamic> json = {
+      'show_dice_roller': UserSettings().showDiceRoller.toString(),
+      'color_theme': UserSettings().themeMap[UserSettings().userTheme]
+    };
+    await prefs.setString('nge_user_settings', jsonEncode(json));
+  }
 }

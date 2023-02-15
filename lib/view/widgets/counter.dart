@@ -33,7 +33,7 @@ class _CounterState extends State<Counter> {
               decoration: BoxDecoration(
                 border: Border.all(
                   width: 1.4,
-                  color: Palette().genOrange,
+                  color: Theme.of(context).primaryColor,
                 ),
                 borderRadius: BorderRadius.circular(5),
               ),
@@ -74,7 +74,7 @@ class _CounterState extends State<Counter> {
               decoration: BoxDecoration(
                 border: Border.all(
                   width: 1.4,
-                  color: Palette().genOrange,
+                  color: Theme.of(context).primaryColor,
                 ),
                 borderRadius: BorderRadius.circular(5),
               ),
