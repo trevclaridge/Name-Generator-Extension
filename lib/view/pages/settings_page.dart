@@ -24,7 +24,7 @@ class _SettingsPageState extends State<SettingsPage> {
           children: [
             Container(
               decoration: BoxDecoration(
-                color: Theme.of(context).accentColor,
+                color: Theme.of(context).colorScheme.secondary,
                 borderRadius: const BorderRadius.all(
                   Radius.circular(6.0),
                 ),
@@ -71,9 +71,53 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
               ),
               ListTile(
-                onTap: () {
-                  UserSettings().changeUserTheme();
-                },
+                onTap: () => showDialog<String>(
+                  context: context,
+                  builder: (BuildContext context) => AlertDialog(
+                    title: Text(
+                      'Pick a theme color!',
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                    content: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Row(
+                          children: [
+                            ColorThemeSwatchTile(
+                              theme: CustomTheme().blueTheme,
+                            ),
+                            ColorThemeSwatchTile(
+                              theme: CustomTheme().greenTheme,
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            ColorThemeSwatchTile(
+                              theme: CustomTheme().orangeTheme,
+                            ),
+                            ColorThemeSwatchTile(
+                              theme: CustomTheme().purpleTheme,
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                    actions: <Widget>[
+                      TextButton(
+                        style: ButtonStyle(
+                          overlayColor: MaterialStateProperty.all<Color>(
+                              Theme.of(context).colorScheme.secondary),
+                        ),
+                        onPressed: () => Navigator.pop(context, 'Cancel'),
+                        child: Text(
+                          'Cancel',
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
                 shape: RoundedRectangleBorder(
                   side: BorderSide(
                       color: Theme.of(context).primaryColor,
@@ -83,7 +127,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     Radius.circular(12.0),
                   ),
                 ),
-                hoverColor: Theme.of(context).accentColor,
+                hoverColor: Theme.of(context).colorScheme.secondary,
                 title: Text(
                   'App Theme Color',
                   style: Theme.of(context)
@@ -127,7 +171,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     onChanged: (bool value) {
                       UserSettings().toggleDiceRoller();
                     },
-                    hoverColor: Theme.of(context).accentColor,
+                    hoverColor: Theme.of(context).colorScheme.secondary,
                     shape: RoundedRectangleBorder(
                       side: BorderSide(
                         color: Theme.of(context).primaryColor,
@@ -172,7 +216,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   _launchUrl(
                       'https://github.com/trevclaridge/Name-Generator-Extension');
                 },
-                hoverColor: Theme.of(context).accentColor,
+                hoverColor: Theme.of(context).colorScheme.secondary,
                 shape: RoundedRectangleBorder(
                   side: BorderSide(
                       color: Theme.of(context).primaryColor,
@@ -198,7 +242,7 @@ class _SettingsPageState extends State<SettingsPage> {
               ListTile(
                 onTap: () {
                   _launchUrl(
-                      'https://github.com/trevclaridge/Name-Generator-Extension/blob/main/lib/assets/attributions.md');
+                      'https://github.com/trevclaridge/Name-Generator-Extension/blob/main/assets/attributions.md');
                 },
                 shape: RoundedRectangleBorder(
                   side: BorderSide(
@@ -209,7 +253,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     Radius.circular(12.0),
                   ),
                 ),
-                hoverColor: Theme.of(context).accentColor,
+                hoverColor: Theme.of(context).colorScheme.secondary,
                 title: Text(
                   'Attributions',
                   style: Theme.of(context)

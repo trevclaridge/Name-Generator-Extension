@@ -30,7 +30,7 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
         curve: Curves.easeInOutCubic,
         child: Container(
           decoration: BoxDecoration(
-            color: Theme.of(context).accentColor,
+            color: Theme.of(context).colorScheme.secondary,
             borderRadius: const BorderRadius.all(
               Radius.circular(10.0),
             ),

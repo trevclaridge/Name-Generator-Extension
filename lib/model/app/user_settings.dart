@@ -14,14 +14,11 @@ class UserSettings extends ChangeNotifier {
   final Map<ThemeData, String> themeMap = {
     CustomTheme().orangeTheme: 'orange',
     CustomTheme().blueTheme: 'blue',
+    CustomTheme().greenTheme: 'green',
   };
 
-  void changeUserTheme() {
-    if (userTheme == CustomTheme().orangeTheme) {
-      userTheme = CustomTheme().blueTheme;
-    } else {
-      userTheme = CustomTheme().orangeTheme;
-    }
+  void changeUserTheme(ThemeData theme) {
+    userTheme = theme;
     saveUserSettingsToPrefs();
     notifyListeners();
   }

@@ -14,7 +14,7 @@ class AppBarGenerateButton extends StatelessWidget {
       borderRadius: BorderRadius.circular(20.0),
       child: Container(
         decoration: BoxDecoration(
-            color: Theme.of(context).accentColor,
+            color: Theme.of(context).colorScheme.secondary,
             borderRadius: BorderRadius.circular(20.0)),
         child: Padding(
           padding: const EdgeInsets.all(8.0),

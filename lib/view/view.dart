@@ -25,3 +25,4 @@ part 'widgets/gen_action.dart';
 part 'widgets/generator_panel.dart';
 part 'widgets//panel_button_toggleable.dart';
 part 'widgets/saved_name_panel.dart';
+part 'widgets/swatch_tile.dart';

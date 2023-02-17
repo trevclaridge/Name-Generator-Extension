@@ -19,28 +19,10 @@ class CustomTheme {
     scaffoldBackgroundColor: Palette().scaffoldWhite,
   );
 
-  ThemeData get orangeTheme {
-    return _baseTheme.copyWith(
-      primaryColor: Palette().genOrange,
-      shadowColor: Palette().genOrange,
-      accentColor: Palette().genOrangeAccent,
-      appBarTheme: AppBarTheme(
-        backgroundColor: Palette().scaffoldWhite,
-        shadowColor: Palette().genOrange,
-        titleTextStyle: TextStyle(
-          fontFamily: GoogleFonts.cabin().fontFamily,
-          fontSize: 24.0,
-          color: Palette().genOrange,
-        ),
-      ),
-    );
-  }
-
   ThemeData get blueTheme {
     return _baseTheme.copyWith(
       primaryColor: Palette().genBlue,
       shadowColor: Palette().genBlue,
-      accentColor: Palette().genBlueAccent,
       appBarTheme: AppBarTheme(
         backgroundColor: Palette().scaffoldWhite,
         shadowColor: Palette().genBlue,
@@ -50,6 +32,62 @@ class CustomTheme {
           color: Palette().genBlue,
         ),
       ),
+      colorScheme:
+          ColorScheme.fromSwatch().copyWith(secondary: Palette().genBlueAccent),
+    );
+  }
+
+  ThemeData get greenTheme {
+    return _baseTheme.copyWith(
+      primaryColor: Palette().genGreen,
+      shadowColor: Palette().genGreenAccent,
+      appBarTheme: AppBarTheme(
+        backgroundColor: Palette().scaffoldWhite,
+        shadowColor: Palette().genGreen,
+        titleTextStyle: TextStyle(
+          fontFamily: GoogleFonts.cabin().fontFamily,
+          fontSize: 24.0,
+          color: Palette().genGreen,
+        ),
+      ),
+      colorScheme: ColorScheme.fromSwatch()
+          .copyWith(secondary: Palette().genGreenAccent),
+    );
+  }
+
+  ThemeData get orangeTheme {
+    return _baseTheme.copyWith(
+      primaryColor: Palette().genOrange,
+      shadowColor: Palette().genOrange,
+      appBarTheme: AppBarTheme(
+        backgroundColor: Palette().scaffoldWhite,
+        shadowColor: Palette().genOrange,
+        titleTextStyle: TextStyle(
+          fontFamily: GoogleFonts.cabin().fontFamily,
+          fontSize: 24.0,
+          color: Palette().genOrange,
+        ),
+      ),
+      colorScheme: ColorScheme.fromSwatch()
+          .copyWith(secondary: Palette().genOrangeAccent),
+    );
+  }
+
+  ThemeData get purpleTheme {
+    return _baseTheme.copyWith(
+      primaryColor: Palette().genPurple,
+      shadowColor: Palette().genPurple,
+      appBarTheme: AppBarTheme(
+        backgroundColor: Palette().scaffoldWhite,
+        shadowColor: Palette().genPurple,
+        titleTextStyle: TextStyle(
+          fontFamily: GoogleFonts.cabin().fontFamily,
+          fontSize: 24.0,
+          color: Palette().genPurple,
+        ),
+      ),
+      colorScheme: ColorScheme.fromSwatch()
+          .copyWith(secondary: Palette().genPurpleAccent),
     );
   }
 }
