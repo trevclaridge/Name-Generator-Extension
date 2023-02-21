@@ -72,6 +72,7 @@ class App extends ChangeNotifier {
 
   void initializeApp() {
     SharedPrefs().setFirstOpen();
+    UserSettings().saveUserSettingsToPrefs();
     saveSettingstoPrefs();
   }
 

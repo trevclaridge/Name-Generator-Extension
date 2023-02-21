@@ -15,6 +15,7 @@ class UserSettings extends ChangeNotifier {
     CustomTheme().orangeTheme: 'orange',
     CustomTheme().blueTheme: 'blue',
     CustomTheme().greenTheme: 'green',
+    CustomTheme().purpleTheme: 'purple',
   };
 
   void changeUserTheme(ThemeData theme) {
@@ -32,8 +33,22 @@ class UserSettings extends ChangeNotifier {
     SharedPrefs().saveUserSettingsToPrefs();
   }
 
+  void populateUserSettings() {
+    SharedPrefs().getUserSettingsFromPrefs();
+  }
+
+  String toJsonString() {
+    Map<String, dynamic> json = {
+      'show_dice_roller': showDiceRoller.toString(),
+      'color_theme': themeMap[userTheme]
+    };
+    return jsonEncode(json);
+  }
+
   void toggleDiceRoller() {
     showDiceRoller = !showDiceRoller;
+    saveUserSettingsToPrefs();
+
     notifyListeners();
   }
 }

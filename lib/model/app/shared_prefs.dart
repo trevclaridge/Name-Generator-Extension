@@ -39,6 +39,18 @@ class SharedPrefs {
     }
   }
 
+  Future<void> getUserSettingsFromPrefs() async {
+    final prefs = await SharedPreferences.getInstance();
+    String? userSettingsAsString = prefs.getString('nge_user_settings');
+
+    final json = jsonDecode(userSettingsAsString!);
+
+    String showDiceRoller = json['show_dice_roller'];
+    UserSettings().showDiceRoller = showDiceRoller.parseBool();
+    UserSettings().userTheme =
+        UserSettings().decodeThemeFromString(json['color_theme']);
+  }
+
   Future<void> setFirstOpen() async {
     final prefs = await SharedPreferences.getInstance();
     prefs.setBool('nge_is_first_open', false);
@@ -67,10 +79,6 @@ class SharedPrefs {
 
   Future<void> saveUserSettingsToPrefs() async {
     final prefs = await SharedPreferences.getInstance();
-    Map<String, dynamic> json = {
-      'show_dice_roller': UserSettings().showDiceRoller.toString(),
-      'color_theme': UserSettings().themeMap[UserSettings().userTheme]
-    };
-    await prefs.setString('nge_user_settings', jsonEncode(json));
+    await prefs.setString('nge_user_settings', UserSettings().toJsonString());
   }
 }

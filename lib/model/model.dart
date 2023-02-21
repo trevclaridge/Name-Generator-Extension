@@ -14,6 +14,7 @@ import 'package:intl/intl.dart';
 
 part 'app/app.dart';
 part 'app/shared_prefs.dart';
+part 'parse_bool.dart';
 part 'constants.dart';
 part 'panel_settings.dart';
 part 'list_extension_random_element.dart';

@@ -7,6 +7,8 @@ void main() async {
   // runApp(Center(
   //     child: CircularProgressIndicator(color: Theme.of(context).primaryColor)));
 
+  WidgetsFlutterBinding.ensureInitialized();
+
   // this variables exists only to ensure the async
   // function completes before the evaluation below
   // ignore: unused_local_variable
@@ -16,6 +18,7 @@ void main() async {
   } else {
     App().populateSavedNames();
     App().populatePanelSettings();
+    UserSettings().populateUserSettings();
   }
 
   runApp(

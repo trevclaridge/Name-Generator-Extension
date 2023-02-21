@@ -78,30 +78,35 @@ class _SettingsPageState extends State<SettingsPage> {
                       'Pick a theme color!',
                       style: Theme.of(context).textTheme.bodyMedium,
                     ),
-                    content: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Row(
-                          children: [
-                            ColorThemeSwatchTile(
-                              theme: CustomTheme().blueTheme,
-                            ),
-                            ColorThemeSwatchTile(
-                              theme: CustomTheme().greenTheme,
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            ColorThemeSwatchTile(
-                              theme: CustomTheme().orangeTheme,
-                            ),
-                            ColorThemeSwatchTile(
-                              theme: CustomTheme().purpleTheme,
-                            ),
-                          ],
-                        )
-                      ],
+                    content: FittedBox(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              ColorThemeSwatchTile(
+                                theme: CustomTheme().blueTheme,
+                              ),
+                              ColorThemeSwatchTile(
+                                theme: CustomTheme().greenTheme,
+                              ),
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              ColorThemeSwatchTile(
+                                theme: CustomTheme().orangeTheme,
+                              ),
+                              ColorThemeSwatchTile(
+                                theme: CustomTheme().purpleTheme,
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
                     ),
                     actions: <Widget>[
                       TextButton(
@@ -157,7 +162,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       border: Border.all(
                         width: 1.2,
                         color: (colorSwatchHovered)
-                            ? Palette().sliderGrey
+                            ? Palette().textBlack
                             : Colors.transparent,
                       ),
                     ),

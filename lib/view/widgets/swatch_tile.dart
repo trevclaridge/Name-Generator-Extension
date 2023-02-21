@@ -42,10 +42,9 @@ class _ColorThemeSwatchTileState extends State<ColorThemeSwatchTile> {
                 ),
               ),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    width: 70.0,
+                    width: 40.0,
                     height: 20.0,
                     decoration: BoxDecoration(
                       color: widget.theme.primaryColor,
@@ -56,8 +55,8 @@ class _ColorThemeSwatchTileState extends State<ColorThemeSwatchTile> {
                     ),
                   ),
                   Container(
-                    width: 70.0,
                     height: 20.0,
+                    width: 40.0,
                     decoration: BoxDecoration(
                       color: widget.theme.colorScheme.secondary,
                       borderRadius: const BorderRadius.only(
