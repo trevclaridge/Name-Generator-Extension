@@ -33,7 +33,7 @@ class Ship implements Subcategory {
     var random = Random();
 
     if (random.nextBool()) {
-      return Adjectives().adjectives.getRandomElement();
+      return Adjectives().anthropomorphicAdjectives.getRandomElement();
     }
     return ColorNames().colorNames.getRandomElement();
   }

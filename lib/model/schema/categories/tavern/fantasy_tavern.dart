@@ -39,7 +39,7 @@ class FantasyTavern implements Subcategory {
       }
     }
 
-    if (random.nextInt(10) == 0) {
+    if (random.nextBool()) {
       tavernName += ' ';
       tavernName += tavernSuffixes.getRandomElement().capitalize();
     }
@@ -55,7 +55,7 @@ class FantasyTavern implements Subcategory {
     var random = Random();
 
     if (random.nextBool()) {
-      return Adjectives().adjectives.getRandomElement();
+      return Adjectives().objectAdjectives.getRandomElement();
     }
     return ColorNames().colorNames.getRandomElement();
   }
