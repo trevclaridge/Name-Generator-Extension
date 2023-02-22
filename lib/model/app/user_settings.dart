@@ -37,6 +37,13 @@ class UserSettings extends ChangeNotifier {
     SharedPrefs().getUserSettingsFromPrefs();
   }
 
+  void populateUserSettingsFromPrefString(String prefString) {
+    final json = jsonDecode(prefString);
+    String tempString = json['show_dice_roller']; // prevents no such method
+    showDiceRoller = tempString.parseBool();
+    userTheme = decodeThemeFromString(json['color_theme']);
+  }
+
   String toJsonString() {
     Map<String, dynamic> json = {
       'show_dice_roller': showDiceRoller.toString(),

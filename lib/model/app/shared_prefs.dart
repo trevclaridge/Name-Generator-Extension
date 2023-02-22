@@ -43,12 +43,7 @@ class SharedPrefs {
     final prefs = await SharedPreferences.getInstance();
     String? userSettingsAsString = prefs.getString('nge_user_settings');
 
-    final json = jsonDecode(userSettingsAsString!);
-
-    String showDiceRoller = json['show_dice_roller'];
-    UserSettings().showDiceRoller = showDiceRoller.parseBool();
-    UserSettings().userTheme =
-        UserSettings().decodeThemeFromString(json['color_theme']);
+    UserSettings().populateUserSettingsFromPrefString(userSettingsAsString!);
   }
 
   Future<void> setFirstOpen() async {

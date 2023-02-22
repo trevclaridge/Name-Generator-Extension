@@ -15,6 +15,7 @@ void main() async {
   bool isFO = await App().checkFirstOpen();
   if (App().isFirstOpen) {
     App().initializeApp();
+    UserSettings().saveUserSettingsToPrefs();
   } else {
     App().populateSavedNames();
     App().populatePanelSettings();

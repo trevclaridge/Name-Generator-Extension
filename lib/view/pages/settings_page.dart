@@ -175,6 +175,11 @@ class _SettingsPageState extends State<SettingsPage> {
                   return SwitchListTile(
                     onChanged: (bool value) {
                       UserSettings().toggleDiceRoller();
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Coming Soon!'),
+                        ),
+                      );
                     },
                     hoverColor: Theme.of(context).colorScheme.secondary,
                     shape: RoundedRectangleBorder(
