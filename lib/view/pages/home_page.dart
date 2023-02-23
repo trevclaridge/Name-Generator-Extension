@@ -97,20 +97,43 @@ class _HomePageState extends State<HomePage> {
           SavedPage(),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Theme.of(context).primaryColor,
-        selectedLabelStyle: TextStyle(
-          color: Palette().scaffoldWhite,
-          fontFamily: Theme.of(context).textTheme.bodyMedium!.fontFamily,
-          fontWeight: FontWeight.w200,
-        ),
-        selectedItemColor: Palette().scaffoldWhite,
-        currentIndex: bottomSelectedIndex,
-        onTap: (index) {
-          bottomTapped(index);
-        },
-        items: actions,
-      ),
+      // bottomNavigationBar: BottomNavigationBar(
+      //   backgroundColor: Theme.of(context).primaryColor,
+      //   selectedLabelStyle: TextStyle(
+      //     color: Palette().scaffoldWhite,
+      //     fontFamily: Theme.of(context).textTheme.bodyMedium!.fontFamily,
+      //     fontWeight: FontWeight.w200,
+      //   ),
+      //   selectedItemColor: Palette().scaffoldWhite,
+      //   currentIndex: bottomSelectedIndex,
+      //   onTap: (index) {
+      //     bottomTapped(index);
+      //   },
+      //   items: actions,
+      // ),
+      bottomNavigationBar: Container(
+          color: Theme.of(context).primaryColor,
+          height: 60.0,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              CustomBottomNavigationBarButton(
+                text: 'Generator',
+                icon: FontAwesomeIcons.arrowsRotate,
+                buttonBehavior: () {},
+              ),
+              Text(
+                'Saved',
+                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                      color: Palette().scaffoldWhite,
+                      fontWeight: FontWeight.normal,
+                    ),
+              )
+            ],
+          )
+          // width: MediaQuery.of(context).size.width,
+          ),
     );
   }
 
@@ -129,5 +152,68 @@ class _HomePageState extends State<HomePage> {
         curve: Curves.ease,
       );
     });
+  }
+}
+
+class CustomBottomNavigationBarButton extends StatefulWidget {
+  final String text;
+  final IconData icon;
+  final VoidCallback buttonBehavior;
+
+  const CustomBottomNavigationBarButton({
+    Key? key,
+    required this.text,
+    required this.icon,
+    required this.buttonBehavior,
+  }) : super(key: key);
+
+  @override
+  State<CustomBottomNavigationBarButton> createState() =>
+      _CustomBottomNavigationBarButtonState();
+}
+
+class _CustomBottomNavigationBarButtonState
+    extends State<CustomBottomNavigationBarButton> {
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: Theme.of(context).colorScheme.secondary.withOpacity(0.25),
+      borderRadius: const BorderRadius.all(
+        Radius.circular(8.0),
+      ),
+      child: InkWell(
+        borderRadius: const BorderRadius.all(
+          Radius.circular(8.0),
+        ),
+        focusColor: Theme.of(context).colorScheme.secondary,
+        onTap: widget.buttonBehavior,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            vertical: 10.0,
+            horizontal: 20.0,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Icon(
+                widget.icon,
+                color: Palette().scaffoldWhite,
+                size: 16.0,
+              ),
+              const SizedBox(width: 8.0),
+              Text(
+                widget.text,
+                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                      color: Palette().scaffoldWhite,
+                      fontWeight: FontWeight.normal,
+                      fontSize: 16.0,
+                    ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
