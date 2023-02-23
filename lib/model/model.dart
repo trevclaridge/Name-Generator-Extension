@@ -11,11 +11,13 @@ import 'package:random_names_extension/view/view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:random_names_extension/model/schema/categories/categories_package.dart';
 import 'package:intl/intl.dart';
+import 'dart:js' as js;
 
 part 'app/app.dart';
 part 'app/shared_prefs.dart';
 part 'parse_bool.dart';
 part 'constants.dart';
+part 'javascript_controller.dart';
 part 'panel_settings.dart';
 part 'list_extension_random_element.dart';
 part 'schema/name.dart';

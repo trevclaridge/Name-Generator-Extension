@@ -20,6 +20,7 @@ class UserSettings extends ChangeNotifier {
 
   void changeUserTheme(ThemeData theme) {
     userTheme = theme;
+    JavascriptController().changeIcon(themeMap[theme]!);
     saveUserSettingsToPrefs();
     notifyListeners();
   }

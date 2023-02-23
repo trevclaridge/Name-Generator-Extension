@@ -42,6 +42,7 @@ dependencies:
   flutter_svg: ^1.1.6
   plural_noun: ^0.1.2
   intl: ^0.18.0
+  flutter_launcher_icons: ^0.11.0
 
 dev_dependencies:
   flutter_test:
@@ -69,6 +70,7 @@ flutter:
   assets:
     - assets/icons/png/
     - assets/icons/svg/
+    - assets/logos/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
