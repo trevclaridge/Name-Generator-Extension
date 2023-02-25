@@ -26,3 +26,7 @@ Command to build web app compatible as Chrome extension:
 ```
 flutter build web --web-renderer html --csp
 ```
+Command to see chrome.storage:
+```
+chrome.storage.local.get(function(result){console.log(result)})
+```
