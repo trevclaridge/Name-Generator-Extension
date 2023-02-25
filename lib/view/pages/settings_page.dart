@@ -225,6 +225,8 @@ class _SettingsPageState extends State<SettingsPage> {
                 onTap: () {
                   _launchUrl(
                       'https://github.com/trevclaridge/Name-Generator-Extension');
+                  // var value = JavascriptController().getSyncValue("hello");
+                  // print(value);
                 },
                 hoverColor: Theme.of(context).colorScheme.secondary,
                 shape: RoundedRectangleBorder(

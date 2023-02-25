@@ -55,8 +55,8 @@ class UserSettings extends ChangeNotifier {
 
   void toggleDiceRoller() {
     showDiceRoller = !showDiceRoller;
+    // JavascriptController().setSyncPair("hello", "from main");
     saveUserSettingsToPrefs();
-
     notifyListeners();
   }
 }
