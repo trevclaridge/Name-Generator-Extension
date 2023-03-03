@@ -1,6 +1,6 @@
 function changeIcon(themeString) {
-  console.log(typeof chrome);
-  if (typeof chrome !== "undefined") {
+  console.log(window.chrome && chrome.runtime && chrome.runtime.id);
+  if (window.chrome && chrome.runtime && chrome.runtime.id) {
     (async () => {
       const response = await chrome.runtime.sendMessage(themeString);
       console.log(response);
