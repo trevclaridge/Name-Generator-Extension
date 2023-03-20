@@ -70,7 +70,15 @@ flutter:
   assets:
     - assets/icons/png/
     - assets/icons/svg/
-    - assets/logos/
+    - assets/logos/colored_arrows/
+    - assets/logos/gears/png/
+    - assets/logos/gears/png/black/
+    - assets/logos/gears/png/blue/
+    - assets/logos/gears/png/green/
+    - assets/logos/gears/png/grey/
+    - assets/logos/gears/png/orange/
+    - assets/logos/gears/png/purple/
+    - assets/logos/gears/svg/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

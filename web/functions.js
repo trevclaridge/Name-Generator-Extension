@@ -1,11 +1,15 @@
 function changeIcon(themeString) {
-  console.log(window.chrome && chrome.runtime && chrome.runtime.id);
   if (window.chrome && chrome.runtime && chrome.runtime.id) {
     (async () => {
-      const response = await chrome.runtime.sendMessage(themeString);
-      console.log(response);
+      await chrome.runtime.sendMessage(themeString);
     })();
   } else {
-    console.log("Hello from the web page");
+    var link = document.querySelector("link[rel~='icon']");
+    if (!link) {
+      link = document.createElement('link');
+      link.rel = 'icon';
+      document.head.appendChild(link);
+    }
+    link.href = "gears/png/" + themeString + "/" + themeString + "_gear_19.png";;
   }
 }

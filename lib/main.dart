@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
+//import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:random_names_extension/view/view.dart';
 import 'package:random_names_extension/model/model.dart';
 
 void main() async {
-  // runApp(Center(
-  //     child: CircularProgressIndicator(color: Theme.of(context).primaryColor)));
-
+  // runApp(
+  //   Center(
+  //     child: ConstrainedBox(
+  //       constraints: const BoxConstraints(minHeight: 1, minWidth: 1),
+  //       child: FittedBox(
+  //         child: SvgPicture.asset('assets/logos/gears/orange_gear.svg'),
+  //       ),
+  //     ),
+  //   ),
+  // );
+  // await Future.delayed(const Duration(seconds: 10));
   WidgetsFlutterBinding.ensureInitialized();
 
   // this variables exists only to ensure the async

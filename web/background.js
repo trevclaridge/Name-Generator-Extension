@@ -3,6 +3,7 @@ chrome.runtime.onInstalled.addListener(function(details)
     if(details.reason == "install") {
       chrome.storage.local.set({ "themeString" : "orange" }).then(() => {
         console.log("themeString initialized to orange");
+        handleCreated();
       }) 
    } else if(details.reason == "update") {
     // do nothing yet
@@ -11,7 +12,7 @@ chrome.runtime.onInstalled.addListener(function(details)
 );
 
 chrome.runtime.onMessage.addListener((themeString) => {
-    var str = "colored_icons_small/" + themeString + ".png";
+    var str = "gears/png/" + themeString + "/" + themeString + "_gear_19.png";
     chrome.action.setIcon({ path: str })
     chrome.storage.local.set({ "themeString" : themeString }).then(() => {
       console.log("themeString" + " is set to " +  themeString);
@@ -22,11 +23,11 @@ chrome.tabs.onCreated.addListener(
     handleCreated
 );
 
-function handleCreated(tab) {
+function handleCreated() {
     chrome.storage.local.get(["themeString"]).then((result) => {
-      var str = "colored_icons_small/" + result.themeString + ".png";
+      var str = "gears/png/" + result.themeString + "/" + result.themeString + "_gear_19.png";
       chrome.action.setIcon({ path: str });
-      console.log(tab.id + " " + result.themeString);
+      console.log(result.themeString);
       });
 }
 
