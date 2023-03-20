@@ -10,6 +10,6 @@ function changeIcon(themeString) {
       link.rel = 'icon';
       document.head.appendChild(link);
     }
-    link.href = "gears/png/" + themeString + "/" + themeString + "_gear_19.png";;
+    link.href = "gears/png/" + themeString + "/" + themeString + "_gear_1024.png";;
   }
 }
