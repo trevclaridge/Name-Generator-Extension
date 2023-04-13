@@ -26,46 +26,19 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         shadowColor: Theme.of(context).primaryColor,
-        title: Padding(
-          padding: const EdgeInsets.only(left: 12.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.secondary,
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(6.0),
-                  ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 8.0, vertical: 4.0),
-                  child: Text(
-                    'NGE',
-                    style: Theme.of(context)
-                        .appBarTheme
-                        .titleTextStyle!
-                        .copyWith(
-                            fontSize: 14.0,
-                            color: Palette().textBlack,
-                            fontWeight: FontWeight.bold),
-                  ),
-                ),
+        title: Row(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0),
+              child: SvgPicture.asset(
+                'assets/logos/gears/svg/${UserSettings().themeMap[UserSettings().userTheme]}_gear.svg',
+                width: 45.0,
+                height: 45.0,
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 2.0),
-                child: Text(
-                  'A name generating extension.',
-                  style: Theme.of(context)
-                      .appBarTheme
-                      .titleTextStyle!
-                      .copyWith(fontSize: 12.0),
-                ),
-              ),
-            ],
-          ),
+            ),
+            const SizedBox(width: 6.0),
+            Text('NGE', style: Theme.of(context).appBarTheme.titleTextStyle)
+          ],
         ),
         actions: [
           Padding(

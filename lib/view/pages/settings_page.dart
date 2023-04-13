@@ -18,39 +18,18 @@ class _SettingsPageState extends State<SettingsPage> {
           buttonBehavior: () => Navigator.pop(context),
           icon: Icons.arrow_back,
         ),
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+        title: Row(
           children: [
-            Container(
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.secondary,
-                borderRadius: const BorderRadius.all(
-                  Radius.circular(6.0),
-                ),
-              ),
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-                child: Text(
-                  'NGE',
-                  style: Theme.of(context).appBarTheme.titleTextStyle!.copyWith(
-                      fontSize: 14.0,
-                      color: Palette().textBlack,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
+            SvgPicture.asset(
+              'assets/logos/gears/svg/${UserSettings().themeMap[UserSettings().userTheme]}_gear.svg',
+              width: 45.0,
+              height: 45.0,
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 2.0),
-              child: Text(
-                'A name generating extension.',
-                style: Theme.of(context)
-                    .appBarTheme
-                    .titleTextStyle!
-                    .copyWith(fontSize: 12.0),
-              ),
-            ),
+            const SizedBox(width: 6.0),
+            Text(
+              'NGE',
+              style: Theme.of(context).appBarTheme.titleTextStyle,
+            )
           ],
         ),
       ),
@@ -126,7 +105,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 shape: RoundedRectangleBorder(
                   side: BorderSide(
                       color: Theme.of(context).primaryColor,
-                      strokeAlign: BorderSide.strokeAlignCenter,
+                      strokeAlign: BorderSide.strokeAlignOutside,
                       width: 1.2),
                   borderRadius: const BorderRadius.all(
                     Radius.circular(12.0),
@@ -185,7 +164,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     shape: RoundedRectangleBorder(
                       side: BorderSide(
                         color: Theme.of(context).primaryColor,
-                        strokeAlign: BorderSide.strokeAlignCenter,
+                        strokeAlign: BorderSide.strokeAlignOutside,
                         width: 1.2,
                       ),
                       borderRadius: const BorderRadius.all(
@@ -232,7 +211,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 shape: RoundedRectangleBorder(
                   side: BorderSide(
                       color: Theme.of(context).primaryColor,
-                      strokeAlign: BorderSide.strokeAlignCenter,
+                      strokeAlign: BorderSide.strokeAlignOutside,
                       width: 1.2),
                   borderRadius: const BorderRadius.all(
                     Radius.circular(12.0),
@@ -259,7 +238,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 shape: RoundedRectangleBorder(
                   side: BorderSide(
                       color: Theme.of(context).primaryColor,
-                      strokeAlign: BorderSide.strokeAlignCenter,
+                      strokeAlign: BorderSide.strokeAlignOutside,
                       width: 1.2),
                   borderRadius: const BorderRadius.all(
                     Radius.circular(12.0),
