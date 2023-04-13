@@ -32,6 +32,30 @@ class _SettingsPageState extends State<SettingsPage> {
             )
           ],
         ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 26.0),
+            child: Consumer<UserSettings>(
+              builder: (context, value, child) {
+                return Row(
+                  children: [
+                    (UserSettings().showDiceRoller)
+                        ? Row(
+                            children: [
+                              GenAction(
+                                  fullName: 'placeholder',
+                                  buttonBehavior: () {},
+                                  icon: FontAwesomeIcons.diceD6),
+                              const SizedBox(width: 15.0),
+                            ],
+                          )
+                        : Container(),
+                  ],
+                );
+              },
+            ),
+          )
+        ],
       ),
       body: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 22.0, vertical: 12.0),
@@ -154,11 +178,6 @@ class _SettingsPageState extends State<SettingsPage> {
                   return SwitchListTile(
                     onChanged: (bool value) {
                       UserSettings().toggleDiceRoller();
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Coming Soon!'),
-                        ),
-                      );
                     },
                     hoverColor: Theme.of(context).colorScheme.secondary,
                     shape: RoundedRectangleBorder(

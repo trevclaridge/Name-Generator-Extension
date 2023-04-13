@@ -37,25 +37,43 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             const SizedBox(width: 6.0),
-            Text('NGE', style: Theme.of(context).appBarTheme.titleTextStyle)
+            Text(
+              'NGE',
+              style: Theme.of(context).appBarTheme.titleTextStyle,
+            )
           ],
         ),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 26.0),
-            child: Row(
-              children: [
-                (bottomSelectedIndex == 0)
-                    ? const AppBarGenerateButton()
-                    : Container(),
-                const SizedBox(width: 15.0),
-                GenAction(
-                  fullName: 'placeholder',
-                  buttonBehavior: () =>
-                      Navigator.pushNamed(context, 'settings'),
-                  icon: Icons.settings,
-                ),
-              ],
+            child: Consumer<UserSettings>(
+              builder: (context, value, child) {
+                return Row(
+                  children: [
+                    (bottomSelectedIndex == 0)
+                        ? const AppBarGenerateButton()
+                        : Container(),
+                    const SizedBox(width: 15.0),
+                    (UserSettings().showDiceRoller)
+                        ? Row(
+                            children: [
+                              GenAction(
+                                  fullName: 'placeholder',
+                                  buttonBehavior: () {},
+                                  icon: FontAwesomeIcons.diceD6),
+                              const SizedBox(width: 15.0),
+                            ],
+                          )
+                        : Container(),
+                    GenAction(
+                      fullName: 'placeholder',
+                      buttonBehavior: () =>
+                          Navigator.pushNamed(context, 'settings'),
+                      icon: FontAwesomeIcons.gear,
+                    ),
+                  ],
+                );
+              },
             ),
           )
         ],

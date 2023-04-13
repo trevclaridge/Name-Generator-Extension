@@ -15,14 +15,14 @@ import 'dart:js' as js;
 
 part 'app/app.dart';
 part 'app/shared_prefs.dart';
-part 'parse_bool.dart';
+part 'extensions/string_extension_parse_bool.dart';
 part 'constants.dart';
 part 'javascript_controller.dart';
 part 'panel_settings.dart';
-part 'list_extension_random_element.dart';
+part 'extensions/list_extension_random_element.dart';
 part 'schema/name.dart';
 part 'schema/saved_name.dart';
-part 'string_extension_capitalize.dart';
+part 'extensions/string_extension_capitalize.dart';
 part 'schema/category.dart';
 part 'schema/categories/categories.dart';
 part 'schema/categories/gender_enum.dart';
