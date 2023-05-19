@@ -16,6 +16,7 @@ import 'dart:js' as js;
 part 'app/app.dart';
 part 'app/shared_prefs.dart';
 part 'extensions/string_extension_parse_bool.dart';
+part 'diceRoller/die.dart';
 part 'constants.dart';
 part 'javascript_controller.dart';
 part 'panel_settings.dart';

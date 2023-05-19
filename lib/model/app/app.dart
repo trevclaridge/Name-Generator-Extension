@@ -22,6 +22,7 @@ class App extends ChangeNotifier {
   ];
 
   PageController appPageController = PageController();
+  int bottomSelectedIndex = 0;
 
   void addNameToSaved(SavedName name) {
     for (var savedName in _savedNames) {

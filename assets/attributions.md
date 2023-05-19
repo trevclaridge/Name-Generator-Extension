@@ -41,3 +41,6 @@
 
 ### Error Icon
 * Error icon: <a href="https://www.flaticon.com/free-icons/cancel" title="cancel icons">Cancel icons created by Freepik - Flaticon</a>
+
+### Dice
+* Dice by <a href="https://www.flaticon.com/free-icons/cancel" title="fritz duggan noun">Fritz Duggan on the Noun Project</a>

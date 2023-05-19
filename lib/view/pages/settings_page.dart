@@ -12,50 +12,9 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: GenAction(
-          fullName: 'placeholder',
-          buttonBehavior: () => Navigator.pop(context),
-          icon: Icons.arrow_back,
-        ),
-        title: Row(
-          children: [
-            SvgPicture.asset(
-              'assets/logos/gears/svg/${UserSettings().themeMap[UserSettings().userTheme]}_gear.svg',
-              width: 45.0,
-              height: 45.0,
-            ),
-            const SizedBox(width: 6.0),
-            Text(
-              'NGE',
-              style: Theme.of(context).appBarTheme.titleTextStyle,
-            )
-          ],
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 26.0),
-            child: Consumer<UserSettings>(
-              builder: (context, value, child) {
-                return Row(
-                  children: [
-                    (UserSettings().showDiceRoller)
-                        ? Row(
-                            children: [
-                              GenAction(
-                                  fullName: 'placeholder',
-                                  buttonBehavior: () {},
-                                  icon: FontAwesomeIcons.diceD6),
-                              const SizedBox(width: 15.0),
-                            ],
-                          )
-                        : Container(),
-                  ],
-                );
-              },
-            ),
-          )
-        ],
+      appBar: GenAppBar(
+        bottomSelectedIndex: App().bottomSelectedIndex,
+        currentRouteName: ModalRoute.of(context)!.settings.name!,
       ),
       body: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 22.0, vertical: 12.0),

@@ -13,7 +13,6 @@ class _HomePageState extends State<HomePage> {
     BottomNavigationBarItem(icon: Icon(Icons.archive), label: 'Saved'),
   ];
   PageController pageController = App().appPageController;
-  int bottomSelectedIndex = 0;
 
   @override
   void initState() {
@@ -24,59 +23,9 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        shadowColor: Theme.of(context).primaryColor,
-        title: Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 8.0),
-              child: SvgPicture.asset(
-                'assets/logos/gears/svg/${UserSettings().themeMap[UserSettings().userTheme]}_gear.svg',
-                width: 45.0,
-                height: 45.0,
-              ),
-            ),
-            const SizedBox(width: 6.0),
-            Text(
-              'NGE',
-              style: Theme.of(context).appBarTheme.titleTextStyle,
-            )
-          ],
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 26.0),
-            child: Consumer<UserSettings>(
-              builder: (context, value, child) {
-                return Row(
-                  children: [
-                    (bottomSelectedIndex == 0)
-                        ? const AppBarGenerateButton()
-                        : Container(),
-                    const SizedBox(width: 15.0),
-                    (UserSettings().showDiceRoller)
-                        ? Row(
-                            children: [
-                              GenAction(
-                                  fullName: 'placeholder',
-                                  buttonBehavior: () {},
-                                  icon: FontAwesomeIcons.diceD6),
-                              const SizedBox(width: 15.0),
-                            ],
-                          )
-                        : Container(),
-                    GenAction(
-                      fullName: 'placeholder',
-                      buttonBehavior: () =>
-                          Navigator.pushNamed(context, 'settings'),
-                      icon: FontAwesomeIcons.gear,
-                    ),
-                  ],
-                );
-              },
-            ),
-          )
-        ],
+      appBar: GenAppBar(
+        bottomSelectedIndex: App().bottomSelectedIndex,
+        currentRouteName: ModalRoute.of(context)!.settings.name!,
       ),
       body: PageView(
         controller: pageController,
@@ -96,7 +45,7 @@ class _HomePageState extends State<HomePage> {
           fontWeight: FontWeight.w200,
         ),
         selectedItemColor: Palette().scaffoldWhite,
-        currentIndex: bottomSelectedIndex,
+        currentIndex: App().bottomSelectedIndex,
         onTap: (index) {
           bottomTapped(index);
         },
@@ -107,13 +56,13 @@ class _HomePageState extends State<HomePage> {
 
   void pageChanged(int index) {
     setState(() {
-      bottomSelectedIndex = index;
+      App().bottomSelectedIndex = index;
     });
   }
 
   void bottomTapped(int index) {
     setState(() {
-      bottomSelectedIndex = index;
+      App().bottomSelectedIndex = index;
       pageController.animateToPage(
         index,
         duration: const Duration(milliseconds: 500),
