@@ -24,6 +24,8 @@ class App extends ChangeNotifier {
   PageController appPageController = PageController();
   int bottomSelectedIndex = 0;
 
+  String diceOutput = '';
+
   void addNameToSaved(SavedName name) {
     for (var savedName in _savedNames) {
       if (name.name == savedName.name) {
@@ -98,6 +100,11 @@ class App extends ChangeNotifier {
 
   void saveSettingstoPrefs() {
     SharedPrefs().savePanelSettingsToPrefs();
+  }
+
+  void setDiceOutput(String newValue) {
+    diceOutput = newValue;
+    notifyListeners();
   }
 
   void toggleSubcategoryPanelButton(int panelNum, int subCategoryIndex) {

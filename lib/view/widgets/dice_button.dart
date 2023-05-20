@@ -19,7 +19,7 @@ class _DiceButtonState extends State<DiceButton> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        print(Die(int.parse(widget.diceNumber)).roll());
+        App().setDiceOutput(roll());
       },
       hoverColor: Colors.transparent,
       customBorder: RoundedRectangleBorder(
@@ -29,14 +29,30 @@ class _DiceButtonState extends State<DiceButton> {
         cursor: SystemMouseCursors.click,
         onHover: _onHover,
         onExit: _onExit,
-        child: SvgPicture.asset(
-          'assets/icons/svg/d${widget.diceNumber}.svg',
-          width: 20.0,
-          height: 20.0,
-          color: buttonColor,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SvgPicture.asset(
+              'assets/icons/svg/d${widget.diceNumber}.svg',
+              width: 20.0,
+              height: 20.0,
+              color: buttonColor,
+            ),
+            Text(
+              'd${widget.diceNumber}',
+              style: Theme.of(context)
+                  .textTheme
+                  .labelMedium!
+                  .copyWith(fontSize: 4.0, height: 0.9),
+            )
+          ],
         ),
       ),
     );
+  }
+
+  String roll() {
+    return (Die((int.parse(widget.diceNumber))).roll()).toString();
   }
 
   void _onHover(event) {
