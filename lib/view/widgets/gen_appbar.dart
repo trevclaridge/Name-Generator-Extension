@@ -1,6 +1,6 @@
 part of view;
 
-class GenAppBar extends StatelessWidget with PreferredSizeWidget {
+class GenAppBar extends StatelessWidget implements PreferredSizeWidget {
   const GenAppBar({
     super.key,
     required this.bottomSelectedIndex,
