@@ -11,7 +11,7 @@ class CustomTheme {
       backgroundColor: Palette().scaffoldWhite,
       shadowColor: Palette().genOrange,
       titleTextStyle: TextStyle(
-        fontFamily: GoogleFonts.lobster().fontFamily,
+        fontFamily: 'Lobster',
         fontSize: 24.0,
         color: Palette().genOrange,
       ),
@@ -27,7 +27,7 @@ class CustomTheme {
         backgroundColor: Palette().scaffoldWhite,
         shadowColor: Palette().genBlue,
         titleTextStyle: TextStyle(
-          fontFamily: GoogleFonts.lobster().fontFamily,
+          fontFamily: 'Lobster',
           fontSize: 24.0,
           color: Palette().genBlue,
         ),
@@ -45,7 +45,7 @@ class CustomTheme {
         backgroundColor: Palette().scaffoldWhite,
         shadowColor: Palette().genGreen,
         titleTextStyle: TextStyle(
-          fontFamily: GoogleFonts.lobster().fontFamily,
+          fontFamily: 'Lobster',
           fontSize: 24.0,
           color: Palette().genGreen,
         ),
@@ -63,7 +63,7 @@ class CustomTheme {
         backgroundColor: Palette().scaffoldWhite,
         shadowColor: Palette().genOrange,
         titleTextStyle: TextStyle(
-          fontFamily: GoogleFonts.lobster().fontFamily,
+          fontFamily: 'Lobster',
           fontSize: 24.0,
           color: Palette().genOrange,
         ),
@@ -81,7 +81,7 @@ class CustomTheme {
         backgroundColor: Palette().scaffoldWhite,
         shadowColor: Palette().genPurple,
         titleTextStyle: TextStyle(
-          fontFamily: GoogleFonts.lobster().fontFamily,
+          fontFamily: 'Lobster',
           fontSize: 24.0,
           color: Palette().genPurple,
         ),
