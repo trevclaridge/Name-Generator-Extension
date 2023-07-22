@@ -172,6 +172,19 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
     );
   }
 
+  Category activeCategory() {
+    return widget
+        .panelSettings.categories[widget.panelSettings.activeCategoryIndex];
+  }
+
+  Subcategory activeSubcategory() {
+    return activeCategory().subcategories[activeCategory().activeSubcategory];
+  }
+
+  Gender activeGender() {
+    return widget.panelSettings.activeGender;
+  }
+
   Widget getSettings() {
     List<Widget> settings = [];
     settings.add(getCategories());
@@ -208,18 +221,10 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
     App().addNameToSaved(
       SavedName(
         name: widget.panelName.name,
-        category: widget
-            .panelSettings.categories[widget.panelSettings.activeCategoryIndex],
-        subcategory: widget
-                .panelSettings
-                .categories[widget.panelSettings.activeCategoryIndex]
-                .subcategories[
-            widget
-                .panelSettings
-                .categories[widget.panelSettings.activeCategoryIndex]
-                .activeSubcategory],
+        category: activeCategory(),
+        subcategory: activeSubcategory(),
         date: DateTime.now(),
-        gender: widget.panelSettings.activeGender,
+        gender: activeGender(),
       ),
     );
     App().appPageController.animateToPage(1,
@@ -241,37 +246,19 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
   List<String> getIcons() {
     List<String> icons = [];
     icons.add(
-      widget.panelSettings.categories[widget.panelSettings.activeCategoryIndex]
-          .icon,
+      activeCategory().icon,
     );
 
-    if (widget
-            .panelSettings
-            .categories[widget.panelSettings.activeCategoryIndex]
-            .subcategories
-            .length >
-        1) {
-      icons.add(widget
-          .panelSettings
-          .categories[widget.panelSettings.activeCategoryIndex]
-          .subcategories[widget
-              .panelSettings
-              .categories[widget.panelSettings.activeCategoryIndex]
-              .activeSubcategory]
-          .icon);
+    if (activeCategory().subcategories.length > 1) {
+      icons.add(activeSubcategory().icon);
     }
 
-    if (!Categories().nonGenderedSubcategories.contains(widget
-        .panelSettings
-        .categories[widget.panelSettings.activeCategoryIndex]
-        .subcategories[widget
-            .panelSettings
-            .categories[widget.panelSettings.activeCategoryIndex]
-            .activeSubcategory]
-        .getName())) {
-      if (widget.panelSettings.activeGender == Gender.feminine) {
+    if (!Categories()
+        .nonGenderedSubcategories
+        .contains(activeSubcategory().getName())) {
+      if (activeGender() == Gender.feminine) {
         icons.add('assets/icons/svg/feminine.svg');
-      } else if (widget.panelSettings.activeGender == Gender.masculine) {
+      } else if (activeGender() == Gender.masculine) {
         icons.add('assets/icons/svg/masculine.svg');
       }
     }
@@ -313,12 +300,7 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
   }
 
   Widget? getSubcategories() {
-    if (widget
-            .panelSettings
-            .categories[widget.panelSettings.activeCategoryIndex]
-            .subcategories
-            .length >
-        1) {
+    if (activeCategory().subcategories.length > 1) {
       return Padding(
         padding: const EdgeInsets.only(top: 12.0),
         child: Row(
@@ -329,32 +311,15 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
                   height: 30.0,
                   child: Row(
                     children: List.generate(
-                      widget
-                          .panelSettings
-                          .categories[widget.panelSettings.activeCategoryIndex]
-                          .subcategories
-                          .length,
+                      activeCategory().subcategories.length,
                       (index) => PanelButtonToggleable(
-                          iconString: widget
-                              .panelSettings
-                              .categories[
-                                  widget.panelSettings.activeCategoryIndex]
-                              .subcategories[index]
-                              .icon,
-                          tooltip: widget
-                              .panelSettings
-                              .categories[
-                                  widget.panelSettings.activeCategoryIndex]
-                              .subcategories[index]
-                              .getName(),
+                          iconString:
+                              activeCategory().subcategories[index].icon,
+                          tooltip:
+                              activeCategory().subcategories[index].getName(),
                           buttonBehavior: () =>
                               _onToggleSubcategoryClick(index),
-                          toggled: widget
-                                  .panelSettings
-                                  .categories[
-                                      widget.panelSettings.activeCategoryIndex]
-                                  .activeSubcategory ==
-                              index),
+                          toggled: activeCategory().activeSubcategory == index),
                     ),
                   ),
                 ),
@@ -369,14 +334,9 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
   }
 
   Widget? getNameLength() {
-    if (Categories().syllabledSubcategories.contains(widget
-        .panelSettings
-        .categories[widget.panelSettings.activeCategoryIndex]
-        .subcategories[widget
-            .panelSettings
-            .categories[widget.panelSettings.activeCategoryIndex]
-            .activeSubcategory]
-        .getName())) {
+    if (Categories()
+        .syllabledSubcategories
+        .contains(activeSubcategory().getName())) {
       return Padding(
         padding: const EdgeInsets.only(top: 8.0),
         child: Row(
@@ -412,14 +372,7 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
 
   Widget? getGenders() {
     if (!Categories().nonGenderedSubcategories.contains(
-          widget
-              .panelSettings
-              .categories[widget.panelSettings.activeCategoryIndex]
-              .subcategories[widget
-                  .panelSettings
-                  .categories[widget.panelSettings.activeCategoryIndex]
-                  .activeSubcategory]
-              .getName(),
+          activeSubcategory().getName(),
         )) {
       return Row(
         children: [
@@ -430,7 +383,7 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
               widget.panelNum,
               Gender.feminine,
             ),
-            toggled: widget.panelSettings.activeGender == Gender.feminine,
+            toggled: activeGender() == Gender.feminine,
           ),
           PanelButtonToggleable(
             tooltip: 'Gender Neutral',
@@ -439,7 +392,7 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
               widget.panelNum,
               Gender.genderNeutral,
             ),
-            toggled: widget.panelSettings.activeGender == Gender.genderNeutral,
+            toggled: activeGender() == Gender.genderNeutral,
           ),
           PanelButtonToggleable(
             tooltip: 'Masculine',
@@ -448,7 +401,7 @@ class _GeneratorPanelState extends State<GeneratorPanel> {
               widget.panelNum,
               Gender.masculine,
             ),
-            toggled: widget.panelSettings.activeGender == Gender.masculine,
+            toggled: activeGender() == Gender.masculine,
           ),
         ],
       );
