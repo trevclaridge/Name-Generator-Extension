@@ -36,7 +36,10 @@ class _DiceButtonState extends State<DiceButton> {
               'assets/icons/svg/d${widget.diceNumber}.svg',
               width: 20.0,
               height: 20.0,
-              color: buttonColor,
+              colorFilter: ColorFilter.mode(
+                buttonColor,
+                BlendMode.srcIn,
+              ),
             ),
             Text(
               'd${widget.diceNumber}',

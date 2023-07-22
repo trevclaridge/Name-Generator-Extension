@@ -63,7 +63,10 @@ class _SavedNamePanelState extends State<SavedNamePanel> {
                                   const EdgeInsets.symmetric(horizontal: 2.0),
                               child: SvgPicture.asset(
                                 getIcons()[index],
-                                color: Palette().unhoveredGrey,
+                                colorFilter: ColorFilter.mode(
+                                  Palette().unhoveredGrey,
+                                  BlendMode.srcIn,
+                                ),
                                 width: 15.0,
                                 height: 15.0,
                               ),

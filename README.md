@@ -18,6 +18,7 @@ This is a chrome extension that generates a list of five random names of various
 * Dragon names
 * Adventurers Guild names
 * Thieves Guild names
+* Demon/Devil names
 
 ## Our Trello Board
 https://trello.com/b/CZVh1GwY/nge-issues-features-future

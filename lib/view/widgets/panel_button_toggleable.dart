@@ -49,7 +49,10 @@ class _PanelButtonToggleableState extends State<PanelButtonToggleable> {
               child: Center(
                 child: SvgPicture.asset(widget.iconString,
                     semanticsLabel: widget.tooltip,
-                    color: getIconColor(),
+                    colorFilter: ColorFilter.mode(
+                      getIconColor(),
+                      BlendMode.srcIn,
+                    ),
                     width: 22.0,
                     height: 22.0),
               ),
