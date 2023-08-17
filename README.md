@@ -1,6 +1,8 @@
+<img width = "400" alt="Name Generator Extension logo" src="./assets/logos/gears_nge/svg/orange_gear_nge.svg">
+
 # Name Generator Extension (NGE)
 
-This is a chrome extension that generates a list of random names of various themes and categories; useful for GMs and DMs of TTRPGS.
+This is a Google Chrome extension that generates a list of random names of various themes and categories; useful for GMs and players of TTRPGS.
 
 ## Categories of names currently supported:
 * Elf names (with Elven clan names)
