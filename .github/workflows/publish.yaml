@@ -20,3 +20,4 @@ jobs:
         with:
           baseHref: /Name-Generator-Extension/
           webRenderer: html
+          customArgs: --no-tree-shake-icons
