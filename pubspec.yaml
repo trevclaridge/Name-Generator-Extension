@@ -69,7 +69,6 @@ flutter:
   assets:
     - assets/icons/png/
     - assets/icons/svg/
-    - assets/logos/colored_arrows/
     - assets/logos/gears/png/
     - assets/logos/gears/png/black/
     - assets/logos/gears/png/blue/

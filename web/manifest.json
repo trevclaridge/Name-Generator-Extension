@@ -8,21 +8,21 @@
     "action": {
         "default_popup": "index.html",
         "default_icon": {
-            "16": "gears/png/grey/grey_gear_16.png", 
-            "19": "gears/png/grey/grey_gear_19.png",
-            "32": "gears/png/grey/grey_gear_32.png", 
-            "38": "gears/png/grey/grey_gear_38.png"
+            "16": "icons/png/orange/orange_gear_16.png", 
+            "19": "icons/png/orange/orange_gear_19.png",
+            "32": "icons/png/orange/orange_gear_32.png", 
+            "38": "icons/png/orange/orange_gear_38.png"
         }
     },
     "icons": {
-        "16": "gears/png/grey/grey_gear_16.png", 
-        "19": "gears/png/grey/grey_gear_19.png",
-        "24": "gears/png/grey/grey_gear_24.png", 
-        "32": "gears/png/grey/grey_gear_32.png",
-        "38": "gears/png/grey/grey_gear_38.png", 
-        "48": "gears/png/grey/grey_gear_48.png",
-        "128": "gears/png/grey/grey_gear_128.png", 
-        "1024": "gears/png/grey/grey_gear_1024.png"
+        "16": "icons/png/orange/orange_gear_16.png", 
+        "19": "icons/png/orange/orange_gear_19.png",
+        "24": "icons/png/orange/orange_gear_24.png", 
+        "32": "icons/png/orange/orange_gear_32.png",
+        "38": "icons/png/orange/orange_gear_38.png", 
+        "48": "icons/png/orange/orange_gear_48.png",
+        "128": "icons/png/orange/orange_gear_128.png", 
+        "1024": "icons/png/orange/orange_gear_1024.png"
     },
     "background": {
         "service_worker": "background.js"

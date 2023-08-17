@@ -12,7 +12,7 @@ chrome.runtime.onInstalled.addListener(function(details)
 );
 
 chrome.runtime.onMessage.addListener((themeString) => {
-    var str = "gears/png/" + themeString + "/" + themeString + "_gear_";
+    var str = "icons/png/" + themeString + "/" + themeString + "_gear_";
     chrome.action.setIcon({ path: {
       "16" : str + "16.png",  
       "19" :  str + "19.png",
@@ -30,7 +30,7 @@ chrome.tabs.onCreated.addListener(
 
 function handleCreated() {
     chrome.storage.local.get(["themeString"]).then((result) => {
-      var str = "gears/png/" + result.themeString + "/" + result.themeString + "_gear_";
+      var str = "icons/png/" + result.themeString + "/" + result.themeString + "_gear_";
       chrome.action.setIcon({ path: {
         "16" : str + "16.png",  
         "19" :  str + "19.png",

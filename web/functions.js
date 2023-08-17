@@ -6,10 +6,10 @@ function changeIcon(themeString) {
   } else {
     var link = document.querySelector("link[rel~='icon']");
     if (!link) {
-      link = document.createElement('link');
-      link.rel = 'icon';
-      document.head.appendChild(link);
+        link = document.createElement('link');
+        link.rel = 'icon';
+        document.head.appendChild(link);
     }
-    link.href = "gears/png/" + themeString + "/" + themeString + "_gear_1024.png";;
+    link.href = "icons/png/" + themeString + "/" + themeString + "_gear_16.png";;
   }
 }
