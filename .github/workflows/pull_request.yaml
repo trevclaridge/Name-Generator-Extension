@@ -12,6 +12,18 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
-      - run: flutter pub get
-      - run: flutter test
-      - run: flutter build web --web-renderer html --csp --no-tree-shake-icons
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Run tests
+        run: flutter test
+
+      - name: Run linter
+        run: flutter analyze --fatal-infos
+
+      - name: Verify formatting
+        run: dart format --set-exit-if-changed .
+
+      - name: Build extension
+        run: flutter build web --web-renderer html --csp --no-tree-shake-icons
