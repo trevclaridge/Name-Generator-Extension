@@ -44,8 +44,8 @@ class MyApp extends StatelessWidget {
           theme: UserSettings().userTheme,
           initialRoute: 'home',
           routes: <String, WidgetBuilder>{
-            'settings': (context) => SettingsPage(),
-            'home': (context) => HomePage(),
+            'settings': (context) => const SettingsPage(),
+            'home': (context) => const HomePage(),
           },
         );
       },
