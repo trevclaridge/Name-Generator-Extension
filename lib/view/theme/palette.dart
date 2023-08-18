@@ -2,8 +2,7 @@ part of view;
 
 class Palette {
   //base colors
-  Color genderPurple = const Color(0xFF655A7C);
-  Color scaffoldWhite = Colors.white;
+  Color genderPurple = const Color(0xFF655A7C);Color scaffoldWhite = Colors.white;
   Color sliderGrey = const Color(0XFF786F69);
   Color subcategoryTeal = const Color(0xFF62929E);
   Color textBlack = const Color(0xFF1E1E1E);
