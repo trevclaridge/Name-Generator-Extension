@@ -17,16 +17,16 @@ Future<String?> showDiceRollerDialog(BuildContext context) {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Row(
-                  children: const [
+                const Row(
+                  children: [
                     DiceButton(diceNumber: '20'),
                     DiceButton(diceNumber: '12'),
                     DiceButton(diceNumber: '10'),
                   ],
                 ),
                 const SizedBox(height: 2.0),
-                Row(
-                  children: const [
+                const Row(
+                  children: [
                     DiceButton(diceNumber: '8'),
                     DiceButton(diceNumber: '6'),
                     DiceButton(diceNumber: '4'),
