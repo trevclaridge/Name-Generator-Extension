@@ -1,0 +1,17 @@
+name: Check Flutter Build - Pull Requests
+
+on:
+  pull_request:
+    types: [opened, reopened, edited, synchronize, ready_for_review, review_requested]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+      - run: flutter pub get
+      - run: flutter test
+      - run: flutter build web --web-renderer html --csp --no-tree-shake-icons
