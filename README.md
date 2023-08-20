@@ -58,8 +58,11 @@ The next steps will be driven from the Chrome browser:
 6. Inside the `build` directory, select the `web` directory. Confirm that directory in the popup.
 
 Barring any errors, Name Generator Extension should now be loaded into the browser! It will be running from your hardrive, so there will be a small orange hardrive badge on the logo.
+
 <img  alt="NGE pinned to extensions" src="./assets/readme/extension_card.png">
+
 From here it will act like any other Chrome extension, meaning you can manage it, pin it, and move it around using the extensions menu in Chrome (the puzzle piece icon to the right of the search bar). 
+
 <img  alt="NGE pinned to extensions" src="./assets/readme/searchbar_with_nge_logo.png">
 
 ## Categories of names currently supported:
