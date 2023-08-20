@@ -8,14 +8,14 @@ Name Generator Extension is an offline Google Chrome extension that generates a 
     <img  alt="Name Generator Extension logo" src="./assets/readme/generate.gif">
 </div>
 
-[Who am I For?](#who-am-i-for)
-[Installing](#installing)
-[Running in Debug Mode](#running-in-debug-mode)
-[Adding the extension to the Chrome browser](#adding-the-extension-to-the-chrome-browser)
-[Categories of names currently supported](#categories-of-names-currently-supported)
-[Categories planned](#categories-planned)
-[License](#license)
-[Quick Links & Commands](#quick-linkscommands)
+* [Who am I For?](#who-am-i-for)
+* [Installing](#installing)
+    * [Running in Debug Mode](#running-in-debug-mode)
+    * [Adding the extension to the Chrome browser](#adding-the-extension-to-the-chrome-browser)
+* [Categories of names currently supported](#categories-of-names-currently-supported)
+* [Categories planned](#categories-planned)
+* [License](#license)
+* [Quick Links & Commands](#quick-linkscommands)
 
 ## Who am I for?
 Has this ever happened to you or a GM you know?
