@@ -1,6 +1,6 @@
 {
-    "name": "Random Name Generator",
-    "description": "Generates a random fantasy name given a number of syllables.",
+    "name": "Name Generator Extension",
+    "description": "Generates a list of random names of various themes and categories; useful for GMs and players of TTRPGS.",
     "version": "1.0.0",
     "content_security_policy": {
         "extension_pages": "script-src 'self' ; object-src 'self'"
