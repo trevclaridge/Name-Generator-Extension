@@ -20,8 +20,9 @@ Name Generator Extension is an offline Google Chrome extension that generates a 
 ## Who am I for?
 Has this ever happened to you or a GM you know?
 
-"The guard ushers you past the door into the—"
-"I ask the guard what his mother's name is."
+>"The guard ushers you past the door into the—"
+>
+>"I ask the guard what his mother's name is."
 
 Chances are this piece of world-shattering lore didn't make it into the planning session. But now we can *pretend* it did with a quick click of a button. Name Generate Extension is for these moments. 
 
@@ -86,6 +87,7 @@ Name Generator Extension uses the [MIT License](https://github.com/trevclaridge/
 
 ## Quick Links/Commands
 [Our Trello Board](https://trello.com/b/CZVh1GwY/nge-issues-features-future)
+
 [GitHub Pages Deployment](https://trevclaridge.github.io/Name-Generator-Extension)
 
 Command to build web app compatible as Chrome extension: 
