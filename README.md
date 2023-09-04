@@ -26,9 +26,10 @@ Has this ever happened to you or a GM you know?
 
 Chances are this piece of world-shattering lore didn't make it into the planning session. But now we can *pretend* it did with a quick click of a button. Name Generate Extension is for these moments. 
 
-The design philosophy behind NGE incorporates two major points:
-1. **Ease-of-use.** Getting a random name should only take one or two clicks, depending on the category you need. None of us want to disrupt the flow of our game; NGE can hopefully eliminate some lag time implicit in ruffling of notes or clicking around by being readily available and always having a name ready to go. 
-2. **Extensibility.** We've tried to make it as easy as possible to edit, add, and otherwise contribute new generation patterns. Adding a new category or subcategory of names is as simple as editing a couple of files. There's always more to do to make it even easier (see our [issues page](https://github.com/trevclaridge/Name-Generator-Extension/issues) or [Trello board](https://trello.com/b/CZVh1GwY/nge-issues-features-future)), but the foundation is there and ready to be built on.
+The design philosophy behind NGE incorporates three major tenets:
+1. **Ease-of-use.** Getting a random name should only take one or two clicks, depending on the category you need. None of us want to disrupt the flow of our game; NGE can hopefully eliminate some lag time implicit in ruffling of notes or clicking around by being readily available and always having a name ready to go.
+2. **Offline.** Besides installing and updates, NGE should be able to provide a randomly generated name independent of an internet connection. This is for the GMs that take their laptops to the local game store, a friend's house, or anywhere else where reliable WiFi isn't easily found.  
+3. **Extensibility.** We've tried to make it as easy as possible to edit, add, and otherwise contribute new generation patterns. Adding a new category or subcategory of names is as simple as editing a couple of files. There's always more to do to make it even easier (see our [issues page](https://github.com/trevclaridge/Name-Generator-Extension/issues) or [Trello board](https://trello.com/b/CZVh1GwY/nge-issues-features-future)), but the foundation is there and ready to be built on.
 
 ## Installing 
 NGE is built with the Flutter framework and actively uses its CLI tools; before attempting to work on NGE from your local machine, you'll want to make sure you have the latest version of the Flutter `stable` branch installed. Flutter installation instructions can be found on [Flutter.dev](https://docs.flutter.dev/get-started/install) 
