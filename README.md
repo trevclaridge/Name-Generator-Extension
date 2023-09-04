@@ -15,7 +15,8 @@ Name Generator Extension is an offline Google Chrome extension that generates a 
 * [Categories of names currently supported](#categories-of-names-currently-supported)
 * [Categories planned](#categories-planned)
 * [License](#license)
-* [Quick Links & Commands](#quick-linkscommands)
+* [Code of conduct](#code-of-conduct)
+* [Quick links & commands](#quick-linkscommands)
 
 ## Who am I for?
 Has this ever happened to you or a GM you know?
@@ -85,6 +86,9 @@ From here it will act like any other Chrome extension, meaning you can manage it
 
 ## License
 Name Generator Extension uses the [MIT License](https://github.com/trevclaridge/Name-Generator-Extension/blob/main/LICENSE.txt).
+
+## Code of Conduct
+We encourage anyone interacting with this project to read our [code of conduct](https://github.com/trevclaridge/Name-Generator-Extension/blob/main/CODE_OF_CONDUCT.md). NGE also enthusiastically embraces the [Dart code of conduct](https://dart.dev/community/code-of-conduct).
 
 ## Quick Links/Commands
 [Our Trello Board](https://trello.com/b/CZVh1GwY/nge-issues-features-future)
