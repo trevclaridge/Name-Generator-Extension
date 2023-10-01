@@ -25,7 +25,7 @@ Has this ever happened to you or a GM you know?
 >
 >"I ask the guard what his mother's name is."
 
-Chances are this piece of world-shattering lore didn't make it into the planning session. But now we can *pretend* it did with a quick click of a button. Name Generate Extension is for these moments. 
+Chances are this piece of world-shattering lore didn't make it into the planning session. But now we can *pretend* it did with a quick click of a button. Name Generator Extension is for these moments. 
 
 The design philosophy behind NGE incorporates three major tenets:
 1. **Ease-of-use.** Getting a random name should only take one or two clicks, depending on the category you need. None of us want to disrupt the flow of our game; NGE can hopefully eliminate some lag time implicit in ruffling of notes or clicking around by being readily available and always having a name ready to go.
