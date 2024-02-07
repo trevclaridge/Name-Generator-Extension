@@ -17,7 +17,8 @@ class CustomTheme {
       ),
     ),
     scaffoldBackgroundColor: Palette().scaffoldWhite,
-      );
+    useMaterial3: false,
+  );
 
   ThemeData get blueTheme {
     return _baseTheme.copyWith(
